@@ -1,0 +1,300 @@
+<div class="container">
+  <div class="col-md-6">
+    <form class="row gx-3 gy-2 align-items-center">
+     
+       
+        <div class="col-md-6">
+          <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm"
+            >Ad</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="FirstName"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.firstName"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Soyad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="LastName"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.lastName"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="identificationNumber" class="form-label"
+            >TC kimlik numarası</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="identificationNumber"
+            name="IdentificationNumber"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.identificationNumber"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="gender" class="form-label">Cinsiyet</label>
+          <select
+            name="gender"
+            class="form-select"
+            id="gender"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.gender"
+          >
+            <option></option>
+            <option>Erkek</option>
+            <option>Kadın</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="nationality" class="form-label">Uyruk</label>
+          <select
+            name="nationality"
+            class="form-select"
+            id="nationality"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.nationality"
+          >
+            <option></option>
+            <option>TC</option>
+            <option>AD</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="placeOfBirth" class="form-label">Doğum Yeri</label>
+          <input
+            type="text"
+            class="form-control"
+            id="placeOfBirth"
+            name="PlaceOfBirth"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.placeOfBirth"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="dateOfBirth" class="form-label">Doğum Tarihi</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dateOfBirth"
+            style="width: 200px"
+            ngbDatepicker #d="ngbDatepicker"
+            required
+            [(ngModel)]="employee.dateOfBirth"
+            name="dateOfBirth"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="maritalStatus" class="form-label">Medeni Hal</label>
+          <select
+            name="maritalStatus"
+            class="form-select"
+            id="maritalStatus"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.maritalStatus"
+          >
+            <option></option>
+            <option>Evli</option>
+            <option>Bekar</option>
+          </select>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="registrationNumber">Sicil Numarası</label>
+          <input
+            type="text"
+            class="form-control"
+            id="registrationNumber"
+            style="width: 200px"
+            required
+            [(ngModel)]="employee.registrationNumber"
+            name="registrationNumber"
+          />
+        </div>
+      
+      <div class="col-md-6">
+        <label for="companyEntryDate">Şirkete Giriş Tarihi</label>
+        <input
+          type="text"
+          name="companyEntryDate"
+          id="companyEntryDate"
+          class="form-control"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.companyEntryDate"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="sgkEntryDate">SGK Giriş Tarihi</label>
+        <input
+          type="text"
+          name="sgkEntryDate"
+          class="form-control"
+          id="sgkEntryDate"
+          style="width: 200px"
+          bsDatepicker
+          
+          required
+          [(ngModel)]="employee.sgkEntryDate"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="annualLeaveEntitlementStartDate"
+          >Yıllık izin hakediş başlangıç tarihi</label
+        >
+        <input
+          type="text"
+          name="annualLeaveEntitlementStartDate"
+          class="form-control"
+          id="annualLeaveEntitlementStartDate"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.annualLeaveEntitlementStartDate"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="annualLeaveGroup">Yıllık izin Grubu</label>
+        <input
+          type="text"
+          name="annualLeaveGroup"
+          class="form-control"
+          id="annualLeaveGroup"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.annualLeaveGroup"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="severancePayStartDate"
+          >Kıdem Tazminatı Başlangıç Tarihi</label
+        >
+        <input
+          type="text"
+          name="severancePayStartDate"
+          class="form-control"
+          id="severancePayStartDate"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.severancePayStartDate"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="oyakStartDateOfWork">OYAK İşe Giriş Tarihi</label>
+        <input
+          type="text"
+          name="oyakStartDateOfWork"
+          class="form-control"
+          id="oyakStartDateOfWork"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.oyakStartDateOfWork"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="firstDateOfJoiningTheGroup">Gruba İlk Giriş Tarihi</label>
+        <input
+          type="text"
+          name="firstDateOfJoiningTheGroup"
+          class="form-control"
+          id="firstDateOfJoiningTheGroup"
+          style="width: 200px"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.firstDateOfJoiningTheGroup"
+        />
+      </div>
+      <div>
+        <button type="button" (click)="save()" class="btn btn-success">
+          Kaydet
+        </button>
+      </div>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ad</th>
+          <th scope="col">Soyad</th>
+          <th scope="col">TC kimlik numarası</th>
+          <th scope="col">Cinsiyet</th>
+          <th scope="col">Uyruk</th>
+          <th scope="col">Doğum Yeri</th>
+          <th scope="col">Doğum Tarihi</th>
+          <th scope="col">Medeni Hal</th>
+          <th scope="col">Sicil Numarası</th>
+          <th scope="col">Şirkete Giriş T.</th>
+          <th scope="col">SGK Giriş T.</th>
+          <th scope="col">Yıllık izin hakediş başlangıç T.</th>
+          <th scope="col">Yıllık izin Grubu</th>
+          <th scope="col">Kıdem Tazminatı Başlangıç T.</th>
+          <th scope="col">OYAK İşe Giriş T.</th>
+          <th scope="col">Gruba İlk Giriş T.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <th scope="row">{{ employee.id }}</th>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.identificationNumber }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.nationality }}</td>
+          <td>{{ employee.placeOfBirth }}</td>
+          <td>{{ employee.dateOfBirth | date: "dd-MM-yyyy" }}</td>
+          <td>{{ employee.maritalStatus }}</td>
+          <td>{{ employee.registrationNumber }}</td>
+          <td>{{ employee.companyEntryDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ employee.sgkEntryDate | date: "dd-MM-yyyy" }}</td>
+          <td>
+            {{ employee.annualLeaveEntitlementStartDate | date: "dd-MM-yyyy" }}
+          </td>
+          <td>{{ employee.annualLeaveGroup | date: "dd-MM-yyyy" }}</td>
+          <td>{{ employee.severancePayStartDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ employee.oyakStartDateOfWork | date: "dd-MM-yyyy" }}</td>
+          <td>
+            {{ employee.firstDateOfJoiningTheGroup | date: "dd-MM-yyyy" }}
+          </td>
+          <td>
+            <button
+              class="btn btn-danger"
+              type="button"
+              (click)="delete(employee)"
+            >
+              Sil
+            </button>
+          </td>
+          <td>
+            <button
+              (click)="getEmployee(employee.id)"
+              class="btn btn-info"
+              type="button"
+            >
+              Güncelle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
