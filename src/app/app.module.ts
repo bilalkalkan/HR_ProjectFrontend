@@ -10,9 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { EmployeeFamilyComponent } from './components/employee-family/employee-family.component';
+import { HomeComponent } from './components/home/home.component';
+import { EmployeeEducationComponent } from './components/employee-education/employee-education.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeComponent],
+  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent],
   imports: [
     BrowserModule,
     FormsModule,

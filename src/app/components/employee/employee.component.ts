@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { defineLocale, trLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/models/employee';
@@ -25,8 +27,12 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private formBuilder: FormBuilder,
+    private localeService: BsLocaleService,
     private toastrService: ToastrService
-  ) {}
+  ) {
+    defineLocale('tr', trLocale);
+    this.localeService.use('tr');
+  }
   ngOnInit(): void {
     this.employee = new Employee();
 
@@ -45,10 +51,14 @@ export class EmployeeComponent implements OnInit {
   getEmployee(employeeId: number) {
     this.employeeService.getById(employeeId).subscribe((response) => {
       this.employee = response.data;
-
-      // if (response.data.companyEntryDate !== null && response.data.companyEntryDate !== undefined) {
-      //   this.employee.companyEntryDate = new Date(response.data.companyEntryDate);
-      // }
+      this.employee.dateOfBirth = new Date(response.data.dateOfBirth);
+      this.employee.sgkEntryDate=new Date(response.data.sgkEntryDate)
+      this.employee.companyEntryDate = new Date(response.data.companyEntryDate);
+      this.employee.annualLeaveEntitlementStartDate=new Date(response.data.annualLeaveEntitlementStartDate)
+      this.employee.annualLeaveGroup=new Date(response.data.annualLeaveGroup);
+      this.employee.severancePayStartDate=new Date(response.data.severancePayStartDate)
+      this.employee.oyakStartDateOfWork=new Date(response.data.oyakStartDateOfWork)
+      this.employee.firstDateOfJoiningTheGroup=new Date(response.data.firstDateOfJoiningTheGroup)
     });
   }
 

@@ -1,132 +1,139 @@
 <div class="container">
   <div class="col-md-6">
     <form class="row gx-3 gy-2 align-items-center">
-     
-       
-        <div class="col-md-6">
-          <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm"
-            >Ad</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="firstName"
-            name="FirstName"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.firstName"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="lastName" class="form-label">Soyad</label>
-          <input
-            type="text"
-            class="form-control"
-            id="lastName"
-            name="LastName"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.lastName"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="identificationNumber" class="form-label"
-            >TC kimlik numarası</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="identificationNumber"
-            name="IdentificationNumber"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.identificationNumber"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="gender" class="form-label">Cinsiyet</label>
-          <select
-            name="gender"
-            class="form-select"
-            id="gender"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.gender"
-          >
-            <option></option>
-            <option>Erkek</option>
-            <option>Kadın</option>
-          </select>
-        </div>
-        <div class="col-md-6">
-          <label for="nationality" class="form-label">Uyruk</label>
-          <select
-            name="nationality"
-            class="form-select"
-            id="nationality"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.nationality"
-          >
-            <option></option>
-            <option>TC</option>
-            <option>AD</option>
-          </select>
-        </div>
-        <div class="col-md-6">
-          <label for="placeOfBirth" class="form-label">Doğum Yeri</label>
-          <input
-            type="text"
-            class="form-control"
-            id="placeOfBirth"
-            name="PlaceOfBirth"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.placeOfBirth"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="dateOfBirth" class="form-label">Doğum Tarihi</label>
-          <input
-            type="text"
-            class="form-control"
-            id="dateOfBirth"
-            style="width: 200px"
-            ngbDatepicker #d="ngbDatepicker"
-            required
-            [(ngModel)]="employee.dateOfBirth"
-            name="dateOfBirth"
-          />
-        </div>
-        <div class="col-md-4">
-          <label for="maritalStatus" class="form-label">Medeni Hal</label>
-          <select
-            name="maritalStatus"
-            class="form-select"
-            id="maritalStatus"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.maritalStatus"
-          >
-            <option></option>
-            <option>Evli</option>
-            <option>Bekar</option>
-          </select>
-        </div>
-  
-        <div class="col-md-6">
-          <label for="registrationNumber">Sicil Numarası</label>
-          <input
-            type="text"
-            class="form-control"
-            id="registrationNumber"
-            style="width: 200px"
-            required
-            [(ngModel)]="employee.registrationNumber"
-            name="registrationNumber"
-          />
-        </div>
-      
+      <div class="col-md-6">
+        <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm"
+          >Ad</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="FirstName"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.firstName"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Soyad</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          name="LastName"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.lastName"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="identificationNumber" class="form-label"
+          >TC kimlik numarası</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="identificationNumber"
+          name="IdentificationNumber"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.identificationNumber"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="gender" class="form-label">Cinsiyet</label>
+        <select
+          name="gender"
+          class="form-select"
+          id="gender"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.gender"
+        >
+          <option></option>
+          <option>Erkek</option>
+          <option>Kadın</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="nationality" class="form-label">Uyruk</label>
+        <select
+          name="nationality"
+          class="form-select"
+          id="nationality"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.nationality"
+        >
+          <option></option>
+          <option>TC</option>
+          <option>AD</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="placeOfBirth" class="form-label">Doğum Yeri</label>
+        <input
+          type="text"
+          class="form-control"
+          id="placeOfBirth"
+          name="PlaceOfBirth"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.placeOfBirth"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="dateOfBirth" class="form-label">Doğum Tarihi</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dateOfBirth"
+          style="width: 200px"
+          autocomplete="off"
+          bsDatepicker
+          required
+          [(ngModel)]="employee.dateOfBirth"
+          name="dateOfBirth"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="maritalStatus" class="form-label">Medeni Hal</label>
+        <select
+          name="maritalStatus"
+          class="form-select"
+          id="maritalStatus"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.maritalStatus"
+        >
+          <option></option>
+          <option>Evli</option>
+          <option>Bekar</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label for="registrationNumber">Sicil Numarası</label>
+        <input
+          type="text"
+          class="form-control"
+          id="registrationNumber"
+          style="width: 200px"
+          autocomplete="off"
+          required
+          [(ngModel)]="employee.registrationNumber"
+          name="registrationNumber"
+        />
+      </div>
+
       <div class="col-md-6">
         <label for="companyEntryDate">Şirkete Giriş Tarihi</label>
         <input
@@ -135,6 +142,7 @@
           id="companyEntryDate"
           class="form-control"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.companyEntryDate"
@@ -148,8 +156,8 @@
           class="form-control"
           id="sgkEntryDate"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
-          
           required
           [(ngModel)]="employee.sgkEntryDate"
         />
@@ -164,6 +172,7 @@
           class="form-control"
           id="annualLeaveEntitlementStartDate"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.annualLeaveEntitlementStartDate"
@@ -177,6 +186,7 @@
           class="form-control"
           id="annualLeaveGroup"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.annualLeaveGroup"
@@ -192,6 +202,7 @@
           class="form-control"
           id="severancePayStartDate"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.severancePayStartDate"
@@ -205,6 +216,7 @@
           class="form-control"
           id="oyakStartDateOfWork"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.oyakStartDateOfWork"
@@ -218,6 +230,7 @@
           class="form-control"
           id="firstDateOfJoiningTheGroup"
           style="width: 200px"
+          autocomplete="off"
           bsDatepicker
           required
           [(ngModel)]="employee.firstDateOfJoiningTheGroup"
@@ -281,7 +294,7 @@
               type="button"
               (click)="delete(employee)"
             >
-              Sil
+            <i class="bi bi-trash3"></i>
             </button>
           </td>
           <td>
@@ -290,7 +303,7 @@
               class="btn btn-info"
               type="button"
             >
-              Güncelle
+            <i class="bi bi-pencil"></i>
             </button>
           </td>
         </tr>

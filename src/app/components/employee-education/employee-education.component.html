@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="employeeId">Çalışan seçiniz</label>
+          <select
+            name="number"
+            id="employeeId"
+            class="form-select"
+            required
+            [(ngModel)]="employeeEducation.employeeId"
+          >
+            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="educationLevel">Eğitim Seviyesi</label>
+          <select
+            name="educationLevel"
+            id="educationLevel"
+            class="form-select"
+            required
+            [(ngModel)]="employeeEducation.educationalLevel"
+          >
+            <option>İlk Öğretim</option>
+            <option>Lise</option>
+            <option>Önlisans</option>
+            <option>Lisans</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="schoolYearOfStart">Okul Başlangıç Yılı</label>
+          <input
+            type="number"
+            name="schoolYearOfStart"
+            id="schoolYearOfStart"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeEducation.schoolYearOfStart"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="schoolYearOfFinished">Okul Bitiş Yılı</label>
+          <input
+            type="number"
+            name="schoolYearOfFinished"
+            id="schoolYearOfFinished"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeEducation.schoolYearOfFinished"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="diplomaGrade">Diploma Notu</label>
+          <input
+            type="text"
+            name="diplomaGrade"
+            id="diplomaGrade"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeEducation.diplomaGrade"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="tractateName">Tez Adı</label>
+          <input
+            type="text"
+            name="tractateName"
+            id="tractateName"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeEducation.tractateName"
+          />
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger" (click)="save()">
+          Kaydet
+        </button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Eğitim seviysei</th>
+          <th scope="col">Okul Başlangıç Yılı</th>
+          <th scope="col">Okul Bitiş Yılı</th>
+          <th scope="col">Diploma Notu</th>
+          <th scope="col">Tez Adı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employeeEducation of employeeEducations">
+          <th scope="row">{{ employeeEducation.id }}</th>
+          <th>{{ employeeEducation.employeeId }}</th>
+          <td>{{ employeeEducation.educationalLevel }}</td>
+          <td>{{ employeeEducation.schoolYearOfStart }}</td>
+          <td>{{ employeeEducation.schoolYearOfFinished }}</td>
+          <td>{{ employeeEducation.diplomaGrade }}</td>
+          <td>{{ employeeEducation.tractateName }}</td>
+
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteEmployeeEducation(employeeEducation)"
+              type="button"
+            >
+              <i class="bi bi-trash3"></i>
+            </button>
+          </td>
+          <td>
+            <button
+              (click)="getEmployeeEducation(employeeEducation.id)"
+              class="btn btn-info"
+              type="button"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
