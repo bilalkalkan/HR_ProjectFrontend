@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="employeeId">Çalışan Seçiniz</label>
+
+          <select
+            name="number"
+            id="employeeId"
+            class="form-select"
+            required
+            [(ngModel)]="employeeLanguage.employeeId"
+          >
+            <option>Çalışan</option>
+            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="foreignLanguage">Yabancı Dil </label>
+          <select
+            name="foreignLanguage"
+            id="foreignLanguage"
+            class="form-select"
+            required
+            [(ngModel)]="employeeLanguage.foreignLanguage"
+          >
+            <option>İngilizce</option>
+            <option>Almanca</option>
+            <option>Fransızca</option>
+            <option>İspanyolca</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="reading">Okuma</label>
+          <select
+            name="reading"
+            id="reading"
+            class="form-select"
+            required
+            [(ngModel)]="employeeLanguage.reading"
+          >
+            <option>A1</option>
+            <option>A2</option>
+            <option>B1</option>
+            <option>B2</option>
+            <option>C1</option>
+            <option>C2</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="writing">Yazma</label>
+          <select
+            name="writing"
+            id="writing"
+            class="form-select"
+            required
+            [(ngModel)]="employeeLanguage.writing"
+          >
+            <option>A1</option>
+            <option>A2</option>
+            <option>B1</option>
+            <option>B2</option>
+            <option>C1</option>
+            <option>C2</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="talking">Konuşma</label>
+          <select
+            name="talking"
+            id="talking"
+            class="form-select"
+            required
+            [(ngModel)]="employeeLanguage.talking"
+          >
+            <option>A1</option>
+            <option>A2</option>
+            <option>B1</option>
+            <option>B2</option>
+            <option>C1</option>
+            <option>C2</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div>
+        <button type="button" class="btn btn-success" (click)="save()">
+          Kayıt
+        </button>
+        <button class="btn btn-warning" type="button" (click)="clear()">
+          Temizle
+        </button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Yabancı Dil</th>
+          <th scope="col">Okuma</th>
+          <th scope="col">Yazma</th>
+          <th scope="col">Konuşma</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employeeLanguage of employeeLanguages">
+          <th scope="row">{{ employeeLanguage.id }}</th>
+          <th>{{ employeeLanguage.employeeId }}</th>
+          <td>{{ employeeLanguage.foreignLanguage }}</td>
+          <td>{{ employeeLanguage.reading }}</td>
+          <td>{{ employeeLanguage.writing }}</td>
+          <td>{{ employeeLanguage.talking }}</td>
+
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                (click)="deleteEmployeeLanguage(employeeLanguage)"
+                type="button"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                (click)="getEmployeeLanguage(employeeLanguage.id)"
+                class="btn btn-info"
+                type="button"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

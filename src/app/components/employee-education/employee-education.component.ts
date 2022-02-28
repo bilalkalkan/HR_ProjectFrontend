@@ -69,4 +69,8 @@ export class EmployeeEducationComponent implements OnInit {
         this.toastrService.success(response.message);
       });
   }
+
+  clear(){
+    this.employeeEducation=new EmployeeEducation();
+  }
 }

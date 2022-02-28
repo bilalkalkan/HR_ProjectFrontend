@@ -1,0 +1,147 @@
+<div class="container">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="employeeId">Çalışan Seçiniz</label>
+          <select
+            name="employeeId"
+            id="employeeId"
+            class="form-select"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeDebit.employeeId"
+          >
+            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="debitType">Zimmet türü</label>
+          <select
+            name="debitType"
+            id="debitType"
+            class="form-select"
+            autocomplete="off"
+            [(ngModel)]="employeeDebit.debitType"
+          >
+            <option>Araç</option>
+            <option>Telefon</option>
+            <option>Bilgisayar</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="debitDeliveryDate">Zimmet Teslim Tarihi</label>
+          <input
+            type="text"
+            name="debitDeliveryDate"
+            id="debitDeliveryDate"
+            class="form-control"
+            autocomplete="off"
+            bsDatepicker
+            required
+            [(ngModel)]="employeeDebit.debitDeliveryDate"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="">Zimmet İade Durumu</label>
+          <select
+            name="debitReturnStatus"
+            id="debitReturnStatus"
+            class="form-select"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeDebit.debitReturnStatus"
+          >
+            <option>İade Edildi</option>
+            <option>İade edilmedi</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="debitReturnDate">Zimmet İade Tarihi</label>
+          <input
+            type="text"
+            name="debitReturnDate"
+            id="debitReturnDate"
+            class="form-control"
+            autocomplete="off"
+            bsDatepicker
+            required
+            [(ngModel)]="employeeDebit.debitReturnDate"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="debitReturnDate">Zimmet Açıklaması</label>
+          <input
+            type="text"
+            name="debitStatement"
+            id="debitStatement"
+            class="form-control "
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeDebit.debitStatement"
+          />
+        </div>
+      </div>
+      <br />
+      <button class="btn btn-success" (click)="save()">Kaydet</button>
+      <button class="btn btn-warning" type="button" (click)="clear()">
+        Temizle
+      </button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Zimmet Türü</th>
+          <th scope="col">Zimmet Teslim Tarihi</th>
+          <th scope="col">Zimmet İade Durumu</th>
+          <th scope="col">Zimmet İade Tarihi</th>
+          <th scope="col">Zimmet Açıklaması</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employeeDebit of employeeDebits">
+          <td>{{ employeeDebit.id }}</td>
+          <td>{{ employeeDebit.employeeId }}</td>
+          <td>{{ employeeDebit.debitType }}</td>
+          <td>{{ employeeDebit.debitDeliveryDate | date: 'dd-MM-yyyy' }}</td>
+          <td>{{ employeeDebit.debitReturnStatus }}</td>
+          <td>{{ employeeDebit.debitReturnDate | date: 'dd-MM-yyyy'}}</td>
+          <td>{{ employeeDebit.debitStatement }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteEmployeeDebit(employeeDebit)"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="getEmployeeDebit(employeeDebit.id)"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

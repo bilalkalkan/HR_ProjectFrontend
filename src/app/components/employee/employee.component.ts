@@ -63,7 +63,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   save() {
-    if (this.employee.id > 1) {
+    if (this.employee.id > 0) {
       this.employeeService.update(this.employee).subscribe((response) => {
         this.toastrService.success(response.message);
         this.getEmployees();
@@ -83,5 +83,8 @@ export class EmployeeComponent implements OnInit {
       this.toastrService.success(response.message);
       this.getEmployees();
     });
+  }
+  clear(){
+    this.employee=new Employee();
   }
 }

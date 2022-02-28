@@ -240,6 +240,9 @@
         <button type="button" (click)="save()" class="btn btn-success">
           Kaydet
         </button>
+        <button class="btn btn-warning" type="button" (click)="clear()">
+          Temizle
+        </button>
       </div>
     </form>
 
@@ -263,17 +266,18 @@
           <th scope="col">Kıdem Tazminatı Başlangıç T.</th>
           <th scope="col">OYAK İşe Giriş T.</th>
           <th scope="col">Gruba İlk Giriş T.</th>
+          <th scope="col">İşlemler</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let employee of employees">
           <th scope="row">{{ employee.id }}</th>
-          <td>{{ employee.firstName }}</td>
-          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.firstName | titlecase }}</td>
+          <td>{{ employee.lastName | titlecase }}</td>
           <td>{{ employee.identificationNumber }}</td>
-          <td>{{ employee.gender }}</td>
+          <td>{{ employee.gender | titlecase }}</td>
           <td>{{ employee.nationality }}</td>
-          <td>{{ employee.placeOfBirth }}</td>
+          <td>{{ employee.placeOfBirth | titlecase }}</td>
           <td>{{ employee.dateOfBirth | date: "dd-MM-yyyy" }}</td>
           <td>{{ employee.maritalStatus }}</td>
           <td>{{ employee.registrationNumber }}</td>
@@ -289,22 +293,22 @@
             {{ employee.firstDateOfJoiningTheGroup | date: "dd-MM-yyyy" }}
           </td>
           <td>
-            <button
-              class="btn btn-danger"
-              type="button"
-              (click)="delete(employee)"
-            >
-            <i class="bi bi-trash3"></i>
-            </button>
-          </td>
-          <td>
-            <button
-              (click)="getEmployee(employee.id)"
-              class="btn btn-info"
-              type="button"
-            >
-            <i class="bi bi-pencil"></i>
-            </button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="delete(employee)"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                (click)="getEmployee(employee.id)"
+                class="btn btn-info"
+                type="button"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

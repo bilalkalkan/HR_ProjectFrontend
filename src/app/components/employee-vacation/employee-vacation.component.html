@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="employeeId">Çalışan Seçiniz</label>
+          <select
+            name="number"
+            id="employeeId"
+            class="form-select"
+            [(ngModel)]="employeeVacation.employeeId"
+          >
+            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="allowanceType">İzin Türü</label>
+          <select
+            name="allowanceType"
+            id="allowanceType"
+            class="form-select"
+            [(ngModel)]="employeeVacation.allowanceType"
+          >
+            <option>Yıllık İzin</option>
+            <option>Evlenme İzni</option>
+            <option>İdari İzin</option>
+            <option>Ücretsiz İzin</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="allowanceStartingDate">İzin Başlangıç Tarihi</label>
+          <input
+            type="text"
+            name="allowanceStartingDate"
+            id="allowanceStartingDate"
+            class="form-control"
+            autocomplete="off"
+            bsDatepicker
+            required
+            [(ngModel)]="employeeVacation.allowanceStartingDate"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="allowanceExpirationDate">İzin Bitiş Tarihi</label>
+          <input
+            type="text"
+            name="allowanceExpirationDate"
+            id="allowanceExpirationDate"
+            class="form-control"
+            autocomplete="off"
+            bsDatepicker
+            required
+            [(ngModel)]="employeeVacation.allowanceExpirationDate"
+          />
+        </div>
+      </div>
+      <!--       
+       <div class="form-group">
+        <div class="col-md-6">
+          <label for="allowanceNumberOfDays">Toplam İzin Günü</label>
+          <input
+            type="number"
+            name="allowanceNumberOfDays"
+            id="allowanceNumberOfDays"
+            class="form-control"
+            required
+            [(ngModel)]="employeeVacation.allowanceNumberOfDays"
+          />
+        </div>
+      </div>  -->
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="addressToBeAllowed">İznin Geçirileceği Adres</label>
+          <input
+            type="text"
+            name="addressToBeAllowed"
+            id="addressToBeAllowed"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeVacation.addressToBeAllowed"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="statemnt">Açıklama</label>
+          <input
+            type="text"
+            name="statemnt"
+            id="statemnt"
+            class="form-control"
+            autocomplete="off"
+            required
+            [(ngModel)]="employeeVacation.statement"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-success" type="button" (click)="save()">
+          Kaydet
+        </button>
+        <button class="btn btn-warning" type="button" (click)="clear()">
+          Temizle
+        </button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">İzin Türü</th>
+          <th scope="col">İzin Başlangıç Tarihi</th>
+          <th scope="col">İzin Bitiş Tarihi</th>
+          <th scope="col">Toplam İzin Günü</th>
+          <th scope="col">İznin Geçirileceği Adres</th>
+          <th scope="col">Açıklama</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employeeVacation of employeeVacations">
+          <th scope="row">{{ employeeVacation.id }}</th>
+          <td>{{ employeeVacation.employeeId }}</td>
+          <td>{{ employeeVacation.allowanceType }}</td>
+          <td>
+            {{ employeeVacation.allowanceStartingDate | date: "dd-MM-yyyy"  }}
+          </td>
+          <td>
+            {{ employeeVacation.allowanceExpirationDate | date: "dd-MM-yyyy" }}
+          </td>
+          <td>{{ employeeVacation.allowanceNumberOfDays }}</td>
+          <td>{{ employeeVacation.addressToBeAllowed }}</td>
+          <td>{{ employeeVacation.statement }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                (click)="deleteEmployeeVacation(employeeVacation)"
+                type="button"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                (click)="getEmployeeVacation(employeeVacation.id)"
+                class="btn btn-info"
+                type="button"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -13,9 +13,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { EmployeeFamilyComponent } from './components/employee-family/employee-family.component';
 import { HomeComponent } from './components/home/home.component';
 import { EmployeeEducationComponent } from './components/employee-education/employee-education.component';
+import { EmployeeLanguageComponent } from './components/employee-language/employee-language.component';
+import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
+import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent],
+  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent, EmployeeLanguageComponent, EmployeeDebitComponent, EmployeeVacationComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -68,4 +68,8 @@ export class EmployeeFamilyComponent implements OnInit {
       this.getEmployeeFamilies();
     });
   }
+
+  clear(){
+    this.employeeFamily=new EmployeeFamily();
+  }
 }
