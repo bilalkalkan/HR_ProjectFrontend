@@ -16,6 +16,7 @@ import { EmployeeEducationComponent } from './components/employee-education/empl
 import { EmployeeLanguageComponent } from './components/employee-language/employee-language.component';
 import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent, EmployeeLanguageComponent, EmployeeDebitComponent, EmployeeVacationComponent],
@@ -27,6 +28,7 @@ import { EmployeeVacationComponent } from './components/employee-vacation/employ
     BsDatepickerModule.forRoot(),                            
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgSelectModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),

@@ -44,37 +44,36 @@
           [(ngModel)]="employee.identificationNumber"
         />
       </div>
-      <div class="col-md-6">
+
+      <div class="col-md-3">
         <label for="gender" class="form-label">Cinsiyet</label>
-        <select
+        <ng-select
+          bindLabel="name"
           name="gender"
-          class="form-select"
-          id="gender"
-          style="width: 200px"
-          autocomplete="off"
-          required
+          appendTo="body"
           [(ngModel)]="employee.gender"
         >
-          <option></option>
-          <option>Erkek</option>
-          <option>Kadın</option>
-        </select>
+          <ng-option value="E"> Erkek </ng-option>
+          <ng-option value="K">adın</ng-option>
+        </ng-select>
       </div>
       <div class="col-md-6">
         <label for="nationality" class="form-label">Uyruk</label>
-        <select
-          name="nationality"
-          class="form-select"
+        <ng-select
+          notFoundText="Kayıt Bulunamadı"
+          bindLabel="nationality"
           id="nationality"
-          style="width: 200px"
-          autocomplete="off"
-          required
+          bindValue="nationality"
+          name="nationality"
           [(ngModel)]="employee.nationality"
         >
-          <option></option>
-          <option>TC</option>
-          <option>AD</option>
-        </select>
+          <ng-option
+            [value]="nationality.nationalityName"
+            *ngFor="let nationality of nationalities"
+          >
+            {{ nationality.nationalityName }}
+          </ng-option>
+        </ng-select>
       </div>
       <div class="col-md-6">
         <label for="placeOfBirth" class="form-label">Doğum Yeri</label>
@@ -105,21 +104,17 @@
       </div>
       <div class="col-md-4">
         <label for="maritalStatus" class="form-label">Medeni Hal</label>
-        <select
-          name="maritalStatus"
-          class="form-select"
+        <ng-select
+          bindLabel="name"
           id="maritalStatus"
-          style="width: 200px"
-          autocomplete="off"
-          required
+          bindValue="maritalStatus"
+          name="maritalStatus"
           [(ngModel)]="employee.maritalStatus"
         >
-          <option></option>
-          <option>Evli</option>
-          <option>Bekar</option>
-        </select>
+        <ng-option value="E"> Evli </ng-option>
+        <ng-option value="B">Bekar</ng-option>
+        </ng-select>
       </div>
-
       <div class="col-md-6">
         <label for="registrationNumber">Sicil Numarası</label>
         <input
@@ -180,17 +175,16 @@
       </div>
       <div class="col-md-6">
         <label for="annualLeaveGroup">Yıllık izin Grubu</label>
-        <input
-          type="text"
-          name="annualLeaveGroup"
-          class="form-control"
-          id="annualLeaveGroup"
-          style="width: 200px"
-          autocomplete="off"
-          bsDatepicker
-          required
-          [(ngModel)]="employee.annualLeaveGroup"
-        />
+        <ng-select
+        bindLabel="name"
+        id="annualLeaveGroup"
+        bindValue="annualLeaveGroup"
+        name="annualLeaveGroup"
+        [(ngModel)]="employee.annualLeaveGroup"
+      >
+      <ng-option value="Standart"> Standart </ng-option>
+      <ng-option value="Vardiya">Vardiya</ng-option>
+      </ng-select>
       </div>
       <div class="col-md-6">
         <label for="severancePayStartDate"
@@ -236,8 +230,63 @@
           [(ngModel)]="employee.firstDateOfJoiningTheGroup"
         />
       </div>
+      <div class="col-md-6">
+        <label for="wage">Ücret</label>
+        <input
+          type="number"
+          name="wage"
+          id="wage"
+          class="form-control"
+          style="width: 200px"
+          required
+          [(ngModel)]="employee.wage"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="typeOfWage">Ücret Türü</label>
+        <ng-select
+          notFoundText="Kayıt Bulunamadı"
+          id="typeOfWage"
+          bindValue="typeOfWage"
+          placeholder="Seçiniz"
+          name="typeOfWage"
+          required
+          [(ngModel)]="employee.typeOfWage"
+        >
+          <ng-option value="Aylık">Aylık</ng-option>
+          <ng-option value="Sattlik">Saatlik</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-6">
+        <label for="typeOfPayment">Ödeme Şekli</label>
+        <ng-select
+          bindLabel="name"
+          bindValue="typeOfPayment"
+          id="typeOfPayment"
+          name="typeOfPayment"
+          [(ngModel)]="employee.typeOfPayment"
+        >
+        <ng-option value="Nakit">Nakit</ng-option>
+        <ng-option value="Banka Hesabı">Banka Hesabı</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-6">
+        <label for="paymentCurrency">Ödeme yapılan para birimi</label>
+        <ng-select
+          bindLabel="name"
+          id="paymentCurrency"
+          bindValue="name"
+          name="paymentCurrency"
+          required
+          [(ngModel)]="employee.paymentCurrency"
+        >
+        <ng-option value="TL">TL</ng-option>
+        <ng-option value="DOLAR">DOLAR</ng-option>
+        <ng-option value="EURO">EURO</ng-option>
+        </ng-select>
+      </div>
       <div>
-        <button type="button" (click)="save()" class="btn btn-success">
+        <button type="submit" (click)="save()" class="btn btn-success">
           Kaydet
         </button>
         <button class="btn btn-warning" type="button" (click)="clear()">
@@ -286,7 +335,7 @@
           <td>
             {{ employee.annualLeaveEntitlementStartDate | date: "dd-MM-yyyy" }}
           </td>
-          <td>{{ employee.annualLeaveGroup | date: "dd-MM-yyyy" }}</td>
+          <td>{{ employee.annualLeaveGroup  }}</td>
           <td>{{ employee.severancePayStartDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employee.oyakStartDateOfWork | date: "dd-MM-yyyy" }}</td>
           <td>

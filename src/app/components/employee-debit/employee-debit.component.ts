@@ -59,21 +59,27 @@ export class EmployeeDebitComponent implements OnInit {
 
   save() {
     if (this.employeeDebit.id > 0) {
-      this.employeeDebitService
-        .update(this.employeeDebit)
-        .subscribe((response) => {
+      this.employeeDebitService.update(this.employeeDebit).subscribe(
+        (response) => {
           this.employeeDebit = new EmployeeDebit();
           this.getEmployeeDebits();
           this.toastrService.success(response.message);
-        });
+        },
+        (responseError) => {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
+      );
     } else {
-      this.employeeDebitService
-        .add(this.employeeDebit)
-        .subscribe((response) => {
+      this.employeeDebitService.add(this.employeeDebit).subscribe(
+        (response) => {
           this.employeeDebit = new EmployeeDebit();
           this.getEmployeeDebits();
           this.toastrService.success(response.message);
-        });
+        },
+        (responseError) => {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
+      );
     }
   }
 
@@ -84,7 +90,7 @@ export class EmployeeDebitComponent implements OnInit {
     });
   }
 
-  clear(){
-    this.employeeDebit=new EmployeeDebit();
+  clear() {
+    this.employeeDebit = new EmployeeDebit();
   }
 }

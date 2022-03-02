@@ -58,13 +58,16 @@ export class EmployeeVacationComponent implements OnInit {
 
   save() {
     if (this.employeeVacation.id > 0) {
-      this.employeeVacationService
-        .update(this.employeeVacation)
-        .subscribe((response) => {
+      this.employeeVacationService.update(this.employeeVacation).subscribe(
+        (response) => {
           this.employeeVacation = new EmployeeVacation();
           this.getEmployeeVacations();
           this.toastrService.success(response.message);
-        });
+        },
+        (responseError) => {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
+      );
     } else {
       this.employeeVacationService.add(this.employeeVacation).subscribe(
         (response) => {

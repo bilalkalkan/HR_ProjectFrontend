@@ -12,9 +12,12 @@ export class Employee{
     companyEntryDate!: Date;
     sgkEntryDate!: Date;
     annualLeaveEntitlementStartDate!: Date;
-    annualLeaveGroup!: Date;
+    annualLeaveGroup!: string;
     severancePayStartDate!: Date;
     oyakStartDateOfWork!: Date;
     firstDateOfJoiningTheGroup!: Date;
-
+    wage!: number;
+    typeOfWage!: string;
+    typeOfPayment!:string
+    paymentCurrency!:string
 }
