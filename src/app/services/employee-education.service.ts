@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EducationLevel } from '../models/educationLevel';
 import { EmployeeEducation } from '../models/employeeEducation';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -37,5 +38,9 @@ export class EmployeeEducationService {
   update(employeeEducation: EmployeeEducation): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employeeEducation);
+  }
+  getEducationLevels(): Observable<ListResponseModel<EducationLevel>> {
+    let newPath = this.apiUrl + 'geteducationlevels';
+    return this.httpClient.get<ListResponseModel<EducationLevel>>(newPath);
   }
 }

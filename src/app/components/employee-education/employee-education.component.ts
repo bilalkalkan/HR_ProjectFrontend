@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { EducationLevel } from 'src/app/models/educationLevel';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeEducation } from 'src/app/models/employeeEducation';
 import { EmployeeEducationService } from 'src/app/services/employee-education.service';
@@ -14,6 +15,7 @@ export class EmployeeEducationComponent implements OnInit {
   employees!: Employee[];
   employeeEducation: EmployeeEducation = new EmployeeEducation();
   employeeEducations!: EmployeeEducation[];
+  educationLevels!: EducationLevel[];
   constructor(
     private employeeService: EmployeeService,
     private employeeEducationService: EmployeeEducationService,
@@ -24,6 +26,7 @@ export class EmployeeEducationComponent implements OnInit {
     this.employeeEducation = new EmployeeEducation();
     this.getEmployees();
     this.getEmployeeEducations();
+    this.getEducationLevels();
   }
   getEmployees() {
     this.employeeService.getAll().subscribe((response) => {
@@ -36,7 +39,18 @@ export class EmployeeEducationComponent implements OnInit {
     });
   }
 
+  getEducationLevels() {
+    this.employeeEducationService.getEducationLevels().subscribe((response) => {
+      this.educationLevels = response.data;
+    });
+  }
+
   save() {
+    let message = this.validateCheck();
+    if (message != '') {
+      this.toastrService.error('Boş alan bırakılamaz');
+      return;
+    }
     if (this.employeeEducation.id > 0) {
       this.employeeEducationService
         .update(this.employeeEducation)
@@ -70,7 +84,30 @@ export class EmployeeEducationComponent implements OnInit {
       });
   }
 
-  clear(){
-    this.employeeEducation=new EmployeeEducation();
+  validateCheck(): string {
+    let message = '';
+    if (
+      this.employeeEducation.employeeId == null ||
+      this.employeeEducation.employeeId == undefined ||
+      this.employeeEducation.educationalLevel == null ||
+      this.employeeEducation.educationalLevel == undefined ||
+      this.employeeEducation.educationalLevel == '' ||
+      this.employeeEducation.schoolYearOfStart == null ||
+      this.employeeEducation.schoolYearOfStart == undefined ||
+      this.employeeEducation.schoolYearOfFinished == null ||
+      this.employeeEducation.schoolYearOfFinished == undefined ||
+      this.employeeEducation.diplomaGrade == null ||
+      this.employeeEducation.diplomaGrade == undefined ||
+      this.employeeEducation.tractateName == null ||
+      this.employeeEducation.tractateName == undefined ||
+      this.employeeEducation.tractateName == ''
+    ) {
+      message = 'Boş alan bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+  clear() {
+    this.employeeEducation = new EmployeeEducation();
   }
 }

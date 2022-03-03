@@ -4,34 +4,36 @@
       <div class="form-group">
         <div class="col-md-6">
           <label for="employeeId">Çalışan seçiniz</label>
-          <select
+          <ng-select
             name="number"
             id="employeeId"
-            class="form-select"
             required
+            placeholder="Seçiniz"
             [(ngModel)]="employeeEducation.employeeId"
           >
-            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
               {{ employee.firstName }} {{ employee.lastName }}
-            </option>
-          </select>
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="educationLevel">Eğitim Seviyesi</label>
-          <select
+          <ng-select
+            notFoundText="Kaynak bulunamadı"
             name="educationLevel"
             id="educationLevel"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeEducation.educationalLevel"
           >
-            <option>İlk Öğretim</option>
-            <option>Lise</option>
-            <option>Önlisans</option>
-            <option>Lisans</option>
-          </select>
+            <ng-option
+              *ngFor="let educationLevel of educationLevels"
+              [value]="educationLevel.educationalLevelName"
+              >{{ educationLevel.educationalLevelName }}</ng-option
+            >
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
@@ -66,7 +68,7 @@
         <div class="col-md-6">
           <label for="diplomaGrade">Diploma Notu</label>
           <input
-            type="text"
+            type="number"
             name="diplomaGrade"
             id="diplomaGrade"
             class="form-control"

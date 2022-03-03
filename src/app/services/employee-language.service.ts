@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeLanguage } from '../models/employeeLanguage';
+import { Language } from '../models/language';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
@@ -37,5 +38,10 @@ export class EmployeeLanguageService {
   update(employeeLanguage: EmployeeLanguage): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employeeLanguage);
+  }
+
+  getLanguages(): Observable<ListResponseModel<Language>> {
+    let newPath = this.apiUrl + 'getlanguages';
+    return this.httpClient.get<ListResponseModel<Language>>(newPath);
   }
 }

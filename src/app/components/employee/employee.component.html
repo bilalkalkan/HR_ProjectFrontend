@@ -51,6 +51,7 @@
           bindLabel="name"
           name="gender"
           appendTo="body"
+          placeholder="Seçiniz"
           [(ngModel)]="employee.gender"
         >
           <ng-option value="E"> Erkek </ng-option>
@@ -65,6 +66,7 @@
           id="nationality"
           bindValue="nationality"
           name="nationality"
+          placeholder="Seçiniz"
           [(ngModel)]="employee.nationality"
         >
           <ng-option
@@ -109,10 +111,11 @@
           id="maritalStatus"
           bindValue="maritalStatus"
           name="maritalStatus"
+          placeholder="Seçiniz"
           [(ngModel)]="employee.maritalStatus"
         >
-        <ng-option value="E"> Evli </ng-option>
-        <ng-option value="B">Bekar</ng-option>
+          <ng-option value="E"> Evli </ng-option>
+          <ng-option value="B">Bekar</ng-option>
         </ng-select>
       </div>
       <div class="col-md-6">
@@ -176,15 +179,16 @@
       <div class="col-md-6">
         <label for="annualLeaveGroup">Yıllık izin Grubu</label>
         <ng-select
-        bindLabel="name"
-        id="annualLeaveGroup"
-        bindValue="annualLeaveGroup"
-        name="annualLeaveGroup"
-        [(ngModel)]="employee.annualLeaveGroup"
-      >
-      <ng-option value="Standart"> Standart </ng-option>
-      <ng-option value="Vardiya">Vardiya</ng-option>
-      </ng-select>
+          bindLabel="name"
+          id="annualLeaveGroup"
+          bindValue="annualLeaveGroup"
+          name="annualLeaveGroup"
+          placeholder="Seçiniz"
+          [(ngModel)]="employee.annualLeaveGroup"
+        >
+          <ng-option value="Standart"> Standart </ng-option>
+          <ng-option value="Vardiya">Vardiya</ng-option>
+        </ng-select>
       </div>
       <div class="col-md-6">
         <label for="severancePayStartDate"
@@ -250,6 +254,7 @@
           bindValue="typeOfWage"
           placeholder="Seçiniz"
           name="typeOfWage"
+          placeholder="Seçiniz"
           required
           [(ngModel)]="employee.typeOfWage"
         >
@@ -264,10 +269,11 @@
           bindValue="typeOfPayment"
           id="typeOfPayment"
           name="typeOfPayment"
+          placeholder="Seçiniz"
           [(ngModel)]="employee.typeOfPayment"
         >
-        <ng-option value="Nakit">Nakit</ng-option>
-        <ng-option value="Banka Hesabı">Banka Hesabı</ng-option>
+          <ng-option value="Nakit">Nakit</ng-option>
+          <ng-option value="Banka Hesabı">Banka Hesabı</ng-option>
         </ng-select>
       </div>
       <div class="col-md-6">
@@ -278,11 +284,12 @@
           bindValue="name"
           name="paymentCurrency"
           required
+          placeholder="Seçiniz"
           [(ngModel)]="employee.paymentCurrency"
         >
-        <ng-option value="TL">TL</ng-option>
-        <ng-option value="DOLAR">DOLAR</ng-option>
-        <ng-option value="EURO">EURO</ng-option>
+          <ng-option value="TL">TL</ng-option>
+          <ng-option value="DOLAR">DOLAR</ng-option>
+          <ng-option value="EURO">EURO</ng-option>
         </ng-select>
       </div>
       <div>
@@ -315,6 +322,10 @@
           <th scope="col">Kıdem Tazminatı Başlangıç T.</th>
           <th scope="col">OYAK İşe Giriş T.</th>
           <th scope="col">Gruba İlk Giriş T.</th>
+          <th scope="col">Ücret</th>
+          <th scope="col">Ücret Türü</th>
+          <th scope="col">Ödeme Şekli</th>
+          <th scope="col">Ödeme yapılan para birimi</th>
           <th scope="col">İşlemler</th>
         </tr>
       </thead>
@@ -335,12 +346,17 @@
           <td>
             {{ employee.annualLeaveEntitlementStartDate | date: "dd-MM-yyyy" }}
           </td>
-          <td>{{ employee.annualLeaveGroup  }}</td>
+          <td>{{ employee.annualLeaveGroup }}</td>
           <td>{{ employee.severancePayStartDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employee.oyakStartDateOfWork | date: "dd-MM-yyyy" }}</td>
           <td>
             {{ employee.firstDateOfJoiningTheGroup | date: "dd-MM-yyyy" }}
           </td>
+          <td>{{ employee.wage }}</td>
+          <td>{{ employee.typeOfWage }}</td>
+          <td>{{ employee.typeOfPayment }}</td>
+          <td>{{ employee.paymentCurrency }}</td>
+
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
               <button

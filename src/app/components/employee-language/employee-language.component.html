@@ -5,92 +5,92 @@
         <div class="col-md-6">
           <label for="employeeId">Çalışan Seçiniz</label>
 
-          <select
+          <ng-select
             name="number"
             id="employeeId"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeLanguage.employeeId"
           >
-            <option>Çalışan</option>
-            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
               {{ employee.firstName }} {{ employee.lastName }}
-            </option>
-          </select>
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="foreignLanguage">Yabancı Dil </label>
-          <select
+          <ng-select
             name="foreignLanguage"
             id="foreignLanguage"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeLanguage.foreignLanguage"
           >
-            <option>İngilizce</option>
-            <option>Almanca</option>
-            <option>Fransızca</option>
-            <option>İspanyolca</option>
-          </select>
+            <ng-option
+              *ngFor="let language of languages"
+              [value]="language.nameOfLanguage"
+              >{{ language.nameOfLanguage }}</ng-option
+            >
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="reading">Okuma</label>
-          <select
+          <ng-select
             name="reading"
             id="reading"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeLanguage.reading"
           >
-            <option>A1</option>
-            <option>A2</option>
-            <option>B1</option>
-            <option>B2</option>
-            <option>C1</option>
-            <option>C2</option>
-          </select>
+            <ng-option value="A1">A1</ng-option>
+            <ng-option value="A2">A2</ng-option>
+            <ng-option value="B1">B1</ng-option>
+            <ng-option value="B2">B2</ng-option>
+            <ng-option value="C1">C1</ng-option>
+            <ng-option value="C2">C2</ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="writing">Yazma</label>
-          <select
+          <ng-select
             name="writing"
             id="writing"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeLanguage.writing"
           >
-            <option>A1</option>
-            <option>A2</option>
-            <option>B1</option>
-            <option>B2</option>
-            <option>C1</option>
-            <option>C2</option>
-          </select>
+            <ng-option value="A1">A1</ng-option>
+            <ng-option value="A2">A2</ng-option>
+            <ng-option value="B1">B1</ng-option>
+            <ng-option value="B2">B2</ng-option>
+            <ng-option value="C1">C1</ng-option>
+            <ng-option value="C2">C2</ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="talking">Konuşma</label>
-          <select
+          <ng-select
             name="talking"
             id="talking"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeLanguage.talking"
           >
-            <option>A1</option>
-            <option>A2</option>
-            <option>B1</option>
-            <option>B2</option>
-            <option>C1</option>
-            <option>C2</option>
-          </select>
+            <ng-option value="A1">A1</ng-option>
+            <ng-option value="A2">A2</ng-option>
+            <ng-option value="B1">B1</ng-option>
+            <ng-option value="B2">B2</ng-option>
+            <ng-option value="C1">C1</ng-option>
+            <ng-option value="C2">C2</ng-option>
+          </ng-select>
         </div>
       </div>
       <br />

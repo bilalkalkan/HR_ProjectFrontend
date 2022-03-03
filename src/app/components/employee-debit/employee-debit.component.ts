@@ -7,6 +7,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { EmployeeDebit } from 'src/app/models/employeeDebit';
 import { EmployeeDebitService } from 'src/app/services/employee-debit.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { DebitType } from 'src/app/models/debitType';
 
 @Component({
   selector: 'app-employee-debit',
@@ -16,6 +17,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class EmployeeDebitComponent implements OnInit {
   employeeDebits!: EmployeeDebit[];
   employees!: Employee[];
+  debitTypes!: DebitType[];
   employeeDebit: EmployeeDebit = new EmployeeDebit();
   constructor(
     private employeeService: EmployeeService,
@@ -31,6 +33,12 @@ export class EmployeeDebitComponent implements OnInit {
     this.employeeDebit = new EmployeeDebit();
     this.getEmployees();
     this.getEmployeeDebits();
+    this.getDebitTypes();
+  }
+  getDebitTypes() {
+    this.employeeDebitService.getDebitTypes().subscribe((response) => {
+      this.debitTypes = response.data;
+    });
   }
 
   getEmployees() {
@@ -58,6 +66,11 @@ export class EmployeeDebitComponent implements OnInit {
   }
 
   save() {
+    let message = this.validateCheck();
+    if (message != '') {
+      this.toastrService.error('Boş alan bırakılamaz!');
+      return;
+    }
     if (this.employeeDebit.id > 0) {
       this.employeeDebitService.update(this.employeeDebit).subscribe(
         (response) => {
@@ -88,6 +101,29 @@ export class EmployeeDebitComponent implements OnInit {
       this.getEmployeeDebits();
       this.toastrService.success(response.message);
     });
+  }
+  validateCheck(): string {
+    let message = '';
+    if (
+      this.employeeDebit.employeeId == null ||
+      this.employeeDebit.employeeId == undefined ||
+      this.employeeDebit.debitType == null ||
+      this.employeeDebit.debitType == undefined ||
+      this.employeeDebit.debitType == '' ||
+      this.employeeDebit.debitDeliveryDate == null ||
+      this.employeeDebit.debitDeliveryDate == undefined ||
+      this.employeeDebit.debitReturnDate == null ||
+      this.employeeDebit.debitReturnDate == undefined ||
+      this.employeeDebit.debitReturnStatus == null ||
+      this.employeeDebit.debitReturnStatus == '' ||
+      this.employeeDebit.debitStatement == null ||
+      this.employeeDebit.debitStatement == undefined ||
+      this.employeeDebit.debitStatement == ''
+    ) {
+      message = 'Boş alan bırakılamaz';
+      return message;
+    }
+    return message;
   }
 
   clear() {

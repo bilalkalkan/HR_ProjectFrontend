@@ -5,35 +5,38 @@
         <div class="col-md-6">
           <label for="employeeId">Çalışan Seçiniz</label>
 
-          <select
-            name="number"
+          <ng-select
+            name="employeeId"
             id="employeeId"
-            class="form-select"
             required
+            placeholder="Seçiniz"
             [(ngModel)]="employeeFamily.employeeId"
           >
-            <option>Çalışan</option>
-            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
               {{ employee.firstName }} {{ employee.lastName }}
-            </option>
-          </select>
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="degree">Yakınlık Derecesi</label>
-          <select
-            name="degree"
+          <ng-select
+            notFoundText="Kayıt bulunamadı"
+            bindValue="degree"
             id="degree"
-            class="form-select"
-            required
+            bindLabel="name"
+            placeholder="Seçiniz"
+            name="degree"
             [(ngModel)]="employeeFamily.degree"
           >
-            <option>Anne</option>
-            <option>Baba</option>
-            <option>Eş</option>
-            <option>Kardeş</option>
-          </select>
+            <ng-option
+              *ngFor="let familyMember of familyMembers"
+              [value]="familyMember.member"
+            >
+              {{ familyMember.member }}
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
@@ -66,18 +69,18 @@
       <div class="form-group">
         <div class="col-md-4">
           <label for="gender">Cinsiyeti</label>
-          <select
+          <ng-select
             name="gender"
-            class="form-select"
             id="gender"
             style="width: 200px"
+            appendTo="body"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeFamily.gender"
           >
-            <option></option>
-            <option>Erkek</option>
-            <option>Kadın</option>
-          </select>
+            <ng-option value="E">Erkek</ng-option>
+            <ng-option value="K">Kadın</ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
@@ -112,17 +115,17 @@
       <div class="form-group">
         <div class="col-md-6">
           <label for="educationalStatus">Okuma Durumu</label>
-          <select
+          <ng-select
             name="EducationalStatus"
             id="EducationalStatus"
-            class="form-select"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeFamily.educationalStatus"
           >
-            <option>Okuyor</option>
-            <option>Mezun</option>
-            <option>Okumuyor</option>
-          </select>
+            <ng-option value="Okuyor">Okuyor</ng-option>
+            <ng-option value="Okuyor">Mezun</ng-option>
+            <ng-option value="Okumuyor">Okumuyor</ng-option>
+          </ng-select>
         </div>
       </div>
       <br />
@@ -155,8 +158,8 @@
           <th scope="row">{{ employeeFamily.id }}</th>
           <th>{{ employeeFamily.employeeId }}</th>
           <td>{{ employeeFamily.degree }}</td>
-          <td>{{ employeeFamily.firstName }}</td>
-          <td>{{ employeeFamily.lastName }}</td>
+          <td>{{ employeeFamily.firstName | titlecase }}</td>
+          <td>{{ employeeFamily.lastName | titlecase }}</td>
           <td>{{ employeeFamily.gender }}</td>
           <td>{{ employeeFamily.dateOfBirth | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeFamily.identificationNumber }}</td>

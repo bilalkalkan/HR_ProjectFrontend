@@ -4,34 +4,35 @@
       <div class="form-group">
         <div class="col-md-6">
           <label for="employeeId">Çalışan Seçiniz</label>
-          <select
+          <ng-select
             name="employeeId"
             id="employeeId"
-            class="form-select"
-            autocomplete="off"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeDebit.employeeId"
           >
-            <option *ngFor="let employee of employees" [ngValue]="employee.id">
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
               {{ employee.firstName }} {{ employee.lastName }}
-            </option>
-          </select>
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="debitType">Zimmet türü</label>
-          <select
+          <ng-select
+            notFoundText="Kaynak bulunamadı"
             name="debitType"
             id="debitType"
-            class="form-select"
-            autocomplete="off"
+            placeholder="Seçiniz"
             [(ngModel)]="employeeDebit.debitType"
           >
-            <option>Araç</option>
-            <option>Telefon</option>
-            <option>Bilgisayar</option>
-          </select>
+            <ng-option
+              *ngFor="let debitType of debitTypes"
+              [value]="debitType.debitTypeName"
+              >{{ debitType.debitTypeName }}</ng-option
+            >
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
@@ -52,17 +53,17 @@
       <div class="form-group">
         <div class="col-md-6">
           <label for="">Zimmet İade Durumu</label>
-          <select
+          <ng-select
             name="debitReturnStatus"
             id="debitReturnStatus"
-            class="form-select"
             autocomplete="off"
+            placeholder="Seçiniz"
             required
             [(ngModel)]="employeeDebit.debitReturnStatus"
           >
-            <option>İade Edildi</option>
-            <option>İade edilmedi</option>
-          </select>
+            <ng-option value="İade Edildi">İade Edildi</ng-option>
+            <ng-option value="İade Edilmedi">İade Edilmedi</ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
@@ -87,7 +88,7 @@
             type="text"
             name="debitStatement"
             id="debitStatement"
-            class="form-control "
+            class="form-control"
             autocomplete="off"
             required
             [(ngModel)]="employeeDebit.debitStatement"
@@ -118,9 +119,9 @@
           <td>{{ employeeDebit.id }}</td>
           <td>{{ employeeDebit.employeeId }}</td>
           <td>{{ employeeDebit.debitType }}</td>
-          <td>{{ employeeDebit.debitDeliveryDate | date: 'dd-MM-yyyy' }}</td>
+          <td>{{ employeeDebit.debitDeliveryDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeDebit.debitReturnStatus }}</td>
-          <td>{{ employeeDebit.debitReturnDate | date: 'dd-MM-yyyy'}}</td>
+          <td>{{ employeeDebit.debitReturnDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeDebit.debitStatement }}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">

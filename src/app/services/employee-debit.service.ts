@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DebitType } from '../models/debitType';
 import { EmployeeDebit } from '../models/employeeDebit';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -35,5 +36,10 @@ export class EmployeeDebitService {
   update(employeeDebit: EmployeeDebit): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employeeDebit);
+  }
+
+  getDebitTypes(): Observable<ListResponseModel<DebitType>> {
+    let newPath = this.apiUrl + 'getdebittypes';
+    return this.httpClient.get<ListResponseModel<DebitType>>(newPath);
   }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeFamily } from '../models/employeeFamily';
+import { FamilyMember } from '../models/familyMember';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
@@ -35,5 +36,10 @@ export class EmployeeFamilyService {
   update(employeeFamily: EmployeeFamily): Observable<ResponseModel> {
     let newPath = this.apıUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employeeFamily);
+  }
+
+  getFamilyMembers(): Observable<ListResponseModel<FamilyMember>> {
+    let newPath = this.apıUrl + 'getfamilymembers';
+    return this.httpClient.get<ListResponseModel<FamilyMember>>(newPath);
   }
 }
