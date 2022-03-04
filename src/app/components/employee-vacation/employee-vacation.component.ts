@@ -6,6 +6,7 @@ import { EmployeeVacationService } from 'src/app/services/employee-vacation.serv
 import { EmployeeService } from 'src/app/services/employee.service';
 import { defineLocale, trLocale } from 'ngx-bootstrap/chronos';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { AllowanceType } from 'src/app/models/allowanceType';
 @Component({
   selector: 'app-employee-vacation',
   templateUrl: './employee-vacation.component.html',
@@ -13,6 +14,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 })
 export class EmployeeVacationComponent implements OnInit {
   employees!: Employee[];
+  allowanceTypes!: AllowanceType[];
   employeeVacation: EmployeeVacation = new EmployeeVacation();
   employeeVacations!: EmployeeVacation[];
 
@@ -30,6 +32,7 @@ export class EmployeeVacationComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployees();
     this.getEmployeeVacations();
+    this.getAllowanceTypes();
   }
 
   getEmployees() {
@@ -37,7 +40,11 @@ export class EmployeeVacationComponent implements OnInit {
       this.employees = response.data;
     });
   }
-
+  getAllowanceTypes() {
+    this.employeeVacationService.getAllowanceTypes().subscribe((response) => {
+      this.allowanceTypes = response.data;
+    });
+  }
   getEmployeeVacations() {
     this.employeeVacationService.getAll().subscribe((response) => {
       this.employeeVacations = response.data;
@@ -57,6 +64,11 @@ export class EmployeeVacationComponent implements OnInit {
   }
 
   save() {
+    let message = this.validateCheck();
+    if (message != '') {
+      this.toastrService.error('Boş alan bırakılamaz');
+      return;
+    }
     if (this.employeeVacation.id > 0) {
       this.employeeVacationService.update(this.employeeVacation).subscribe(
         (response) => {
@@ -90,6 +102,32 @@ export class EmployeeVacationComponent implements OnInit {
         this.toastrService.success(response.message);
       });
   }
+
+  validateCheck(): string {
+    let message = '';
+    if (
+      this.employeeVacation.employeeId == null ||
+      this.employeeVacation.employeeId == undefined ||
+      this.employeeVacation.allowanceType == null ||
+      this.employeeVacation.allowanceType == undefined ||
+      this.employeeVacation.allowanceType == '' ||
+      this.employeeVacation.allowanceStartingDate == null ||
+      this.employeeVacation.allowanceStartingDate == undefined ||
+      this.employeeVacation.allowanceExpirationDate == null ||
+      this.employeeVacation.allowanceExpirationDate == undefined ||
+      this.employeeVacation.addressToBeAllowed == null ||
+      this.employeeVacation.addressToBeAllowed == undefined ||
+      this.employeeVacation.addressToBeAllowed == '' ||
+      this.employeeVacation.statement == null ||
+      this.employeeVacation.statement == undefined ||
+      this.employeeVacation.statement == ''
+    ) {
+      message = 'Boş alan bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
   clear() {
     this.employeeVacation = new EmployeeVacation();
   }

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-md-3">
+    <form>
+      <h1>İzin Türü ekleme</h1>
+      <div>
+        <div>
+          <label for="allowanceTypeName">İzin Türü</label>
+          <input
+            type="text"
+            name="allowanceTypeName"
+            id="allowanceTypeName"
+            class="form-control"
+            required
+            [(ngModel)]="allowanceType.allowanceTypeName"
+          />
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="save()">Kaydet</button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th>İzin Türü</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let allowanceType of allowanceTypes">
+          <td>{{ allowanceType.id }}</td>
+          <td>{{ allowanceType.allowanceTypeName }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button (click)="deleteAllowanceType(allowanceType)">Sil</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

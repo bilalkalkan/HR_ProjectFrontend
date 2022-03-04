@@ -42,4 +42,21 @@ export class EmployeeDebitService {
     let newPath = this.apiUrl + 'getdebittypes';
     return this.httpClient.get<ListResponseModel<DebitType>>(newPath);
   }
+  getDebitType(id: number): Observable<SingleResponseModel<DebitType>> {
+    let newPath = this.apiUrl + 'getdebittype?id=' + id;
+    return this.httpClient.get<SingleResponseModel<DebitType>>(newPath);
+  }
+  addDebitType(debitType: DebitType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'adddetbittype';
+    return this.httpClient.post<ResponseModel>(newPath, debitType);
+  }
+  deleteDebitType(debitType: DebitType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deletedetbittype';
+    return this.httpClient.post<ResponseModel>(newPath, debitType);
+  }
+
+  updateDebitType(debitType: DebitType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updatedetbittype';
+    return this.httpClient.post<ResponseModel>(newPath, debitType);
+  }
 }

@@ -44,4 +44,24 @@ export class EmployeeLanguageService {
     let newPath = this.apiUrl + 'getlanguages';
     return this.httpClient.get<ListResponseModel<Language>>(newPath);
   }
+
+  getLanguage(id: number): Observable<SingleResponseModel<Language>> {
+    let newPath = this.apiUrl + 'getlanguage?id=' + id;
+    return this.httpClient.get<SingleResponseModel<Language>>(newPath);
+  }
+
+  addLanguage(language: Language): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'addlanguage';
+    return this.httpClient.post<ResponseModel>(newPath, language);
+  }
+
+  deleteLanguage(language: Language): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deletelanguage';
+    return this.httpClient.post<ResponseModel>(newPath, language);
+  }
+
+  updateLanguage(language: Language): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updatelanguage';
+    return this.httpClient.post<ResponseModel>(newPath, language);
+  }
 }

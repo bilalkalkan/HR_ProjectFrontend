@@ -17,9 +17,10 @@ import { EmployeeLanguageComponent } from './components/employee-language/employ
 import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AllowanceTypeComponent } from './components/items/allowance-type/allowance-type.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent, EmployeeLanguageComponent, EmployeeDebitComponent, EmployeeVacationComponent],
+  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent, EmployeeLanguageComponent, EmployeeDebitComponent, EmployeeVacationComponent, AllowanceTypeComponent],
   imports: [
     BrowserModule,
     FormsModule,

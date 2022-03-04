@@ -43,4 +43,30 @@ export class EmployeeEducationService {
     let newPath = this.apiUrl + 'geteducationlevels';
     return this.httpClient.get<ListResponseModel<EducationLevel>>(newPath);
   }
+
+  getEducationLevel(
+    id: number
+  ): Observable<SingleResponseModel<EducationLevel>> {
+    let newPath = this.apiUrl + 'geteducation?id=' + id;
+    return this.httpClient.get<SingleResponseModel<EducationLevel>>(newPath);
+  }
+
+  addEducationLevel(educationLevel: EducationLevel): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'addeducationlevel';
+    return this.httpClient.post<ResponseModel>(newPath, educationLevel);
+  }
+
+  deleteEducationLevel(
+    educationLevel: EducationLevel
+  ): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deleteeducationlevel';
+    return this.httpClient.post<ResponseModel>(newPath, educationLevel);
+  }
+
+  updateEducationLevel(
+    educationLevel: EducationLevel
+  ): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updateeducationlevel';
+    return this.httpClient.post<ResponseModel>(newPath, educationLevel);
+  }
 }

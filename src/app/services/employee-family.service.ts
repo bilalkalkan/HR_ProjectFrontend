@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { APP_ID, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeFamily } from '../models/employeeFamily';
 import { FamilyMember } from '../models/familyMember';
@@ -41,5 +41,24 @@ export class EmployeeFamilyService {
   getFamilyMembers(): Observable<ListResponseModel<FamilyMember>> {
     let newPath = this.apıUrl + 'getfamilymembers';
     return this.httpClient.get<ListResponseModel<FamilyMember>>(newPath);
+  }
+  getFamilyMember(id: number): Observable<SingleResponseModel<FamilyMember>> {
+    let newPath = this.apıUrl + 'getfamilymember?id=' + id;
+    return this.httpClient.get<SingleResponseModel<FamilyMember>>(newPath);
+  }
+
+  addFamilyMember(familyMember: FamilyMember): Observable<ResponseModel> {
+    let newPath = this.apıUrl + 'addfamilymember';
+    return this.httpClient.post<ResponseModel>(newPath, familyMember);
+  }
+
+  deleteFamilyMember(familyMember: FamilyMember): Observable<ResponseModel> {
+    let newPath = this.apıUrl + 'deletefamilymember';
+    return this.httpClient.post<ResponseModel>(newPath, familyMember);
+  }
+
+  updateFamilyMember(familyMember: FamilyMember): Observable<ResponseModel> {
+    let newPath = this.apıUrl + 'updatefamilymember';
+    return this.httpClient.post<ResponseModel>(newPath, familyMember);
   }
 }

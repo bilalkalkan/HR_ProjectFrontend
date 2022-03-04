@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AllowanceType } from '../models/allowanceType';
 import { EmployeeVacation } from '../models/employeeVacation';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -36,5 +37,30 @@ export class EmployeeVacationService {
     debugger;
     let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employeeVacation);
+  }
+
+  getAllowanceTypes(): Observable<ListResponseModel<AllowanceType>> {
+    let newPath = this.apiUrl + 'getallowancetypes';
+    return this.httpClient.get<ListResponseModel<AllowanceType>>(newPath);
+  }
+
+  getAllowanceType(id: number): Observable<SingleResponseModel<AllowanceType>> {
+    let newPath = this.apiUrl + 'getallowancetype?id=' + id;
+    return this.httpClient.get<SingleResponseModel<AllowanceType>>(newPath);
+  }
+
+  addAllowanceType(allowanceType: AllowanceType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'addallowancetype';
+    return this.httpClient.post<ResponseModel>(newPath, allowanceType);
+  }
+
+  deleteAllowanceType(allowanceType: AllowanceType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deleteallowancetype';
+    return this.httpClient.post<ResponseModel>(newPath, allowanceType);
+  }
+
+  updateAllowanceType(allowanceType: AllowanceType): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updateallowancetype';
+    return this.httpClient.post<ResponseModel>(newPath, allowanceType);
   }
 }

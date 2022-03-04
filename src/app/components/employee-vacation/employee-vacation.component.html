@@ -4,32 +4,36 @@
       <div class="form-group">
         <div class="col-md-6">
           <label for="employeeId">Çalışan Seçiniz</label>
-          <select
+          <ng-select
+            notFoundText="Kaynak bulunamadı"
             name="number"
             id="employeeId"
-            class="form-select"
+            placeholder="Seçiniz"
             [(ngModel)]="employeeVacation.employeeId"
           >
-            <option *ngFor="let employee of employees" [ngValue]="employee.id">
-              {{ employee.firstName }} {{ employee.lastName }}
-            </option>
-          </select>
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
+              {{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}
+            </ng-option>
+          </ng-select>
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
           <label for="allowanceType">İzin Türü</label>
-          <select
+          <ng-select
+            notFoundText="Kaynak bulunamadı"
             name="allowanceType"
             id="allowanceType"
-            class="form-select"
+            placeholder="Seçiniz"
             [(ngModel)]="employeeVacation.allowanceType"
           >
-            <option>Yıllık İzin</option>
-            <option>Evlenme İzni</option>
-            <option>İdari İzin</option>
-            <option>Ücretsiz İzin</option>
-          </select>
+            <ng-option
+              *ngFor="let allowanceType of allowanceTypes"
+              [value]="allowanceType.allowanceTypeName"
+              >{{ allowanceType.allowanceTypeName }}</ng-option
+            >
+          </ng-select>
         </div>
       </div>
       <div class="form-group">

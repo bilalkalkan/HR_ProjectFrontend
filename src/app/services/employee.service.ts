@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { APP_ID, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee';
 import { ListResponseModel } from '../models/listResponseModel';
@@ -11,36 +11,55 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root',
 })
 export class EmployeeService {
-  apıUrl = 'https://localhost:7275/api/employees/';
+  apiUrl = 'https://localhost:7275/api/employees/';
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<ListResponseModel<Employee>> {
-    let newPath = this.apıUrl + 'getall';
+    let newPath = this.apiUrl + 'getall';
     return this.httpClient.get<ListResponseModel<Employee>>(newPath);
   }
 
   getById(id: number): Observable<SingleResponseModel<Employee>> {
-    let newPath = this.apıUrl + 'getbyid?id=' + id;
+    let newPath = this.apiUrl + 'getbyid?id=' + id;
     return this.httpClient.get<SingleResponseModel<Employee>>(newPath);
   }
 
   add(employee: Employee): Observable<ResponseModel> {
-    let newPath = this.apıUrl + 'add';
+    let newPath = this.apiUrl + 'add';
     return this.httpClient.post<ResponseModel>(newPath, employee);
   }
 
   delete(employee: Employee): Observable<ResponseModel> {
-    let newPath = this.apıUrl + 'delete';
+    let newPath = this.apiUrl + 'delete';
     return this.httpClient.post<ResponseModel>(newPath, employee);
   }
 
   update(employee: Employee): Observable<ResponseModel> {
-    let newPath = this.apıUrl + 'update';
+    let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, employee);
   }
 
   getNationalities(): Observable<ListResponseModel<Nationality>> {
-    let newPath = this.apıUrl + 'getnationalities';
+    let newPath = this.apiUrl + 'getnationalities';
     return this.httpClient.get<ListResponseModel<Nationality>>(newPath);
+  }
+  getNationality(id: number): Observable<SingleResponseModel<Nationality>> {
+    let newPat = this.apiUrl + 'getnationality?id=' + id;
+    return this.httpClient.get<SingleResponseModel<Nationality>>(newPat);
+  }
+
+  addNationality(nationality: Nationality): Observable<ResponseModel> {
+    let newPat = this.apiUrl + 'addnationality';
+    return this.httpClient.post<ResponseModel>(newPat, nationality);
+  }
+
+  deleteNationality(nationality: Nationality): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deletenationality';
+    return this.httpClient.post<ResponseModel>(newPath, nationality);
+  }
+
+  updateNationality(nationality: Nationality): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updatenationality';
+    return this.httpClient.post<ResponseModel>(newPath, nationality);
   }
 }
