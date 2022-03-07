@@ -1,4 +1,4 @@
-export class FamilyMember{
-    id?:number
-    member?:string
+export class FamilyMember {
+  id!: number;
+  member!: string;
 }

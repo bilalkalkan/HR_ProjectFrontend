@@ -1,41 +1,335 @@
 <div class="container">
-  <div class="col-md-3">
-    <form>
-      <h1>İzin Türü ekleme</h1>
-      <div>
+  <div class="row align-items-start">
+    <div class="col">
+      <form>
+        <h1>İzin Türü ekleme</h1>
         <div>
-          <label for="allowanceTypeName">İzin Türü</label>
-          <input
-            type="text"
-            name="allowanceTypeName"
-            id="allowanceTypeName"
-            class="form-control"
-            required
-            [(ngModel)]="allowanceType.allowanceTypeName"
-          />
+          <div>
+            <label for="allowanceTypeName">İzin Türü</label>
+            <input
+              type="text"
+              name="allowanceTypeName"
+              id="allowanceTypeName"
+              class="form-control"
+              required
+              [(ngModel)]="allowanceType.allowanceTypeName"
+            />
+          </div>
         </div>
-      </div>
-      <button class="btn btn-success" (click)="save()">Kaydet</button>
-    </form>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th>İzin Türü</th>
-          <th scope="col">İşlemler</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let allowanceType of allowanceTypes">
-          <td>{{ allowanceType.id }}</td>
-          <td>{{ allowanceType.allowanceTypeName }}</td>
-          <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button (click)="deleteAllowanceType(allowanceType)">Sil</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="saveAllowanceType()"
+        >
+          Kaydet
+        </button>
+      </form>
+      <h2>İzin Türleri</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>İzin Türü</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let allowanceType of allowanceTypes">
+            <td>{{ allowanceType.id }}</td>
+            <td>{{ allowanceType.allowanceTypeName }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteAllowanceType(allowanceType)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getAllowanceType(allowanceType.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <form>
+        <h1>Zimmet Türü ekleme</h1>
+        <div>
+          <div>
+            <label for="debitTypeName">Zimmet Türü</label>
+            <input
+              type="text"
+              name="debitTypeName"
+              id="debitTypeName"
+              class="form-control"
+              required
+              [(ngModel)]="debitType.debitTypeName"
+            />
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="saveDebitType()">
+          Kaydet
+        </button>
+      </form>
+      <h2>Zimmet Türleri</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>Zimmet Türü</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let debitType of debitTypes">
+            <td>{{ debitType.id }}</td>
+            <td>{{ debitType.debitTypeName }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteDebitType(debitType)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getDebitType(debitType.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <form>
+        <h1>Eğitim seviyesi ekleme</h1>
+        <div>
+          <div>
+            <label for="educationalLevelName">Eğtim Seviyesi</label>
+            <input
+              type="text"
+              name="educationalLevelName"
+              id="educationalLevelName"
+              class="form-control"
+              required
+              [(ngModel)]="educationaLevel.educationaLevelName"
+            />
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="saveEducationLevel()">
+          Kaydet
+        </button>
+      </form>
+      <h2>Eğitim Seviyeleri</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>Eğitim seviyesi</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let educationaLevel of educationaLevels">
+            <td>{{ educationaLevel.id }}</td>
+            <td>{{ educationaLevel.educationaLevelName }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="deleteEducationLevel(educationaLevel)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getEducationLevel(educationaLevel.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      <form>
+        <h1>Aile üyesi ekleme</h1>
+        <div>
+          <div>
+            <label for="member">Aile Üyesi</label>
+            <input
+              type="text"
+              name="member"
+              id="member"
+              class="form-control"
+              required
+              [(ngModel)]="familyMember.member"
+            />
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="saveFamilyMember()">
+          Kaydet
+        </button>
+      </form>
+      <h2>Aile Üyeleri</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>Aile Üyesi</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let familyMember of familyMembers">
+            <td>{{ familyMember.id }}</td>
+            <td>{{ familyMember.member }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteFamilyMember(familyMember)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getFamilyMember(familyMember.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <form>
+        <h1>Yabancı dil ekleme</h1>
+        <div>
+          <div>
+            <label for="nameOfLanguage">Yabancı Dil</label>
+            <input
+              type="text"
+              name="nameOfLanguage"
+              id="nameOfLanguage"
+              class="form-control"
+              required
+              [(ngModel)]="language.nameOfLanguage"
+            />
+          </div>
+        </div>
+        <button type="button" class="btn btn-success" (click)="saveLanguage()">
+          Kaydet
+        </button>
+      </form>
+      <h2>Yabancı Diller</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>Yabancı dil</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let language of languages">
+            <td>{{ language.id }}</td>
+            <td>{{ language.nameOfLanguage }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteLanguage(language)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getLanguage(language.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <form>
+        <h1>Uyruk ekleme</h1>
+        <div>
+          <div>
+            <label for="nationalityName">Uyruk</label>
+            <input
+              type="text"
+              name="nationalityName"
+              id="nationalityName"
+              class="form-control"
+              required
+              [(ngModel)]="nationality.nationalityName"
+            />
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="saveNationality()">
+          Kaydet
+        </button>
+      </form>
+      <h2>Uyruklar</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th>Uyrukl</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nationality of nationalities">
+            <td>{{ nationality.id }}</td>
+            <td>{{ nationality.nationalityName }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteNationality(nationality)"
+                >
+                  Sil
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="getNationality(nationality.id)"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

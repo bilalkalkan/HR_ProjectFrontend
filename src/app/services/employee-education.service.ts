@@ -47,7 +47,7 @@ export class EmployeeEducationService {
   getEducationLevel(
     id: number
   ): Observable<SingleResponseModel<EducationLevel>> {
-    let newPath = this.apiUrl + 'geteducation?id=' + id;
+    let newPath = this.apiUrl + 'geteducationlevel?id=' + id;
     return this.httpClient.get<SingleResponseModel<EducationLevel>>(newPath);
   }
 
