@@ -8,14 +8,50 @@ import { EmployeeLanguageComponent } from './components/employee-language/employ
 import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
 import { AllowanceTypeComponent } from './components/items/allowance-type/allowance-type.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginGuard } from './guards/login.guard';
+import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
-  { path: 'employee', component: EmployeeComponent },
-  { path: 'employeeFamily', component: EmployeeFamilyComponent },
-  { path: 'employeeEducation', component: EmployeeEducationComponent },
-  { path: 'employeeLanguage', component: EmployeeLanguageComponent },
-  { path: 'employeeDebit', component: EmployeeDebitComponent },
-  { path: 'employeeVacation', component: EmployeeVacationComponent },
-  { path: 'items', component: AllowanceTypeComponent },
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeFamily',
+    component: EmployeeFamilyComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeEducation',
+    component: EmployeeEducationComponent,
+    // canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeLanguage',
+    component: EmployeeLanguageComponent,
+    //canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeDebit',
+    component: EmployeeDebitComponent,
+    // canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeVacation',
+    component: EmployeeVacationComponent,
+    // canActivate: [LoginGuard],
+  },
+  {
+    path: 'items',
+    component: AllowanceTypeComponent,
+    // canActivate: [LoginGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent, //canActivate: [LoginGuard]
+  },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

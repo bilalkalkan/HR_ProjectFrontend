@@ -1,0 +1,75 @@
+<section class="vh-100" style="background-color: #eee">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <form>
+                  <h1 class="h3 mb-3 fw-normal">Kayıt ol</h1>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      placeholder="firstName"
+                      autocomplete="off"
+                      name="firstName"
+                      [(ngModel)]="user.firstName"
+                    />
+                    <label for="floatingInput">Ad</label>
+                  </div>
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      name="lastName"
+                      class="form-control"
+                      id="lastName"
+                      placeholder="lastName"
+                      [(ngModel)]="user.lastName"
+                    />
+                    <label for="floatingPassword">Soyad</label>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="name@example.com"
+                      [(ngModel)]="user.email"
+                    />
+                    <label for="floatingInput">Eposta</label>
+                  </div>
+                  <div class="form-floating">
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      id="Password"
+                      placeholder="Password"
+                      [(ngModel)]="user.password"
+                    />
+                    <label for="floatingPassword">Parola</label>
+                  </div>
+
+                  <button
+                    class="w-100 btn btn-lg btn-primary"
+                    (click)="register()"
+                  >
+                    Giriş yap
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  -->

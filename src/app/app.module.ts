@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -18,15 +18,30 @@ import { EmployeeDebitComponent } from './components/employee-debit/employee-deb
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AllowanceTypeComponent } from './components/items/allowance-type/allowance-type.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeComponent, EmployeeFamilyComponent, HomeComponent, EmployeeEducationComponent, EmployeeLanguageComponent, EmployeeDebitComponent, EmployeeVacationComponent, AllowanceTypeComponent],
+  declarations: [
+    AppComponent,
+    EmployeeComponent,
+    EmployeeFamilyComponent,
+    HomeComponent,
+    EmployeeEducationComponent,
+    EmployeeLanguageComponent,
+    EmployeeDebitComponent,
+    EmployeeVacationComponent,
+    AllowanceTypeComponent,
+    LoginComponent,
+    RegisterComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    BsDatepickerModule.forRoot(),                            
+    BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgSelectModule,
@@ -34,9 +49,14 @@ import { AllowanceTypeComponent } from './components/items/allowance-type/allowa
       positionClass: 'toast-bottom-right',
     }),
     NgbModule,
-    
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
