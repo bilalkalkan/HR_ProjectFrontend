@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="card-body">
+    <form>
+      <div class="align-items center">
+        <label for="firstName" class="col-sm-3 mt-2 col-form-label"
+          >First Name</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="firstName"
+            class="form-control"
+            name="firstName"
+            [(ngModel)]="user.firstName"
+          />
+        </div>
+
+        <label for="lastName" class="col-sm-3 mt-2 col-form-label"
+          >Last Name</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="lastName"
+            class="form-control"
+            name="lastName"
+            [(ngModel)]="user.lastName"
+          />
+        </div>
+
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="user.email"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="d-flex mt-3">
+        <button
+          (click)="getUserDetail(user.id)"
+          type="button"
+          class="btn btn-success me-2"
+        >
+          Güncelle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

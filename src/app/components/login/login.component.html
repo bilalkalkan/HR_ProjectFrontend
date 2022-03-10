@@ -13,19 +13,26 @@
                     <input
                       type="email"
                       class="form-control"
-                      id="floatingInput"
+                      id="email"
                       placeholder="name@example.com"
+                      required
+                      name="email"
+                      autocomplete="off"
+                      [(ngModel)]="user.email"
                     />
-                    <label for="floatingInput">Eposta</label>
+                    <label for="email">Eposta</label>
                   </div>
                   <div class="form-floating">
                     <input
                       type="password"
                       class="form-control"
-                      id="floatingPassword"
+                      id="password"
                       placeholder="Password"
+                      required
+                      name="password"
+                      [(ngModel)]="user.password"
                     />
-                    <label for="floatingPassword">Parola</label>
+                    <label for="password">Parola</label>
                   </div>
 
                   <button

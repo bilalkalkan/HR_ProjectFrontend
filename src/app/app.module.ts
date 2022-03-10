@@ -21,6 +21,7 @@ import { AllowanceTypeComponent } from './components/items/allowance-type/allowa
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegisterComponent } from './components/register/register.component';
     AllowanceTypeComponent,
     LoginComponent,
     RegisterComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

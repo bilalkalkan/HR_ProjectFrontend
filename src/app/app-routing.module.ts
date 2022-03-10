@@ -11,6 +11,7 @@ import { AllowanceTypeComponent } from './components/items/allowance-type/allowa
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { UserComponent } from './components/user/user.component';
 const routes: Routes = [
   {
     path: 'employee',
@@ -25,33 +26,34 @@ const routes: Routes = [
   {
     path: 'employeeEducation',
     component: EmployeeEducationComponent,
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'employeeLanguage',
     component: EmployeeLanguageComponent,
-    //canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'employeeDebit',
     component: EmployeeDebitComponent,
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'employeeVacation',
     component: EmployeeVacationComponent,
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'items',
     component: AllowanceTypeComponent,
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'login',
-    component: LoginComponent, //canActivate: [LoginGuard]
+    component: LoginComponent,
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'user', component: UserComponent },
 ];
 
 @NgModule({

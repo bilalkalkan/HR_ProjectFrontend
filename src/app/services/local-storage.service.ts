@@ -1,4 +1,3 @@
-import { JsonpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 
@@ -20,9 +19,21 @@ export class LocalStorageService {
     return localStorage.removeItem(key);
   }
 
+  getIdDecodeToken() {
+    let token = this.getLocalStorage('token') || '{}';
+    let id: number = Number(Object.values(jwtDecode(token))[0]);
+    return id;
+  }
+
   getUserNameDecodeToken() {
-    let token = JSON.parse(this.getLocalStorage('token') || '{}');
+    let token = this.getLocalStorage('token') || '{}';
     let name: string = String(Object.values(jwtDecode(token))[2]);
     return name;
+  }
+
+  getClaimsDecodeToken() {
+    let token = this.getLocalStorage('token') || '{}';
+    let claim: string = String(Object.values(jwtDecode(token))[3]);
+    return claim;
   }
 }

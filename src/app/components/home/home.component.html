@@ -1,53 +1,97 @@
-<nav class="container-fluid, width: 100%">
-  <nav class="navbar navbar-dark bg-dark">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="color: white">Home</a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link active"
-          aria-current="page"
-          routerLink="/employee"
-          style="color: white"
-          >Çalışan Bilgileri</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/employeeFamily" style="color: white"
-          >Çalışan Yakını Bilgileri
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/employeeEducation" style="color: white"
-          >Çalışan Öğrenim Bilgileri</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/employeeLanguage" style="color: white"
-          >Çalışan Yabancı dil Bilgileri</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/employeeDebit" style="color: white"
-          >Çalışan Zimmet Bilgileri</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/employeeVacation" style="color: white"
-          >Çalışan İzin Bilgileri</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" style="color: white"
-          >Giriş yap</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" style="color: white"
-          >Kayıt ol
-        </a>
-      </li>
-    </ul>
+<nav class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: black">Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/employee"
+            style="color: black"
+            >Çalışan Bilgileri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employeeFamily" style="color: black"
+            >Çalışan Yakını Bilgileri
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/employeeEducation"
+            style="color: black"
+            >Çalışan Öğrenim Bilgileri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/employeeLanguage"
+            style="color: black"
+            >Çalışan Yabancı dil Bilgileri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employeeDebit" style="color: black"
+            >Çalışan Zimmet Bilgileri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/employeeVacation"
+            style="color: black"
+            >Çalışan İzin Bilgileri</a
+          >
+        </li>
+      </ul>
+      <div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-danger"
+            routerLink="/login"
+            *ngIf="!isVerified"
+          >
+            <i class="bi bi-person-fill"></i>Giriş Yap
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            routerLink="/register"
+            *ngIf="!isVerified"
+          >
+            <i class="bi bi-person-plus-fill"></i>Kayıt Ol
+          </button>
+        </div>
+        <div class="btn-group">
+          <div
+            *ngIf="isVerified"
+            class="btn-group"
+            ngbDropdown
+            role="group"
+            aria-label="Button group with nested dropdown"
+          >
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              ngbDropdownToggle
+            >
+              Kullanıcı
+            </button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+              <button ngbDropdownItem routerLink="/user">
+                Profil Güncelle
+              </button>
+              <button ngbDropdownItem (click)="logOut()">Çıkış yap</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </nav>
 </nav>

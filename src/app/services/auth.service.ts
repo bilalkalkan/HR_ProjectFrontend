@@ -21,7 +21,7 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath, user);
   }
 
-  register(user: User): Observable<SingleResponseModel<TokenModel>> {
+  register(user: User) {
     let newPath = this.apiUrl + 'register';
     return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath, user);
   }

@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.user).subscribe(
       (response) => {
-        this.toastrService.info('Giriş Yapıldı');
         this.localStorage.setLocalStorage('token', response.data.token);
-        //this.reloadCurrentPage();
+        this.reloadCurrentPage();
+        this.toastrService.info('Giriş Yapıldı');
       },
       (responseError) => {
         console.log(responseError);
