@@ -14,7 +14,6 @@ export class LocalStorageService {
   setLocalStorage(key: string, value: string) {
     return localStorage.setItem(key, value);
   }
-
   removeLocalStorage(key: string) {
     return localStorage.removeItem(key);
   }

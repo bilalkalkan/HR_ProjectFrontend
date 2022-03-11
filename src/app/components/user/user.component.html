@@ -1,55 +1,75 @@
-<div class="container">
-  <div class="card-body">
-    <form>
-      <div class="align-items center">
-        <label for="firstName" class="col-sm-3 mt-2 col-form-label"
-          >First Name</label
-        >
-        <div class="col-sm-9">
+<div class="container" *ngIf="user">
+  <div class="main-body">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">User</li>
+        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <form action="">
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="firstName" class="form-label">Ad</label>
           <input
             type="text"
-            id="firstName"
             class="form-control"
-            name="firstName"
+            id="firstName"
+            name="FirstName"
+            autocomplete="off"
+            required
             [(ngModel)]="user.firstName"
           />
         </div>
-
-        <label for="lastName" class="col-sm-3 mt-2 col-form-label"
-          >Last Name</label
-        >
-        <div class="col-sm-9">
+        <br />
+        <div class="col-sm-6">
+          <label for="lastName" class="form-label">Soyad</label>
           <input
             type="text"
-            id="lastName"
             class="form-control"
-            name="lastName"
+            id="lastName"
+            name="LastName"
+            autocomplete="off"
+            required
             [(ngModel)]="user.lastName"
           />
         </div>
-
-        <label for="email" class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-9">
+        <div class="col-sm-6">
+          <label for="email" class="form-label">Email</label>
           <input
             type="text"
-            id="email"
             class="form-control"
+            id="email"
             name="email"
+            autocomplete="off"
+            required
             [(ngModel)]="user.email"
           />
         </div>
+
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img
+                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                    alt="Admin"
+                    class="rounded-circle"
+                    width="150"
+                  />
+                  <div class="mt-3">
+                    <h4>{{ userName }}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <button (click)="updateUser()">Güncelle</button>
     </form>
-    <div class="row">
-      <div class="d-flex mt-3">
-        <button
-          (click)="getUserDetail(user.id)"
-          type="button"
-          class="btn btn-success me-2"
-        >
-          Güncelle
-        </button>
-      </div>
-    </div>
   </div>
 </div>

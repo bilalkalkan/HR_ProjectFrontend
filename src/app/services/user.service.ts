@@ -5,6 +5,7 @@ import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
+import { UserForUpdate } from '../models/userUpdateModel';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +33,7 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(newPath, user);
   }
 
-  update(user: User): Observable<ResponseModel> {
+  update(user: UserForUpdate): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'update';
     return this.httpClient.post<ResponseModel>(newPath, user);
   }
