@@ -11,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root',
 })
 export class EmployeeLanguageService {
-  apiUrl = 'https://localhost:7275/api/EmployeeLanguages/';
+  apiUrl = 'https://localhost:44367/api/EmployeeLanguages/';
 
   constructor(private httpClient: HttpClient) {}
 

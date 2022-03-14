@@ -11,7 +11,7 @@ import { UserForUpdate } from '../models/userUpdateModel';
   providedIn: 'root',
 })
 export class UserService {
-  apiUrl = 'https://localhost:7275/api/Users/';
+  apiUrl = 'https://localhost:44367/api/Users/';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -4,345 +4,356 @@
       <form>
         <div class="container-fluid">
           <div class="row align-items-start">
-            <div class="col">
+            <div class="card" style="width: 22rem">
               <div class="col">
-                <br />
-                <h2>Çalışan Kimlik Bilgileri</h2>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label for="firstName" class="form-label">Ad</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="firstName"
-                      name="FirstName"
-                      autocomplete="off"
-                      required
-                      [(ngModel)]="employee.firstName"
-                    />
-                  </div>
+                <div class="col">
                   <br />
-                  <div class="col-sm-6">
-                    <label for="lastName" class="form-label">Soyad</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastName"
-                      name="LastName"
-                      autocomplete="off"
-                      required
-                      [(ngModel)]="employee.lastName"
-                    />
-                  </div>
-                  <div class="w-100"></div>
+                  <h2>Çalışan Kimlik Bilgileri</h2>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div></div>
+                      <label for="firstName" class="form-label">Ad</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        name="FirstName"
+                        autocomplete="off"
+                        required
+                        [(ngModel)]="employee.firstName"
+                      />
+                    </div>
+                    <br />
+                    <div class="col-sm-6">
+                      <label for="lastName" class="form-label">Soyad</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        name="LastName"
+                        autocomplete="off"
+                        required
+                        [(ngModel)]="employee.lastName"
+                      />
+                    </div>
+                    <div class="w-100"></div>
 
-                  <div class="col-sm-6">
-                    <label for="identificationNumber" class="form-label"
-                      >TC kimlik numarası</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="identificationNumber"
-                      name="IdentificationNumber"
-                      autocomplete="off"
-                      required
-                      [(ngModel)]="employee.identificationNumber"
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="gender" class="form-label">Cinsiyet</label>
-                    <ng-select
-                      bindLabel="name"
-                      name="gender"
-                      appendTo="body"
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.gender"
-                    >
-                      <ng-option value="E"> Erkek </ng-option>
-                      <ng-option value="K">Kadın</ng-option>
-                    </ng-select>
-                  </div>
-                  <div class="w-100"></div>
-                  <div class="col-sm-6">
-                    <label for="nationality" class="form-label">Uyruk</label>
-                    <ng-select
-                      notFoundText="Kayıt Bulunamadı"
-                      bindLabel="nationality"
-                      id="nationality"
-                      bindValue="nationality"
-                      name="nationality"
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.nationality"
-                    >
-                      <ng-option
-                        [value]="nationality.nationalityName"
-                        *ngFor="let nationality of nationalities"
+                    <div class="col-sm-6">
+                      <label for="identificationNumber" class="form-label"
+                        >TC kimlik numarası</label
                       >
-                        {{ nationality.nationalityName }}
-                      </ng-option>
-                    </ng-select>
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="placeOfBirth" class="form-label"
-                      >Doğum Yeri</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="placeOfBirth"
-                      name="PlaceOfBirth"
-                      autocomplete="off"
-                      required
-                      [(ngModel)]="employee.placeOfBirth"
-                    />
-                  </div>
-                  <div class="w-100"></div>
-                  <div class="col-sm-6">
-                    <label for="dateOfBirth" class="form-label"
-                      >Doğum Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="dateOfBirth"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.dateOfBirth"
-                      name="dateOfBirth"
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="maritalStatus" class="form-label"
-                      >Medeni Hal</label
-                    >
-                    <ng-select
-                      bindLabel="name"
-                      id="maritalStatus"
-                      bindValue="maritalStatus"
-                      name="maritalStatus"
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.maritalStatus"
-                    >
-                      <ng-option value="E"> Evli </ng-option>
-                      <ng-option value="B">Bekar</ng-option>
-                    </ng-select>
-                  </div>
-                  <div class="w-100"></div>
-                  <div class="col-sm-6">
-                    <label for="registrationNumber" class="form-label"
-                      >Sicil Numarası</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="registrationNumber"
-                      autocomplete="off"
-                      required
-                      [(ngModel)]="employee.registrationNumber"
-                      name="registrationNumber"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="col">
-                <br />
-                <h2>Çalışan Genel Bilgileri</h2>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label for="companyEntryDate" class="form-label"
-                      >Şirkete Giriş Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="companyEntryDate"
-                      id="companyEntryDate"
-                      class="form-control"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.companyEntryDate"
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="sgkEntryDate" class="form-label"
-                      >SGK Giriş Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="sgkEntryDate"
-                      class="form-control"
-                      id="sgkEntryDate"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.sgkEntryDate"
-                    />
-                  </div>
-                  <div class="w-100"></div>
-
-                  <div class="col-sm-6">
-                    <label
-                      for="annualLeaveEntitlementStartDate"
-                      class="form-label"
-                      >Yıllık izin hakediş başlangıç tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="annualLeaveEntitlementStartDate"
-                      class="form-control"
-                      id="annualLeaveEntitlementStartDate"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.annualLeaveEntitlementStartDate"
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="annualLeaveGroup" class="form-label"
-                      >Yıllık izin Grubu</label
-                    >
-                    <ng-select
-                      bindLabel="name"
-                      id="annualLeaveGroup"
-                      bindValue="annualLeaveGroup"
-                      name="annualLeaveGroup"
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.annualLeaveGroup"
-                    >
-                      <ng-option value="Standart"> Standart </ng-option>
-                      <ng-option value="Vardiya">Vardiya</ng-option>
-                    </ng-select>
-                  </div>
-
-                  <div class="w-100"></div>
-
-                  <div class="col-sm-6">
-                    <label for="severancePayStartDate" class="form-label"
-                      >Kıdem Tazminatı Başlangıç Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="severancePayStartDate"
-                      class="form-control"
-                      id="severancePayStartDate"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.severancePayStartDate"
-                    />
-                  </div>
-
-                  <div class="col-sm-6">
-                    <label for="oyakStartDateOfWork" class="form-label"
-                      >OYAK İşe Giriş Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="oyakStartDateOfWork"
-                      class="form-control"
-                      id="oyakStartDateOfWork"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.oyakStartDateOfWork"
-                    />
-                  </div>
-                  <div class="w-100"></div>
-                  <div class="col-sm-6">
-                    <label for="firstDateOfJoiningTheGroup" class="form-label"
-                      >Gruba İlk Giriş Tarihi</label
-                    >
-                    <input
-                      type="text"
-                      name="firstDateOfJoiningTheGroup"
-                      class="form-control"
-                      id="firstDateOfJoiningTheGroup"
-                      autocomplete="off"
-                      bsDatepicker
-                      required
-                      [(ngModel)]="employee.firstDateOfJoiningTheGroup"
-                    />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="identificationNumber"
+                        name="IdentificationNumber"
+                        autocomplete="off"
+                        required
+                        [(ngModel)]="employee.identificationNumber"
+                      />
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="gender" class="form-label">Cinsiyet</label>
+                      <ng-select
+                        bindLabel="name"
+                        name="gender"
+                        appendTo="body"
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.gender"
+                      >
+                        <ng-option value="E"> Erkek </ng-option>
+                        <ng-option value="K">Kadın</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-6">
+                      <label for="nationality" class="form-label">Uyruk</label>
+                      <ng-select
+                        notFoundText="Kayıt Bulunamadı"
+                        bindLabel="nationality"
+                        id="nationality"
+                        bindValue="nationality"
+                        name="nationality"
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.nationality"
+                      >
+                        <ng-option
+                          [value]="nationality.nationalityName"
+                          *ngFor="let nationality of nationalities"
+                        >
+                          {{ nationality.nationalityName }}
+                        </ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="placeOfBirth" class="form-label"
+                        >Doğum Yeri</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="placeOfBirth"
+                        name="PlaceOfBirth"
+                        autocomplete="off"
+                        required
+                        [(ngModel)]="employee.placeOfBirth"
+                      />
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-6">
+                      <label for="dateOfBirth" class="form-label"
+                        >Doğum Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="dateOfBirth"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.dateOfBirth"
+                        name="dateOfBirth"
+                      />
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="maritalStatus" class="form-label"
+                        >Medeni Hal</label
+                      >
+                      <ng-select
+                        bindLabel="name"
+                        id="maritalStatus"
+                        bindValue="maritalStatus"
+                        name="maritalStatus"
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.maritalStatus"
+                      >
+                        <ng-option value="E"> Evli </ng-option>
+                        <ng-option value="B">Bekar</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-6">
+                      <label for="registrationNumber" class="form-label"
+                        >Sicil Numarası</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="registrationNumber"
+                        autocomplete="off"
+                        required
+                        [(ngModel)]="employee.registrationNumber"
+                        name="registrationNumber"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+              <br />
             </div>
-            <div class="col">
+            <div class="card" style="width: 22rem">
               <div class="col">
-                <br />
-                <h2>Çalışan Ücret Bilgileri</h2>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label for="wage" class="form-label">Ücret</label>
-                    <input
-                      type="text"
-                      name="wage"
-                      id="wage"
-                      class="form-control"
-                      required
-                      [(ngModel)]="employee.wage"
-                    />
-                  </div>
+                <div class="col">
+                  <br />
+                  <h2>Çalışan Genel Bilgileri</h2>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <label for="companyEntryDate" class="form-label"
+                        >Şirkete Giriş Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="companyEntryDate"
+                        id="companyEntryDate"
+                        class="form-control"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.companyEntryDate"
+                      />
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="sgkEntryDate" class="form-label"
+                        >SGK Giriş Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="sgkEntryDate"
+                        class="form-control"
+                        id="sgkEntryDate"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.sgkEntryDate"
+                      />
+                    </div>
+                    <div class="w-100"></div>
 
-                  <div class="col-sm-6">
-                    <label for="typeOfWage" class="form-label"
-                      >Ücret Türü</label
-                    >
-                    <ng-select
-                      notFoundText="Kayıt Bulunamadı"
-                      id="typeOfWage"
-                      bindValue="typeOfWage"
-                      placeholder="Seçiniz"
-                      name="typeOfWage"
-                      placeholder="Seçiniz"
-                      required
-                      [(ngModel)]="employee.typeOfWage"
-                    >
-                      <ng-option value="Aylık">Aylık</ng-option>
-                      <ng-option value="Sattlik">Saatlik</ng-option>
-                    </ng-select>
-                  </div>
+                    <div class="col-sm-6">
+                      <label
+                        for="annualLeaveEntitlementStartDate"
+                        class="form-label"
+                        >Yıllık izin hakediş başlangıç tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="annualLeaveEntitlementStartDate"
+                        class="form-control"
+                        id="annualLeaveEntitlementStartDate"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.annualLeaveEntitlementStartDate"
+                      />
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="annualLeaveGroup" class="form-label"
+                        >Yıllık izin Grubu</label
+                      >
+                      <ng-select
+                        bindLabel="name"
+                        id="annualLeaveGroup"
+                        bindValue="annualLeaveGroup"
+                        name="annualLeaveGroup"
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.annualLeaveGroup"
+                      >
+                        <ng-option value="Standart"> Standart </ng-option>
+                        <ng-option value="Vardiya">Vardiya</ng-option>
+                      </ng-select>
+                    </div>
 
-                  <div class="w-100"></div>
+                    <div class="w-100"></div>
 
-                  <div class="col-sm-6">
-                    <label for="typeOfPayment" class="form-label"
-                      >Ödeme Şekli</label
-                    >
-                    <ng-select
-                      bindLabel="name"
-                      bindValue="typeOfPayment"
-                      id="typeOfPayment"
-                      name="typeOfPayment"
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.typeOfPayment"
-                    >
-                      <ng-option value="Nakit">Nakit</ng-option>
-                      <ng-option value="Banka Hesabı">Banka Hesabı</ng-option>
-                    </ng-select>
-                  </div>
-                  <div class="col-sm-6">
-                    <label for="paymentCurrency" class="form-label"
-                      >Ödeme yapılan para birimi</label
-                    >
-                    <ng-select
-                      bindLabel="name"
-                      id="paymentCurrency"
-                      bindValue="name"
-                      name="paymentCurrency"
-                      required
-                      placeholder="Seçiniz"
-                      [(ngModel)]="employee.paymentCurrency"
-                    >
-                      <ng-option value="TL">TL</ng-option>
-                      <ng-option value="DOLAR">DOLAR</ng-option>
-                      <ng-option value="EURO">EURO</ng-option>
-                    </ng-select>
+                    <div class="col-sm-6">
+                      <label for="severancePayStartDate" class="form-label"
+                        >Kıdem Tazminatı Başlangıç Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="severancePayStartDate"
+                        class="form-control"
+                        id="severancePayStartDate"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.severancePayStartDate"
+                      />
+                    </div>
+
+                    <div class="col-sm-6">
+                      <label for="oyakStartDateOfWork" class="form-label"
+                        >OYAK İşe Giriş Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="oyakStartDateOfWork"
+                        class="form-control"
+                        id="oyakStartDateOfWork"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.oyakStartDateOfWork"
+                      />
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-6">
+                      <label for="firstDateOfJoiningTheGroup" class="form-label"
+                        >Gruba İlk Giriş Tarihi</label
+                      >
+                      <input
+                        type="text"
+                        name="firstDateOfJoiningTheGroup"
+                        class="form-control"
+                        id="firstDateOfJoiningTheGroup"
+                        autocomplete="off"
+                        bsDatepicker
+                        required
+                        [(ngModel)]="employee.firstDateOfJoiningTheGroup"
+                      />
+                    </div>
                   </div>
                 </div>
+              </div>
+              <br />
+              <br />
+            </div>
+            <div class="card" style="width: 22rem">
+              <div class="col">
+                <div class="col">
+                  <br />
+                  <h2>Çalışan Ücret Bilgileri</h2>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <label for="wage" class="form-label">Ücret</label>
+                      <input
+                        type="text"
+                        name="wage"
+                        id="wage"
+                        class="form-control"
+                        required
+                        [(ngModel)]="employee.wage"
+                      />
+                    </div>
+
+                    <div class="col-sm-6">
+                      <label for="typeOfWage" class="form-label"
+                        >Ücret Türü</label
+                      >
+                      <ng-select
+                        notFoundText="Kayıt Bulunamadı"
+                        id="typeOfWage"
+                        bindValue="typeOfWage"
+                        placeholder="Seçiniz"
+                        name="typeOfWage"
+                        placeholder="Seçiniz"
+                        required
+                        [(ngModel)]="employee.typeOfWage"
+                      >
+                        <ng-option value="Aylık">Aylık</ng-option>
+                        <ng-option value="Sattlik">Saatlik</ng-option>
+                      </ng-select>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col-sm-6">
+                      <label for="typeOfPayment" class="form-label"
+                        >Ödeme Şekli</label
+                      >
+                      <ng-select
+                        bindLabel="name"
+                        bindValue="typeOfPayment"
+                        id="typeOfPayment"
+                        name="typeOfPayment"
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.typeOfPayment"
+                      >
+                        <ng-option value="Nakit">Nakit</ng-option>
+                        <ng-option value="Banka Hesabı">Banka Hesabı</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="paymentCurrency" class="form-label"
+                        >Ödeme yapılan para birimi</label
+                      >
+                      <ng-select
+                        bindLabel="name"
+                        id="paymentCurrency"
+                        bindValue="name"
+                        name="paymentCurrency"
+                        required
+                        placeholder="Seçiniz"
+                        [(ngModel)]="employee.paymentCurrency"
+                      >
+                        <ng-option value="TL">TL</ng-option>
+                        <ng-option value="DOLAR">DOLAR</ng-option>
+                        <ng-option value="EURO">EURO</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+                <br />
               </div>
             </div>
           </div>

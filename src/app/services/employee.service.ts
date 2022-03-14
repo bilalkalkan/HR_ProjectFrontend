@@ -11,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root',
 })
 export class EmployeeService {
-  apiUrl = 'https://localhost:7275/api/employees/';
+  apiUrl = 'https://localhost:44367/api/employees/';
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<ListResponseModel<Employee>> {

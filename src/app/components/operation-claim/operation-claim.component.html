@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      <form>
+        <h1>İşlem Talebi Ekleme</h1>
+        <div class="col-sm-4">
+          <label for="name" class="form-label">Talep ismi</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            required
+            [(ngModel)]="operationClaim.name"
+          />
+        </div>
+        <br />
+        <button class="btn btn-success" (click)="saveOperationClaim()">
+          Kaydet
+        </button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Talep Adı</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let operationClaim of operationClaims">
+            <td>{{ operationClaim.id }}</td>
+            <td>{{ operationClaim.name }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="deleteOperationClaim(operationClaim)"
+                >
+                  <i class="bi bi-trash3"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  (click)="getOperationClaim(operationClaim.id)"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <form>
+        <h1>Kullanıcı Talep Ekleme</h1>
+        <div class="col-sm-4">
+          <label for="userId">Kullanıcı</label>
+          <ng-select
+            notFoundText="Kaynak Bulunamadı"
+            name="userId"
+            id="userId"
+            placeholder="Seçiniz"
+            [(ngModel)]="userOperationClaim.userId"
+          >
+            <ng-option *ngFor="let user of users" [value]="user.id"
+              >{{ user.firstName }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-sm-4">
+          <label for="operationClaimId">İşlem Talebi</label>
+          <ng-select
+            notFoundText="Kaynak bulunamadı"
+            id="operationClaimId"
+            placeholder="Seçiniz"
+            name="operationClaimId"
+            [(ngModel)]="userOperationClaim.operationClaimId"
+          >
+            <ng-option
+              *ngFor="let operationClaim of operationClaims"
+              [value]="operationClaim.id"
+              >{{ operationClaim.name }}</ng-option
+            >
+          </ng-select>
+        </div>
+        <br />
+        <button class="btn btn-success" (click)="saveUserOperationClaim()">
+          Kaydet
+        </button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Kullanıcı Id</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">İşlem Talebi Id</th>
+            <th scope="col">İşlem Talebi Adı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let userOperationClaimDetail of userOperationClaimDetails"
+          >
+            <td>{{ userOperationClaimDetail.userOperationClaimId }}</td>
+            <td>{{ userOperationClaimDetail.userId }}</td>
+            <td>{{ userOperationClaimDetail.userFirstName }}</td>
+            <td>{{ userOperationClaimDetail.userLastName }}</td>
+            <td>{{ userOperationClaimDetail.operationClaimId }}</td>
+            <td>{{ userOperationClaimDetail.operationClaimName }}</td>
+
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="deleteOperationClaim(operationClaim)"
+                >
+                  <i class="bi bi-trash3"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  (click)="getOperationClaim(operationClaim.id)"
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root',
 })
 export class EmployeeDebitService {
-  apiUrl = 'https://localhost:7275/api/EmployeeDebits/';
+  apiUrl = 'https://localhost:44367/api/EmployeeDebits/';
   constructor(private httpClient: HttpClient) {}
   getAll(): Observable<ListResponseModel<EmployeeDebit>> {
     let newPath = this.apiUrl + 'getall';

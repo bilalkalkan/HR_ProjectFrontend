@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { OperationClaimComponent } from './components/operation-claim/operation-claim.component';
 const routes: Routes = [
   {
     path: 'employee',
@@ -54,6 +55,7 @@ const routes: Routes = [
   },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
+  { path: 'operationClaim', component: OperationClaimComponent },
 ];
 
 @NgModule({
