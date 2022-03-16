@@ -67,7 +67,7 @@ export class EmployeeComponent implements OnInit {
   save() {
     let message = this.ValidateCheck();
     if (message != '') {
-      this.toastrService.error('Boş alan boş bırakılamaz');
+      this.toastrService.error(message);
       return;
     }
 
@@ -91,59 +91,37 @@ export class EmployeeComponent implements OnInit {
     if (
       this.employee.firstName == null ||
       this.employee.firstName == undefined ||
-      this.employee.firstName == '' ||
+      this.employee.firstName == ''
+    ) {
+      message = 'Ad alan boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employee.lastName == null ||
       this.employee.lastName == undefined ||
-      this.employee.lastName == '' ||
-      this.employee.gender == null ||
-      this.employee.gender == undefined ||
-      this.employee.gender == '' ||
+      this.employee.lastName == ''
+    ) {
+      message = 'soyad alan boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employee.identificationNumber == null ||
       this.employee.identificationNumber == undefined ||
-      this.employee.identificationNumber == '' ||
-      this.employee.maritalStatus == null ||
-      this.employee.maritalStatus == undefined ||
-      this.employee.maritalStatus == '' ||
-      this.employee.nationality == null ||
-      this.employee.nationality == undefined ||
-      this.employee.nationality == '' ||
-      this.employee.placeOfBirth == null ||
-      this.employee.placeOfBirth == undefined ||
-      this.employee.placeOfBirth == '' ||
-      this.employee.dateOfBirth == null ||
-      this.employee.dateOfBirth == undefined ||
-      this.employee.registrationNumber == null ||
-      this.employee.registrationNumber == undefined ||
-      this.employee.registrationNumber == '' ||
-      this.employee.companyEntryDate == null ||
-      this.employee.companyEntryDate == undefined ||
-      this.employee.sgkEntryDate == null ||
-      this.employee.sgkEntryDate == undefined ||
-      this.employee.annualLeaveEntitlementStartDate == null ||
-      this.employee.annualLeaveEntitlementStartDate == undefined ||
-      this.employee.annualLeaveGroup == null ||
-      this.employee.annualLeaveGroup == undefined ||
-      this.employee.annualLeaveGroup == '' ||
-      this.employee.severancePayStartDate == null ||
-      this.employee.severancePayStartDate == undefined ||
-      this.employee.oyakStartDateOfWork == null ||
-      this.employee.oyakStartDateOfWork == undefined ||
-      this.employee.firstDateOfJoiningTheGroup == null ||
-      this.employee.firstDateOfJoiningTheGroup == undefined ||
-      this.employee.wage == null ||
-      this.employee.wage == undefined ||
-      this.employee.typeOfWage == null ||
-      this.employee.typeOfWage == undefined ||
-      this.employee.typeOfWage == '' ||
-      this.employee.typeOfPayment == null ||
-      this.employee.typeOfPayment == undefined ||
-      this.employee.typeOfPayment == '' ||
-      this.employee.paymentCurrency == null ||
-      this.employee.paymentCurrency == undefined ||
-      this.employee.paymentCurrency == ''
+      this.employee.identificationNumber == ''
     ) {
-      message = 'Boş alan boş bırakılamaz';
+      message = 'Tc kimlik no alanı boş bırakılamaz';
       return message;
+    }
+    if (
+      this.employee.gender == null ||
+      this.employee.gender == undefined ||
+      this.employee.gender == ''
+    ) {
+      message = 'Cinsiyet alanı boş bıralılamaz';
+      return message;
+    }
+    if (this.employee.nationality == null) {
     }
 
     return message;

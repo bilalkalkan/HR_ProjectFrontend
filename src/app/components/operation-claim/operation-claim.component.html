@@ -2,9 +2,9 @@
   <div class="row align-items-start">
     <div class="col">
       <form>
-        <h1>İşlem Talebi Ekleme</h1>
+        <h1>Rol ekleme</h1>
         <div class="col-sm-4">
-          <label for="name" class="form-label">Talep ismi</label>
+          <label for="name" class="form-label">Rol</label>
           <input
             type="text"
             name="name"
@@ -15,15 +15,20 @@
           />
         </div>
         <br />
+        <br />
+        <br />
         <button class="btn btn-success" (click)="saveOperationClaim()">
           Kaydet
+        </button>
+        <button class="btn btn-danger" (click)="clearOperationClaimTextBox()">
+          Temizle
         </button>
       </form>
       <table class="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Talep Adı</th>
+            <th scope="col">Rol Adı</th>
             <th scope="col">İşlemler</th>
           </tr>
         </thead>
@@ -55,7 +60,7 @@
     </div>
     <div class="col">
       <form>
-        <h1>Kullanıcı Talep Ekleme</h1>
+        <h1>Kullanıcıya Rol Ekleme</h1>
         <div class="col-sm-4">
           <label for="userId">Kullanıcı</label>
           <ng-select
@@ -71,7 +76,7 @@
           </ng-select>
         </div>
         <div class="col-sm-4">
-          <label for="operationClaimId">İşlem Talebi</label>
+          <label for="operationClaimId">Rol </label>
           <ng-select
             notFoundText="Kaynak bulunamadı"
             id="operationClaimId"
@@ -90,42 +95,41 @@
         <button class="btn btn-success" (click)="saveUserOperationClaim()">
           Kaydet
         </button>
+        <button
+          class="btn btn-danger"
+          (click)="claerUserOperationClaimTextBox()"
+        >
+          Temizle
+        </button>
       </form>
       <table class="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Kullanıcı Id</th>
-            <th scope="col">Ad</th>
-            <th scope="col">Soyad</th>
-            <th scope="col">İşlem Talebi Id</th>
-            <th scope="col">İşlem Talebi Adı</th>
+            <th scope="col">Role Id</th>
+            <th scope="col">İşlemler</th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            *ngFor="let userOperationClaimDetail of userOperationClaimDetails"
-          >
-            <td>{{ userOperationClaimDetail.userOperationClaimId }}</td>
-            <td>{{ userOperationClaimDetail.userId }}</td>
-            <td>{{ userOperationClaimDetail.userFirstName }}</td>
-            <td>{{ userOperationClaimDetail.userLastName }}</td>
-            <td>{{ userOperationClaimDetail.operationClaimId }}</td>
-            <td>{{ userOperationClaimDetail.operationClaimName }}</td>
+          <tr *ngFor="let userOperationClaim of userOperationClaims">
+            <td>{{ userOperationClaim.id }}</td>
+            <td>{{ userOperationClaim.userId }}</td>
+            <td>{{ userOperationClaim.operationClaimId }}</td>
 
             <td>
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button
                   type="button"
                   class="btn btn-danger"
-                  (click)="deleteOperationClaim(operationClaim)"
+                  (click)="deleteUserOperationClaim(userOperationClaim)"
                 >
                   <i class="bi bi-trash3"></i>
                 </button>
                 <button
                   type="button"
                   class="btn btn-info"
-                  (click)="getOperationClaim(operationClaim.id)"
+                  (click)="getUserOperationClaim(userOperationClaim.id)"
                 >
                   <i class="bi bi-pencil"></i>
                 </button>

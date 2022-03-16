@@ -125,14 +125,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.allowanceType = new AllowanceType();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeVacationService
+        .addAllowanceType(this.allowanceType)
+        .subscribe((response) => {
+          this.getAllowanceTypes();
+          this.allowanceType = new AllowanceType();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeVacationService
-      .addAllowanceType(this.allowanceType)
-      .subscribe((response) => {
-        this.getAllowanceTypes();
-        this.allowanceType = new AllowanceType();
-        this.toastrService.success(response.message);
-      });
   }
   saveDebitType() {
     if (this.debitType.id > 0) {
@@ -143,14 +144,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.debitType = new DebitType();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeDebitService
+        .addDebitType(this.debitType)
+        .subscribe((response) => {
+          this.getDebitTypes();
+          this.debitType = new DebitType();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeDebitService
-      .addDebitType(this.debitType)
-      .subscribe((response) => {
-        this.getDebitTypes();
-        this.debitType = new DebitType();
-        this.toastrService.success(response.message);
-      });
   }
   saveEducationLevel() {
     if (this.educationaLevel.id > 0) {
@@ -161,14 +163,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.educationaLevel = new EducationLevel();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeEducationService
+        .addEducationLevel(this.educationaLevel)
+        .subscribe((response) => {
+          this.getEducationLevels();
+          this.educationaLevel = new EducationLevel();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeEducationService
-      .addEducationLevel(this.educationaLevel)
-      .subscribe((response) => {
-        this.getEducationLevels();
-        this.educationaLevel = new EducationLevel();
-        this.toastrService.success(response.message);
-      });
   }
 
   saveLanguage() {
@@ -180,14 +183,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.language = new Language();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeLanguageService
+        .addLanguage(this.language)
+        .subscribe((response) => {
+          this.getLanguages();
+          this.language = new Language();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeLanguageService
-      .addLanguage(this.language)
-      .subscribe((response) => {
-        this.getLanguages();
-        this.language = new Language();
-        this.toastrService.success(response.message);
-      });
   }
 
   saveFamilyMember() {
@@ -199,14 +203,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.familyMember = new FamilyMember();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeFamilyService
+        .addFamilyMember(this.familyMember)
+        .subscribe((response) => {
+          this.getFamilyMembers();
+          this.familyMember = new FamilyMember();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeFamilyService
-      .addFamilyMember(this.familyMember)
-      .subscribe((response) => {
-        this.getFamilyMembers();
-        this.familyMember = new FamilyMember();
-        this.toastrService.success(response.message);
-      });
   }
 
   saveNationality() {
@@ -218,14 +223,15 @@ export class AllowanceTypeComponent implements OnInit {
           this.nationality = new Nationality();
           this.toastrService.success(response.message);
         });
+    } else {
+      this.employeeService
+        .addNationality(this.nationality)
+        .subscribe((response) => {
+          this.getNationalities();
+          this.nationality = new Nationality();
+          this.toastrService.success(response.message);
+        });
     }
-    this.employeeService
-      .addNationality(this.nationality)
-      .subscribe((response) => {
-        this.getNationalities();
-        this.nationality = new Nationality();
-        this.toastrService.success(response.message);
-      });
   }
 
   deleteAllowanceType(allowanceType: AllowanceType) {

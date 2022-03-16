@@ -32,6 +32,7 @@ export class OperationClaimComponent implements OnInit {
     this.getOperationClaims();
     this.getUsers();
     this.getUserOperationDetailList();
+    this.getUserOperationClaims();
   }
   getUsers() {
     this.userService.getAll().subscribe((response) => {
@@ -67,6 +68,11 @@ export class OperationClaimComponent implements OnInit {
     });
   }
   saveOperationClaim() {
+    let message = this.checkValidateOperationClaim();
+    if (message != '') {
+      this.toastrService.error('Boş alan bırakılamaz!');
+      return;
+    }
     if (this.operationClaim.id > 0) {
       this.operationClaimService
         .update(this.operationClaim)
@@ -87,6 +93,11 @@ export class OperationClaimComponent implements OnInit {
   }
 
   saveUserOperationClaim() {
+    let message = this.checkUserValidateOperationClaim();
+    if (message != '') {
+      this.toastrService.error('Boş alan bırakılamaz');
+      return;
+    }
     if (this.userOperationClaim.id > 0) {
       this.userOperationClaimService
         .update(this.userOperationClaim)
@@ -120,5 +131,39 @@ export class OperationClaimComponent implements OnInit {
         this.getUserOperationClaims();
         this.toastrService.success(response.message);
       });
+  }
+
+  checkValidateOperationClaim(): string {
+    let message = '';
+    if (
+      this.operationClaim.name == null ||
+      this.operationClaim.name == undefined ||
+      this.operationClaim.name == ''
+    ) {
+      message = 'Boş alan bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
+  checkUserValidateOperationClaim(): string {
+    let message = '';
+    if (
+      this.userOperationClaim.operationClaimId == null ||
+      this.userOperationClaim.operationClaimId == undefined ||
+      this.userOperationClaim.userId == null ||
+      this.userOperationClaim.userId == undefined
+    ) {
+      message = 'Boş alan bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
+  clearOperationClaimTextBox() {
+    this.operationClaim = new OperationClaim();
+  }
+  claerUserOperationClaimTextBox() {
+    this.userOperationClaim = new UserOperationClaim();
   }
 }

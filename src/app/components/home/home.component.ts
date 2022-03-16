@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private localStorage: LocalStorageService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class HomeComponent implements OnInit {
   logOut() {
     localStorage.removeItem('token');
     this.reloadCurrentPage();
+    this.router.navigate(['login']);
   }
   reloadCurrentPage() {
     window.location.reload();

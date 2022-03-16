@@ -52,21 +52,27 @@ export class EmployeeEducationComponent implements OnInit {
       return;
     }
     if (this.employeeEducation.id > 0) {
-      this.employeeEducationService
-        .update(this.employeeEducation)
-        .subscribe((response) => {
+      this.employeeEducationService.update(this.employeeEducation).subscribe(
+        (response) => {
           this.employeeEducation = new EmployeeEducation();
           this.getEmployeeEducations();
           this.toastrService.success(response.message);
-        });
+        },
+        (responseError) => {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
+      );
     } else {
-      this.employeeEducationService
-        .add(this.employeeEducation)
-        .subscribe((response) => {
+      this.employeeEducationService.add(this.employeeEducation).subscribe(
+        (response) => {
           this.employeeEducation = new EmployeeEducation();
           this.getEmployeeEducations();
           this.toastrService.success(response.message);
-        });
+        },
+        (responseError) => {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
+      );
     }
   }
   getEmployeeEducation(id: number) {

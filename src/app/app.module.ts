@@ -17,7 +17,7 @@ import { EmployeeLanguageComponent } from './components/employee-language/employ
 import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { AllowanceTypeComponent } from './components/items/allowance-type/allowance-type.component';
+import { AllowanceTypeComponent } from './components/items/allowance-type.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';

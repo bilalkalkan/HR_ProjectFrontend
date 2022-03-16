@@ -7,7 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { EmployeeLanguageComponent } from './components/employee-language/employee-language.component';
 import { EmployeeDebitComponent } from './components/employee-debit/employee-debit.component';
 import { EmployeeVacationComponent } from './components/employee-vacation/employee-vacation.component';
-import { AllowanceTypeComponent } from './components/items/allowance-type/allowance-type.component';
+import { AllowanceTypeComponent } from './components/items/allowance-type.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
@@ -56,6 +56,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
   { path: 'operationClaim', component: OperationClaimComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({

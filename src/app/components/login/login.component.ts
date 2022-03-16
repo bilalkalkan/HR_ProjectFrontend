@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Router,
+} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private toastrService: ToastrService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -23,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       (response) => {
         this.localStorage.setLocalStorage('token', response.data.token);
+        this.router.navigate(['hom']);
         this.reloadCurrentPage();
         this.toastrService.info('Giriş Yapıldı');
       },
