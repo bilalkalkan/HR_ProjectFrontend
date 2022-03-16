@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       (response) => {
         this.localStorage.setLocalStorage('token', response.data.token);
-        this.router.navigate(['hom']);
+        this.router.navigate(['/home']);
         this.reloadCurrentPage();
-        this.toastrService.info('Giriş Yapıldı');
+        //this.toastrService.info('Giriş Yapıldı');
       },
       (responseError) => {
         console.log(responseError);

@@ -23,6 +23,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { OperationClaimComponent } from './components/operation-claim/operation-claim.component';
+import { NaviComponent } from './components/navi/navi.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { OperationClaimComponent } from './components/operation-claim/operation-
     RegisterComponent,
     UserComponent,
     OperationClaimComponent,
+    NaviComponent,
   ],
   imports: [
     BrowserModule,

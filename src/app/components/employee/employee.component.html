@@ -287,7 +287,7 @@
                     <div class="col-sm-6">
                       <label for="wage" class="form-label">Ücret</label>
                       <input
-                        type="text"
+                        type="number"
                         name="wage"
                         id="wage"
                         class="form-control"
@@ -360,7 +360,12 @@
         </div>
         <br />
         <div>
-          <button type="submit" (click)="save()" class="btn btn-success">
+          <button
+            type="submit"
+            (click)="save()"
+            class="btn btn-success"
+            [disabled]="ValidateCheck()"
+          >
             Kaydet
           </button>
           <button class="btn btn-warning" type="button" (click)="clear()">

@@ -78,11 +78,16 @@ export class EmployeeComponent implements OnInit {
         this.employee = new Employee();
       });
     } else {
-      this.employeeService.add(this.employee).subscribe((response) => {
-        this.toastrService.success(response.message);
-        this.employee = new Employee();
-        this.getEmployees();
-      });
+      this.employeeService.add(this.employee).subscribe(
+        (response) => {
+          this.toastrService.success(response.message);
+          this.employee = new Employee();
+          this.getEmployees();
+        },
+        (erroResponse) => {
+          this.toastrService.error(erroResponse.error);
+        }
+      );
     }
   }
 
@@ -93,7 +98,7 @@ export class EmployeeComponent implements OnInit {
       this.employee.firstName == undefined ||
       this.employee.firstName == ''
     ) {
-      message = 'Ad alan boş bırakılamaz';
+      message = 'Ad alanı boş bırakılamaz';
       return message;
     }
 
@@ -102,7 +107,7 @@ export class EmployeeComponent implements OnInit {
       this.employee.lastName == undefined ||
       this.employee.lastName == ''
     ) {
-      message = 'soyad alan boş bırakılamaz';
+      message = 'soyad alanı boş bırakılamaz';
       return message;
     }
     if (
@@ -121,17 +126,100 @@ export class EmployeeComponent implements OnInit {
       message = 'Cinsiyet alanı boş bıralılamaz';
       return message;
     }
-    if (this.employee.nationality == null) {
+    if (
+      this.employee.dateOfBirth == null ||
+      this.employee.dateOfBirth == undefined
+    ) {
+      message = 'Doğum tarihi boş bırakılamaz';
+      return message;
     }
 
+    if (
+      this.employee.companyEntryDate == null ||
+      this.employee.companyEntryDate == undefined
+    ) {
+      message = 'Şirkete giriş tarihi alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.sgkEntryDate == null ||
+      this.employee.sgkEntryDate == undefined
+    ) {
+      message = 'SGK giriş tarihi boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.annualLeaveEntitlementStartDate == null ||
+      this.employee.annualLeaveEntitlementStartDate == undefined
+    ) {
+      message = 'Yıllık izin hakediş tarihi alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.severancePayStartDate == null ||
+      this.employee.severancePayStartDate == undefined
+    ) {
+      message = 'Kıdem tazminatı başlangıç tarihi alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employee.oyakStartDateOfWork == null ||
+      this.employee.oyakStartDateOfWork == undefined
+    ) {
+      message = 'OYAK işe giriş tarihi alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employee.firstDateOfJoiningTheGroup == null ||
+      this.employee.firstDateOfJoiningTheGroup == undefined
+    ) {
+      message = 'Gruba ilk giriş tarihi alanı boş bırakılamaz';
+      return message;
+    }
+    if (this.employee.wage == null || this.employee.wage == undefined) {
+      message = 'Ücret alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.typeOfWage == null ||
+      this.employee.typeOfWage == undefined ||
+      this.employee.typeOfWage == ''
+    ) {
+      message = 'Ücret türü alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.typeOfPayment == null ||
+      this.employee.typeOfPayment == undefined ||
+      this.employee.typeOfPayment == ''
+    ) {
+      message = 'Ödeme şekli alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employee.paymentCurrency == null ||
+      this.employee.paymentCurrency == undefined ||
+      this.employee.paymentCurrency == ''
+    ) {
+      message = 'Ödeme yapılan para birimi alanı boş bırakılamaz';
+      return message;
+    }
     return message;
   }
 
   delete(employee: Employee) {
-    this.employeeService.delete(employee).subscribe((response) => {
-      this.toastrService.success(response.message);
-      this.getEmployees();
-    });
+    this.employeeService.delete(employee).subscribe(
+      (response) => {
+        this.toastrService.success(response.message);
+        this.getEmployees();
+      },
+      (erroResponse) => {
+        console.log(erroResponse.error);
+        this.toastrService.error(erroResponse.error.Message);
+      }
+    );
   }
   clear() {
     this.employee = new Employee();

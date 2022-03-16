@@ -107,21 +107,29 @@ export class OperationClaimComponent implements OnInit {
           this.toastrService.success(response.message);
         });
     } else {
-      this.userOperationClaimService
-        .add(this.userOperationClaim)
-        .subscribe((response) => {
+      this.userOperationClaimService.add(this.userOperationClaim).subscribe(
+        (response) => {
           this.getUserOperationClaims();
           this.userOperationClaim = new UserOperationClaim();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      );
     }
   }
 
   deleteOperationClaim(operationClaim: OperationClaim) {
-    this.operationClaimService.delete(operationClaim).subscribe((response) => {
-      this.getOperationClaims();
-      this.toastrService.success(response.message);
-    });
+    this.operationClaimService.delete(operationClaim).subscribe(
+      (response) => {
+        this.getOperationClaims();
+        this.toastrService.success(response.message);
+      },
+      (errorResponse) => {
+        console.log(errorResponse.error.message);
+      }
+    );
   }
 
   deleteUserOperationClaim(userOperationClaim: UserOperationClaim) {
