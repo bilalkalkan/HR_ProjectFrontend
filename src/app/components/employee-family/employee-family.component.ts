@@ -53,63 +53,110 @@ export class EmployeeFamilyComponent implements OnInit {
   save() {
     let message = this.validateCheck();
     if (message != '') {
-      this.toastrService.error('Boş alan bırakılamaz');
+      this.toastrService.error(message);
       return;
     }
     if (this.employeeFamily.id > 1) {
-      this.employeeFamilyService
-        .update(this.employeeFamily)
-        .subscribe((response) => {
+      this.employeeFamilyService.update(this.employeeFamily).subscribe(
+        (response) => {
           this.toastrService.success(response.message);
           this.getEmployeeFamilies();
-
           this.employeeFamily = new EmployeeFamily();
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
-      this.employeeFamilyService
-        .add(this.employeeFamily)
-        .subscribe((response) => {
+      this.employeeFamilyService.add(this.employeeFamily).subscribe(
+        (response) => {
           this.toastrService.success(response.message);
           this.getEmployeeFamilies();
-
           this.employeeFamily = new EmployeeFamily();
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
 
   deleteEmloyeeFamily(employeeFamily: EmployeeFamily) {
-    this.employeeFamilyService.delete(employeeFamily).subscribe((response) => {
-      this.toastrService.success(response.message);
-      this.getEmployeeFamilies();
-    });
+    this.employeeFamilyService.delete(employeeFamily).subscribe(
+      (response) => {
+        this.toastrService.success(response.message);
+        this.getEmployeeFamilies();
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
   validateCheck(): string {
     let message = '';
     if (
-      this.employeeFamily.firstName == null ||
-      this.employeeFamily.firstName == undefined ||
-      this.employeeFamily.firstName == '' ||
       this.employeeFamily.employeeId == null ||
-      this.employeeFamily.employeeId == undefined ||
-      this.employeeFamily.lastName == null ||
-      this.employeeFamily.lastName == undefined ||
-      this.employeeFamily.lastName == '' ||
+      this.employeeFamily.employeeId == undefined
+    ) {
+      message = 'Çalışan alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeFamily.degree == null ||
       this.employeeFamily.degree == undefined ||
-      this.employeeFamily.degree == '' ||
-      this.employeeFamily.identificationNumber == null ||
-      this.employeeFamily.identificationNumber == undefined ||
-      this.employeeFamily.identificationNumber == '' ||
-      this.employeeFamily.dateOfBirth == null ||
-      this.employeeFamily.dateOfBirth == undefined ||
+      this.employeeFamily.degree == ''
+    ) {
+      message = 'Yakınlık derecesi alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employeeFamily.firstName == null ||
+      this.employeeFamily.firstName == undefined ||
+      this.employeeFamily.firstName == ''
+    ) {
+      message = 'Yakının adı alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeFamily.lastName == null ||
+      this.employeeFamily.lastName == undefined ||
+      this.employeeFamily.lastName == ''
+    ) {
+      message = 'Yakının soyadı alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeFamily.gender == null ||
       this.employeeFamily.gender == undefined ||
-      this.employeeFamily.gender == '' ||
+      this.employeeFamily.gender == ''
+    ) {
+      message = 'Cinsiyet alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employeeFamily.dateOfBirth == null ||
+      this.employeeFamily.dateOfBirth == undefined
+    ) {
+      message = 'Doğum tarihi alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeFamily.identificationNumber == null ||
+      this.employeeFamily.identificationNumber == undefined ||
+      this.employeeFamily.identificationNumber == ''
+    ) {
+      message = 'TC kimlik no alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeFamily.educationalStatus == null ||
       this.employeeFamily.educationalStatus == undefined ||
       this.employeeFamily.educationalStatus == ''
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Okuma durumu alanı boş bırakılamaz';
       return message;
     }
     return message;

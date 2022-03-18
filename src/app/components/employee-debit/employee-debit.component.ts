@@ -8,6 +8,7 @@ import { EmployeeDebit } from 'src/app/models/employeeDebit';
 import { EmployeeDebitService } from 'src/app/services/employee-debit.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { DebitType } from 'src/app/models/debitType';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-employee-debit',
@@ -68,7 +69,7 @@ export class EmployeeDebitComponent implements OnInit {
   save() {
     let message = this.validateCheck();
     if (message != '') {
-      this.toastrService.error('Boş alan bırakılamaz!');
+      this.toastrService.error(message);
       return;
     }
     if (this.employeeDebit.id > 0) {
@@ -79,7 +80,7 @@ export class EmployeeDebitComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+          this.toastrService.error(responseError.error);
         }
       );
     } else {
@@ -90,37 +91,72 @@ export class EmployeeDebitComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+          this.toastrService.error(responseError.error);
         }
       );
     }
   }
 
   deleteEmployeeDebit(employeeDebit: EmployeeDebit) {
-    this.employeeDebitService.delete(employeeDebit).subscribe((response) => {
-      this.getEmployeeDebits();
-      this.toastrService.success(response.message);
-    });
+    this.employeeDebitService.delete(employeeDebit).subscribe(
+      (response) => {
+        this.getEmployeeDebits();
+        this.toastrService.success(response.message);
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error);
+      }
+    );
   }
   validateCheck(): string {
     let message = '';
     if (
       this.employeeDebit.employeeId == null ||
-      this.employeeDebit.employeeId == undefined ||
+      this.employeeDebit.employeeId == undefined
+    ) {
+      message = 'Çalışan alanı boş bırakılamaz bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeDebit.debitType == null ||
       this.employeeDebit.debitType == undefined ||
-      this.employeeDebit.debitType == '' ||
+      this.employeeDebit.debitType == ''
+    ) {
+      message = 'Zimmet türü alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeDebit.debitDeliveryDate == null ||
-      this.employeeDebit.debitDeliveryDate == undefined ||
+      this.employeeDebit.debitDeliveryDate == undefined
+    ) {
+      message = 'Teslim tarihi alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeDebit.debitReturnDate == null ||
-      this.employeeDebit.debitReturnDate == undefined ||
+      this.employeeDebit.debitReturnDate == undefined
+    ) {
+      message = 'İade Tarihi alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeDebit.debitReturnStatus == null ||
-      this.employeeDebit.debitReturnStatus == '' ||
+      this.employeeDebit.debitReturnStatus == undefined ||
+      this.employeeDebit.debitReturnStatus == ''
+    ) {
+      message = 'Zimmet iade durumu alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeDebit.debitStatement == null ||
       this.employeeDebit.debitStatement == undefined ||
       this.employeeDebit.debitStatement == ''
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Açıklama alanı boş bırakılamaz';
       return message;
     }
     return message;

@@ -59,7 +59,8 @@ export class EmployeeEducationComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+          console.log(responseError.error);
+          this.toastrService.error(responseError.error.Message);
         }
       );
     } else {
@@ -70,7 +71,7 @@ export class EmployeeEducationComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+          this.toastrService.error(responseError.error.Message);
         }
       );
     }
@@ -81,34 +82,63 @@ export class EmployeeEducationComponent implements OnInit {
     });
   }
   deleteEmployeeEducation(employeeEducation: EmployeeEducation) {
-    this.employeeEducationService
-      .delete(employeeEducation)
-      .subscribe((response) => {
+    this.employeeEducationService.delete(employeeEducation).subscribe(
+      (response) => {
         this.getEmployeeEducations();
         this.employeeEducation = new EmployeeEducation();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   validateCheck(): string {
     let message = '';
     if (
       this.employeeEducation.employeeId == null ||
-      this.employeeEducation.employeeId == undefined ||
+      this.employeeEducation.employeeId == undefined
+    ) {
+      message = 'Çalışan alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeEducation.educationalLevel == null ||
       this.employeeEducation.educationalLevel == undefined ||
-      this.employeeEducation.educationalLevel == '' ||
+      this.employeeEducation.educationalLevel == ''
+    ) {
+      message = 'Eğitim seviysesi alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeEducation.schoolYearOfStart == null ||
-      this.employeeEducation.schoolYearOfStart == undefined ||
+      this.employeeEducation.schoolYearOfStart == undefined
+    ) {
+      message = 'Okul başlangıç yılı alanı boş boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeEducation.schoolYearOfFinished == null ||
-      this.employeeEducation.schoolYearOfFinished == undefined ||
+      this.employeeEducation.schoolYearOfFinished == undefined
+    ) {
+      message = 'Okul bitiş yılı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeEducation.diplomaGrade == null ||
-      this.employeeEducation.diplomaGrade == undefined ||
+      this.employeeEducation.diplomaGrade == undefined
+    ) {
+      message = 'Diploma notu alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeEducation.tractateName == null ||
       this.employeeEducation.tractateName == undefined ||
       this.employeeEducation.tractateName == ''
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Tez adı alanı boş bırakılamaz';
       return message;
     }
     return message;

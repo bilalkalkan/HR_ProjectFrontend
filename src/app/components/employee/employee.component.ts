@@ -72,11 +72,16 @@ export class EmployeeComponent implements OnInit {
     }
 
     if (this.employee.id > 0) {
-      this.employeeService.update(this.employee).subscribe((response) => {
-        this.toastrService.success(response.message);
-        this.getEmployees();
-        this.employee = new Employee();
-      });
+      this.employeeService.update(this.employee).subscribe(
+        (response) => {
+          this.toastrService.success(response.message);
+          this.getEmployees();
+          this.employee = new Employee();
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error);
+        }
+      );
     } else {
       this.employeeService.add(this.employee).subscribe(
         (response) => {
@@ -84,8 +89,8 @@ export class EmployeeComponent implements OnInit {
           this.employee = new Employee();
           this.getEmployees();
         },
-        (erroResponse) => {
-          this.toastrService.error(erroResponse.error);
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error);
         }
       );
     }

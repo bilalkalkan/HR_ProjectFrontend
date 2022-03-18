@@ -14,6 +14,7 @@ export class NaviComponent implements OnInit {
   isVerified: boolean = false;
   userName!: string;
   id!: number;
+  claimName!: string;
   constructor(
     private localStorage: LocalStorageService,
     private authService: AuthService,
@@ -28,6 +29,7 @@ export class NaviComponent implements OnInit {
       this.getClaims();
       this.getId();
     }
+    this.getClaim();
   }
   IsUserVerified() {
     if (this.authService.isAuthenticated()) {
@@ -35,6 +37,11 @@ export class NaviComponent implements OnInit {
     } else {
       this.isVerified = false;
     }
+  }
+
+  getClaim() {
+    this.claimName = this.localStorage.getClaimsDecodeToken();
+    console.log(this.claimName);
   }
   getUserName() {
     this.userName = this.localStorage.getUserNameDecodeToken();

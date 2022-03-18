@@ -96,7 +96,13 @@
         </div>
       </div>
       <br />
-      <button class="btn btn-success" (click)="save()">Kaydet</button>
+      <button
+        class="btn btn-success"
+        (click)="save()"
+        [disabled]="validateCheck()"
+      >
+        Kaydet
+      </button>
       <button class="btn btn-warning" type="button" (click)="clear()">
         Temizle
       </button>

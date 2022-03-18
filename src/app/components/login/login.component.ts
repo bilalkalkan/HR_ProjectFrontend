@@ -23,15 +23,21 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['home']);
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
 
   login() {
     this.authService.login(this.user).subscribe(
       (response) => {
-        this.localStorage.setLocalStorage('token', response.data.token);
         this.router.navigate(['/home']);
+        this.localStorage.setLocalStorage('token', response.data.token);
+        this.toastrService.info('Giriş Yapıldı');
         this.reloadCurrentPage();
-        //this.toastrService.info('Giriş Yapıldı');
       },
       (responseError) => {
         console.log(responseError);
@@ -39,7 +45,6 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
   reloadCurrentPage() {
     window.location.reload();
   }

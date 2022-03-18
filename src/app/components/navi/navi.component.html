@@ -1,9 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav" *ngIf="isVerified">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isVerified">
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: black">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a
@@ -14,6 +26,74 @@
             >Çalışan Bilgileri</a
           >
         </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/operationClaim"
+            style="color: black"
+            *ngIf="claimName == 'admin'"
+            ><i class="bi bi-sliders"></i> Admin</a
+          >
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <div class="nav justify-content-end">
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-danger"
+                routerLink="/login"
+                *ngIf="!isVerified"
+              >
+                <i class="bi bi-person-fill"></i>Giriş Yap
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                routerLink="/register"
+                *ngIf="!isVerified"
+              >
+                <i class="bi bi-person-plus-fill"></i>Kayıt Ol
+              </button>
+            </div>
+          </div>
+        </li>
+        <div class="btn-group mr-3">
+          <div
+            *ngIf="isVerified"
+            class="btn-group"
+            ngbDropdown
+            role="group"
+            aria-label="Button group with nested dropdown"
+          >
+            <button class="btn btn-outline-primary" ngbDropdownToggle>
+              {{ userName }}
+            </button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+              <button ngbDropdownItem routerLink="/user">
+                Profili Güncelle
+              </button>
+              <button ngbDropdownItem (click)="logOut()">
+                <i class="bi bi-person-x-fill"></i>Çıkış yap
+              </button>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav" *ngIf="isVerified">
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: black">Home</a>
+        </li>
+       
         <li class="nav-item">
           <a class="nav-link" routerLink="/employeeFamily" style="color: black"
             >Çalışan Yakını Bilgileri
@@ -49,50 +129,13 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/operationClaim" style="color: black"
-            >Admin</a
-          >
+          
         </li>
         <li></li>
       </ul>
 
-      <div class="btn-group mr-3">
-        <div
-          *ngIf="isVerified"
-          class="btn-group"
-          ngbDropdown
-          role="group"
-          aria-label="Button group with nested dropdown"
-        >
-          <button class="btn btn-outline-primary" ngbDropdownToggle>
-            {{ userName }}
-          </button>
-          <div class="dropdown-menu" ngbDropdownMenu>
-            <button ngbDropdownItem routerLink="/user">Profili Güncelle</button>
-            <button ngbDropdownItem (click)="logOut()">Çıkış yap</button>
-          </div>
-        </div>
-      </div>
-      <div class="nav justify-content-end">
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-danger"
-            routerLink="/login"
-            *ngIf="!isVerified"
-          >
-            <i class="bi bi-person-fill"></i>Giriş Yap
-          </button>
-          <button
-            type="button"
-            class="btn btn-success"
-            routerLink="/register"
-            *ngIf="!isVerified"
-          >
-            <i class="bi bi-person-plus-fill"></i>Kayıt Ol
-          </button>
-        </div>
-      </div>
+     
+     
     </div>
   </div>
-</nav>
+</nav> -->

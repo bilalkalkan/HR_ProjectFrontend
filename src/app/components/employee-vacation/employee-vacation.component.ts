@@ -76,8 +76,8 @@ export class EmployeeVacationComponent implements OnInit {
           this.getEmployeeVacations();
           this.toastrService.success(response.message);
         },
-        (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
         }
       );
     } else {
@@ -87,42 +87,72 @@ export class EmployeeVacationComponent implements OnInit {
           this.getEmployeeVacations();
           this.toastrService.success(response.message);
         },
-        (responseError) => {
-          this.toastrService.error(responseError.error.message, 'Hata');
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
         }
       );
     }
   }
 
   deleteEmployeeVacation(employeeVacation: EmployeeVacation) {
-    this.employeeVacationService
-      .delete(employeeVacation)
-      .subscribe((response) => {
+    this.employeeVacationService.delete(employeeVacation).subscribe(
+      (response) => {
         this.getEmployeeVacations();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        console.log(errorResponse.error);
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   validateCheck(): string {
     let message = '';
     if (
       this.employeeVacation.employeeId == null ||
-      this.employeeVacation.employeeId == undefined ||
+      this.employeeVacation.employeeId == undefined
+    ) {
+      message = 'Çalışan alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
       this.employeeVacation.allowanceType == null ||
       this.employeeVacation.allowanceType == undefined ||
-      this.employeeVacation.allowanceType == '' ||
+      this.employeeVacation.allowanceType == ''
+    ) {
+      message = 'İzin türü alanı boş bırakılmaz';
+      return message;
+    }
+    if (
       this.employeeVacation.allowanceStartingDate == null ||
-      this.employeeVacation.allowanceStartingDate == undefined ||
+      this.employeeVacation.allowanceStartingDate == undefined
+    ) {
+      message = 'Başlangıç tarihi boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeVacation.allowanceExpirationDate == null ||
-      this.employeeVacation.allowanceExpirationDate == undefined ||
+      this.employeeVacation.allowanceExpirationDate == undefined
+    ) {
+      message = 'Bitiş tarihi boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeVacation.addressToBeAllowed == null ||
       this.employeeVacation.addressToBeAllowed == undefined ||
-      this.employeeVacation.addressToBeAllowed == '' ||
+      this.employeeVacation.addressToBeAllowed == ''
+    ) {
+      message = 'Adres alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.employeeVacation.statement == null ||
       this.employeeVacation.statement == undefined ||
       this.employeeVacation.statement == ''
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Açıklama alanı boş bırakılamaz';
       return message;
     }
     return message;
