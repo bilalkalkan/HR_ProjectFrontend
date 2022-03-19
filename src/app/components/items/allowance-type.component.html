@@ -11,6 +11,7 @@
               name="allowanceTypeName"
               id="allowanceTypeName"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="allowanceType.allowanceTypeName"
             />
@@ -19,6 +20,7 @@
         <button
           type="button"
           class="btn btn-success"
+          [disabled]="validateAllowanceType()"
           (click)="saveAllowanceType()"
         >
           Kaydet
@@ -69,12 +71,17 @@
               name="debitTypeName"
               id="debitTypeName"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="debitType.debitTypeName"
             />
           </div>
         </div>
-        <button class="btn btn-success" (click)="saveDebitType()">
+        <button
+          class="btn btn-success"
+          [disabled]="validateDebitType"
+          (click)="saveDebitType()"
+        >
           Kaydet
         </button>
       </form>
@@ -123,12 +130,17 @@
               name="educationalLevelName"
               id="educationalLevelName"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="educationaLevel.educationaLevelName"
             />
           </div>
         </div>
-        <button class="btn btn-success" (click)="saveEducationLevel()">
+        <button
+          class="btn btn-success"
+          [disabled]="validateEducationLevel()"
+          (click)="saveEducationLevel()"
+        >
           Kaydet
         </button>
       </form>
@@ -180,12 +192,17 @@
               name="member"
               id="member"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="familyMember.member"
             />
           </div>
         </div>
-        <button class="btn btn-success" (click)="saveFamilyMember()">
+        <button
+          class="btn btn-success"
+          [disabled]="validateFamilyMember()"
+          (click)="saveFamilyMember()"
+        >
           Kaydet
         </button>
       </form>
@@ -234,12 +251,18 @@
               name="nameOfLanguage"
               id="nameOfLanguage"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="language.nameOfLanguage"
             />
           </div>
         </div>
-        <button type="button" class="btn btn-success" (click)="saveLanguage()">
+        <button
+          type="button"
+          class="btn btn-success"
+          [disabled]="validateLanguage()"
+          (click)="saveLanguage()"
+        >
           Kaydet
         </button>
       </form>
@@ -288,12 +311,17 @@
               name="nationalityName"
               id="nationalityName"
               class="form-control"
+              autocomplete="off"
               required
               [(ngModel)]="nationality.nationalityName"
             />
           </div>
         </div>
-        <button class="btn btn-success" (click)="saveNationality()">
+        <button
+          class="btn btn-success"
+          [disabled]="validateNationality()"
+          (click)="saveNationality()"
+        >
           Kaydet
         </button>
       </form>

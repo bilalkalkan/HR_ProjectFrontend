@@ -117,6 +117,11 @@ export class AllowanceTypeComponent implements OnInit {
     });
   }
   saveAllowanceType() {
+    let message = this.validateAllowanceType();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.allowanceType.id > 0) {
       this.employeeVacationService
         .updateAllowanceType(this.allowanceType)
@@ -135,7 +140,25 @@ export class AllowanceTypeComponent implements OnInit {
         });
     }
   }
+  validateAllowanceType(): string {
+    let message = '';
+    if (
+      this.allowanceType.allowanceTypeName == null ||
+      this.allowanceType.allowanceTypeName == undefined ||
+      this.allowanceType.allowanceTypeName == ''
+    ) {
+      message = 'İzin türü alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
   saveDebitType() {
+    let message = this.validateDebitType();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.debitType.id > 0) {
       this.employeeDebitService
         .updateDebitType(this.debitType)
@@ -154,7 +177,24 @@ export class AllowanceTypeComponent implements OnInit {
         });
     }
   }
+  validateDebitType(): string {
+    let message = '';
+    if (
+      this.debitType.debitTypeName == null ||
+      this.debitType.debitTypeName == undefined ||
+      this.debitType.debitTypeName == ''
+    ) {
+      message = 'Zimmet türü alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
   saveEducationLevel() {
+    let message = this.validateEducationLevel();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.educationaLevel.id > 0) {
       this.employeeEducationService
         .updateEducationLevel(this.educationaLevel)
@@ -173,8 +213,24 @@ export class AllowanceTypeComponent implements OnInit {
         });
     }
   }
-
+  validateEducationLevel(): string {
+    let message = '';
+    if (
+      this.educationaLevel.educationaLevelName == null ||
+      this.educationaLevel.educationaLevelName == undefined ||
+      this.educationaLevel.educationaLevelName == ''
+    ) {
+      message = 'Eğitim seviyesi alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
   saveLanguage() {
+    let message = this.validateLanguage();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.language.id > 0) {
       this.employeeLanguageService
         .updateLanguage(this.language)
@@ -194,7 +250,25 @@ export class AllowanceTypeComponent implements OnInit {
     }
   }
 
+  validateLanguage(): string {
+    let message = '';
+    if (
+      this.language.nameOfLanguage == null ||
+      this.language.nameOfLanguage == undefined ||
+      this.language.nameOfLanguage == ''
+    ) {
+      message = 'Yabancı dil alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
   saveFamilyMember() {
+    let message = this.validateFamilyMember();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.familyMember.id > 0) {
       this.employeeFamilyService
         .updateFamilyMember(this.familyMember)
@@ -214,7 +288,25 @@ export class AllowanceTypeComponent implements OnInit {
     }
   }
 
+  validateFamilyMember(): string {
+    let message = '';
+    if (
+      this.familyMember.member == null ||
+      this.familyMember.member == undefined ||
+      this.familyMember.member == ''
+    ) {
+      message = 'Aile üyesi alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
   saveNationality() {
+    let message = this.validateNationality();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.nationality.id > 0) {
       this.employeeService
         .updateNationality(this.nationality)
@@ -232,6 +324,19 @@ export class AllowanceTypeComponent implements OnInit {
           this.toastrService.success(response.message);
         });
     }
+  }
+
+  validateNationality(): string {
+    let message = '';
+    if (
+      this.nationality.nationalityName == null ||
+      this.nationality == undefined ||
+      this.nationality.nationalityName == ''
+    ) {
+      message = 'Uyruk alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
   }
 
   deleteAllowanceType(allowanceType: AllowanceType) {

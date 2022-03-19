@@ -55,7 +55,11 @@ const routes: Routes = [
   },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
-  { path: 'operationClaim', component: OperationClaimComponent },
+  {
+    path: 'operationClaim',
+    component: OperationClaimComponent,
+    canActivate: [LoginGuard],
+  },
   { path: 'home', component: HomeComponent },
 ];
 

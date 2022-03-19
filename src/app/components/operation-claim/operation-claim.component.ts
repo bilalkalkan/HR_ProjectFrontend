@@ -70,42 +70,51 @@ export class OperationClaimComponent implements OnInit {
   saveOperationClaim() {
     let message = this.checkValidateOperationClaim();
     if (message != '') {
-      this.toastrService.error('Boş alan bırakılamaz!');
+      this.toastrService.error(message);
       return;
     }
     if (this.operationClaim.id > 0) {
-      this.operationClaimService
-        .update(this.operationClaim)
-        .subscribe((response) => {
+      this.operationClaimService.update(this.operationClaim).subscribe(
+        (response) => {
           this.getOperationClaims();
           this.operationClaim = new OperationClaim();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
-      this.operationClaimService
-        .add(this.operationClaim)
-        .subscribe((response) => {
+      this.operationClaimService.add(this.operationClaim).subscribe(
+        (response) => {
           this.getOperationClaims();
           this.operationClaim = new OperationClaim();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
 
   saveUserOperationClaim() {
     let message = this.checkUserValidateOperationClaim();
     if (message != '') {
-      this.toastrService.error('Boş alan bırakılamaz');
+      this.toastrService.error(message);
       return;
     }
     if (this.userOperationClaim.id > 0) {
-      this.userOperationClaimService
-        .update(this.userOperationClaim)
-        .subscribe((response) => {
+      this.userOperationClaimService.update(this.userOperationClaim).subscribe(
+        (response) => {
           this.getUserOperationClaims();
           this.userOperationClaim = new UserOperationClaim();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
       this.userOperationClaimService.add(this.userOperationClaim).subscribe(
         (response) => {
@@ -114,7 +123,7 @@ export class OperationClaimComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (errorResponse) => {
-          console.log(errorResponse.error.message);
+          this.toastrService.error(errorResponse.error.Message);
         }
       );
     }
@@ -127,18 +136,21 @@ export class OperationClaimComponent implements OnInit {
         this.toastrService.success(response.message);
       },
       (errorResponse) => {
-        console.log(errorResponse.error.message);
+        console.log(errorResponse.error.Message);
       }
     );
   }
 
   deleteUserOperationClaim(userOperationClaim: UserOperationClaim) {
-    this.userOperationClaimService
-      .delete(userOperationClaim)
-      .subscribe((response) => {
+    this.userOperationClaimService.delete(userOperationClaim).subscribe(
+      (response) => {
         this.getUserOperationClaims();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   checkValidateOperationClaim(): string {
@@ -148,7 +160,7 @@ export class OperationClaimComponent implements OnInit {
       this.operationClaim.name == undefined ||
       this.operationClaim.name == ''
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Rol alanı boş bırakılamaz';
       return message;
     }
     return message;
@@ -158,11 +170,16 @@ export class OperationClaimComponent implements OnInit {
     let message = '';
     if (
       this.userOperationClaim.operationClaimId == null ||
-      this.userOperationClaim.operationClaimId == undefined ||
+      this.userOperationClaim.operationClaimId == undefined
+    ) {
+      message = 'Rol alanı boş bırakılamaz';
+      return message;
+    }
+    if (
       this.userOperationClaim.userId == null ||
       this.userOperationClaim.userId == undefined
     ) {
-      message = 'Boş alan bırakılamaz';
+      message = 'Kullanıcı alanı boş bırakılamaz';
       return message;
     }
     return message;
