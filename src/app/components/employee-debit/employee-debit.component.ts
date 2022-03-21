@@ -80,7 +80,9 @@ export class EmployeeDebitComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error);
+          this.toastrService.error(
+            responseError.error.Message || responseError.error.message
+          );
         }
       );
     } else {
@@ -91,7 +93,9 @@ export class EmployeeDebitComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error);
+          this.toastrService.error(
+            responseError.error.Message || responseError.error.message
+          );
         }
       );
     }
@@ -104,7 +108,7 @@ export class EmployeeDebitComponent implements OnInit {
         this.toastrService.success(response.message);
       },
       (errorResponse) => {
-        this.toastrService.error(errorResponse.error);
+        this.toastrService.error(errorResponse.error.Message);
       }
     );
   }

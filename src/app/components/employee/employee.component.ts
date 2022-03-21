@@ -79,7 +79,9 @@ export class EmployeeComponent implements OnInit {
           this.employee = new Employee();
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error);
+          this.toastrService.error(
+            errorResponse.error.Message || errorResponse.error.message
+          );
         }
       );
     } else {
@@ -90,7 +92,9 @@ export class EmployeeComponent implements OnInit {
           this.getEmployees();
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error);
+          this.toastrService.error(
+            errorResponse.error.message || errorResponse.error.Message
+          );
         }
       );
     }

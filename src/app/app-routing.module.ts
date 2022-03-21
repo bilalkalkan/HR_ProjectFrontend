@@ -60,7 +60,7 @@ const routes: Routes = [
     component: OperationClaimComponent,
     canActivate: [LoginGuard],
   },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuard] },
 ];
 
 @NgModule({

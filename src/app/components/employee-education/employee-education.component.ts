@@ -60,7 +60,9 @@ export class EmployeeEducationComponent implements OnInit {
         },
         (responseError) => {
           console.log(responseError.error);
-          this.toastrService.error(responseError.error.Message);
+          this.toastrService.error(
+            responseError.error.Message || responseError.error.message
+          );
         }
       );
     } else {
@@ -71,7 +73,9 @@ export class EmployeeEducationComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (responseError) => {
-          this.toastrService.error(responseError.error.Message);
+          this.toastrService.error(
+            responseError.error.Message || responseError.error.message
+          );
         }
       );
     }

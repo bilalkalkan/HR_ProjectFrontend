@@ -77,7 +77,9 @@ export class EmployeeVacationComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error.Message);
+          this.toastrService.error(
+            errorResponse.error.Message || errorResponse.error.message
+          );
         }
       );
     } else {
@@ -88,7 +90,12 @@ export class EmployeeVacationComponent implements OnInit {
           this.toastrService.success(response.message);
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error.Message);
+          if (errorResponse.error.data == null) {
+            console.log(errorResponse.error);
+            this.toastrService.error(
+              errorResponse.error.message || errorResponse.error.Message
+            );
+          }
         }
       );
     }

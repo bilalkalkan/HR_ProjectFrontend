@@ -10,6 +10,7 @@
             name="name"
             id="name"
             class="form-control"
+            autocomplete="off"
             required
             [(ngModel)]="operationClaim.name"
           />
@@ -17,7 +18,11 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-success" (click)="saveOperationClaim()">
+        <button
+          class="btn btn-success"
+          (click)="saveOperationClaim()"
+          [disabled]="checkValidateOperationClaim()"
+        >
           Kaydet
         </button>
         <button class="btn btn-danger" (click)="clearOperationClaimTextBox()">
@@ -92,7 +97,11 @@
           </ng-select>
         </div>
         <br />
-        <button class="btn btn-success" (click)="saveUserOperationClaim()">
+        <button
+          class="btn btn-success"
+          (click)="saveUserOperationClaim()"
+          [disabled]="checkUserValidateOperationClaim()"
+        >
           Kaydet
         </button>
         <button

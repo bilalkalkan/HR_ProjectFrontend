@@ -125,19 +125,29 @@ export class AllowanceTypeComponent implements OnInit {
     if (this.allowanceType.id > 0) {
       this.employeeVacationService
         .updateAllowanceType(this.allowanceType)
-        .subscribe((response) => {
-          this.getAllowanceTypes();
-          this.allowanceType = new AllowanceType();
-          this.toastrService.success(response.message);
-        });
+        .subscribe(
+          (response) => {
+            this.getAllowanceTypes();
+            this.allowanceType = new AllowanceType();
+            this.toastrService.success(response.message);
+          },
+          (errorResponse) => {
+            this.toastrService.error(errorResponse.error.Message);
+          }
+        );
     } else {
       this.employeeVacationService
         .addAllowanceType(this.allowanceType)
-        .subscribe((response) => {
-          this.getAllowanceTypes();
-          this.allowanceType = new AllowanceType();
-          this.toastrService.success(response.message);
-        });
+        .subscribe(
+          (response) => {
+            this.getAllowanceTypes();
+            this.allowanceType = new AllowanceType();
+            this.toastrService.success(response.message);
+          },
+          (errorResponse) => {
+            this.toastrService.error(errorResponse.error.Message);
+          }
+        );
     }
   }
   validateAllowanceType(): string {
@@ -160,21 +170,27 @@ export class AllowanceTypeComponent implements OnInit {
       return;
     }
     if (this.debitType.id > 0) {
-      this.employeeDebitService
-        .updateDebitType(this.debitType)
-        .subscribe((response) => {
+      this.employeeDebitService.updateDebitType(this.debitType).subscribe(
+        (response) => {
           this.getDebitTypes();
           this.debitType = new DebitType();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
-      this.employeeDebitService
-        .addDebitType(this.debitType)
-        .subscribe((response) => {
+      this.employeeDebitService.addDebitType(this.debitType).subscribe(
+        (response) => {
           this.getDebitTypes();
           this.debitType = new DebitType();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
   validateDebitType(): string {
@@ -198,19 +214,29 @@ export class AllowanceTypeComponent implements OnInit {
     if (this.educationaLevel.id > 0) {
       this.employeeEducationService
         .updateEducationLevel(this.educationaLevel)
-        .subscribe((response) => {
-          this.getEducationLevels();
-          this.educationaLevel = new EducationLevel();
-          this.toastrService.success(response.message);
-        });
+        .subscribe(
+          (response) => {
+            this.getEducationLevels();
+            this.educationaLevel = new EducationLevel();
+            this.toastrService.success(response.message);
+          },
+          (errorResponse) => {
+            this.toastrService.error(errorResponse.error.Message);
+          }
+        );
     } else {
       this.employeeEducationService
         .addEducationLevel(this.educationaLevel)
-        .subscribe((response) => {
-          this.getEducationLevels();
-          this.educationaLevel = new EducationLevel();
-          this.toastrService.success(response.message);
-        });
+        .subscribe(
+          (response) => {
+            this.getEducationLevels();
+            this.educationaLevel = new EducationLevel();
+            this.toastrService.success(response.message);
+          },
+          (errorResponse) => {
+            this.toastrService.error(errorResponse.error.Message);
+          }
+        );
     }
   }
   validateEducationLevel(): string {
@@ -232,21 +258,27 @@ export class AllowanceTypeComponent implements OnInit {
       return;
     }
     if (this.language.id > 0) {
-      this.employeeLanguageService
-        .updateLanguage(this.language)
-        .subscribe((response) => {
+      this.employeeLanguageService.updateLanguage(this.language).subscribe(
+        (response) => {
           this.getLanguages();
           this.language = new Language();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
-      this.employeeLanguageService
-        .addLanguage(this.language)
-        .subscribe((response) => {
+      this.employeeLanguageService.addLanguage(this.language).subscribe(
+        (response) => {
           this.getLanguages();
           this.language = new Language();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
 
@@ -272,19 +304,27 @@ export class AllowanceTypeComponent implements OnInit {
     if (this.familyMember.id > 0) {
       this.employeeFamilyService
         .updateFamilyMember(this.familyMember)
-        .subscribe((response) => {
-          this.getFamilyMembers();
-          this.familyMember = new FamilyMember();
-          this.toastrService.success(response.message);
-        });
+        .subscribe(
+          (response) => {
+            this.getFamilyMembers();
+            this.familyMember = new FamilyMember();
+            this.toastrService.success(response.message);
+          },
+          (errorResponse) => {
+            this.toastrService.error(errorResponse.error.Message);
+          }
+        );
     } else {
-      this.employeeFamilyService
-        .addFamilyMember(this.familyMember)
-        .subscribe((response) => {
+      this.employeeFamilyService.addFamilyMember(this.familyMember).subscribe(
+        (response) => {
           this.getFamilyMembers();
           this.familyMember = new FamilyMember();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
 
@@ -308,21 +348,27 @@ export class AllowanceTypeComponent implements OnInit {
       return;
     }
     if (this.nationality.id > 0) {
-      this.employeeService
-        .updateNationality(this.nationality)
-        .subscribe((response) => {
+      this.employeeService.updateNationality(this.nationality).subscribe(
+        (response) => {
           this.getNationalities();
           this.nationality = new Nationality();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     } else {
-      this.employeeService
-        .addNationality(this.nationality)
-        .subscribe((response) => {
+      this.employeeService.addNationality(this.nationality).subscribe(
+        (response) => {
           this.getNationalities();
           this.nationality = new Nationality();
           this.toastrService.success(response.message);
-        });
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
     }
   }
 
@@ -340,55 +386,75 @@ export class AllowanceTypeComponent implements OnInit {
   }
 
   deleteAllowanceType(allowanceType: AllowanceType) {
-    this.employeeVacationService
-      .deleteAllowanceType(allowanceType)
-      .subscribe((response) => {
+    this.employeeVacationService.deleteAllowanceType(allowanceType).subscribe(
+      (response) => {
         this.getAllowanceTypes();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   deleteDebitType(debitType: DebitType) {
-    this.employeeDebitService
-      .deleteDebitType(debitType)
-      .subscribe((response) => {
+    this.employeeDebitService.deleteDebitType(debitType).subscribe(
+      (response) => {
         this.getDebitTypes();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   deleteEducationLevel(educationaLevel: EducationLevel) {
     this.employeeEducationService
       .deleteEducationLevel(educationaLevel)
-      .subscribe((response) => {
-        this.getEducationLevels();
-        this.toastrService.success(response.message);
-      });
+      .subscribe(
+        (response) => {
+          this.getEducationLevels();
+          this.toastrService.success(response.message);
+        },
+        (errorResponse) => {
+          this.toastrService.error(errorResponse.error.Message);
+        }
+      );
   }
 
   deleteNationality(nationality: Nationality) {
-    this.employeeService
-      .deleteNationality(nationality)
-      .subscribe((response) => {
+    this.employeeService.deleteNationality(nationality).subscribe(
+      (response) => {
         this.getNationalities();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
   deleteLanguage(language: Language) {
-    this.employeeLanguageService
-      .deleteLanguage(language)
-      .subscribe((response) => {
+    this.employeeLanguageService.deleteLanguage(language).subscribe(
+      (response) => {
         this.getLanguages();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 
   deleteFamilyMember(familyMember: FamilyMember) {
-    this.employeeFamilyService
-      .deleteFamilyMember(familyMember)
-      .subscribe((response) => {
+    this.employeeFamilyService.deleteFamilyMember(familyMember).subscribe(
+      (response) => {
         this.getFamilyMembers();
         this.toastrService.success(response.message);
-      });
+      },
+      (errorResponse) => {
+        this.toastrService.error(errorResponse.error.Message);
+      }
+    );
   }
 }

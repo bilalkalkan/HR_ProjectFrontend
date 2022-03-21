@@ -55,7 +55,7 @@ export class EmployeeLanguageComponent implements OnInit {
   save() {
     let message = this.validateCheck();
     if (message != '') {
-      this.toastrService.error('Boş alan bırakılamaz');
+      this.toastrService.error(message);
       return;
     }
     if (this.employeeLanguage.id > 0) {
@@ -66,7 +66,9 @@ export class EmployeeLanguageComponent implements OnInit {
           this.getEmployeeLanguages();
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error.Message);
+          this.toastrService.error(
+            errorResponse.error.Message || errorResponse.error.message
+          );
         }
       );
     } else {
@@ -77,7 +79,9 @@ export class EmployeeLanguageComponent implements OnInit {
           this.getEmployeeLanguages();
         },
         (errorResponse) => {
-          this.toastrService.error(errorResponse.error.Message);
+          this.toastrService.error(
+            errorResponse.error.Message || errorResponse.error.message
+          );
         }
       );
     }
@@ -90,7 +94,9 @@ export class EmployeeLanguageComponent implements OnInit {
         this.toastrService.success(response.message);
       },
       (errorResponse) => {
-        this.toastrService.error(errorResponse.error.Message);
+        this.toastrService.error(
+          errorResponse.error.Message || errorResponse.error.message
+        );
       }
     );
   }
