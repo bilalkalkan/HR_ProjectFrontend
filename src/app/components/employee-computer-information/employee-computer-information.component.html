@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="align-items-center">
+    <form>
+      <div class="col">
+        <div class="form-group">
+          <label for="employeeId">Çalışan Seçiniz</label>
+          <ng-select
+            id="employeeId"
+            type="number"
+            notFoundText="Kaynak bulunamadı"
+            name="employeeId"
+            placeholder="Seçiniz"
+            [(ngModel)]="employeeComputerInformation.employeeId"
+          >
+            <ng-option
+              *ngFor="let employee of employees"
+              [value]="employee.id"
+              >{{ employee.firstName }}</ng-option
+            >
+          </ng-select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="validityStartSate">Geçerlilik Başlangıç Tarihi</label>
+          <input
+            type="text"
+            id="validityStartSate"
+            name="validityStartSate"
+            class="form-control"
+            autocomplete="off"
+            bsDatepicker
+            [(ngModel)]="employeeComputerInformation.validityStartSate"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="knowledgeName"
+            >Bilgisayar Programı / Yazılım /Donanım Adı</label
+          >
+          <input
+            type="text"
+            id="knowledgeName"
+            name="knowledgeName"
+            class="form-control"
+            autocomplete="off"
+            [(ngModel)]="employeeComputerInformation.knowledgeName"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="knowledgeLevel">Bilgi Seviyesi</label>
+          <ng-select
+            id="knowledgeLevel"
+            name="knowledgeLevel"
+            notFoundText="Kaynak bulunamadı"
+            placeholder="Seçiniz"
+            [(ngModel)]="employeeComputerInformation.knowledgeLevel"
+          >
+            <ng-option value="Başlangıç">Başlangıç</ng-option>
+            <ng-option value="Orta">Orta</ng-option>
+            <ng-option value="İleri">İleri</ng-option>
+          </ng-select>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="button"
+          class="btn btn-success"
+          *ngIf="!validateCheck()"
+          (click)="save()"
+        >
+          Kaydet
+        </button>
+        <button type="button" class="btn btn-warning" (click)="clear()">
+          Temizle
+        </button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Geçerlilik Başlangıç Tarihi</th>
+          <th scope="col">Bilgisayar Programı/Yazılım/Donanım Adı</th>
+          <th scope="col">Bilgi Seviyesi</th>
+          <th scope="col">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let employeeComputerInformation of employeeComputerInformations
+          "
+        >
+          <td>{{ employeeComputerInformation.id }}</td>
+          <td>{{ employeeComputerInformation.employeeId }}</td>
+          <td>
+            {{
+              employeeComputerInformation.validityStartSate | date: "dd-MM-yyyy"
+            }}
+          </td>
+          <td>{{ employeeComputerInformation.knowledgeName }}</td>
+          <td>{{ employeeComputerInformation.knowledgeLevel }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="
+                  deleteEmployeeComputerInformation(employeeComputerInformation)
+                "
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="
+                  getEmployeeComputerInformation(employeeComputerInformation.id)
+                "
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

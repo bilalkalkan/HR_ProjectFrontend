@@ -13,6 +13,7 @@ import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { OperationClaimComponent } from './components/operation-claim/operation-claim.component';
+import { EmployeeComputerInformationComponent } from './components/employee-computer-information/employee-computer-information.component';
 const routes: Routes = [
   {
     path: 'employee',
@@ -61,6 +62,11 @@ const routes: Routes = [
     canActivate: [LoginGuard],
   },
   { path: 'home', component: HomeComponent, canActivate: [LoginGuard] },
+  {
+    path: 'employeeComputerInformation',
+    component: EmployeeComputerInformationComponent,
+    canActivate: [LoginGuard],
+  },
 ];
 
 @NgModule({

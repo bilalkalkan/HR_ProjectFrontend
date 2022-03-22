@@ -63,6 +63,14 @@
         <li class="nav-item">
           <a
             class="nav-link"
+            routerLink="/employeeComputerInformation"
+            style="color: black"
+            >Çalışan Bilgisayar Bilgileri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
             routerLink="/operationClaim"
             style="color: black"
             *ngIf="claimName == 'admin,user'"
@@ -108,9 +116,7 @@
               <button ngbDropdownItem routerLink="/user">
                 Profili Güncelle
               </button>
-              <button ngbDropdownItem (click)="logOut()">
-                <i class="bi bi-person-x-fill"></i>Çıkış yap
-              </button>
+              <button ngbDropdownItem (click)="logOut()">Çıkış yap</button>
             </div>
           </div>
         </div>
