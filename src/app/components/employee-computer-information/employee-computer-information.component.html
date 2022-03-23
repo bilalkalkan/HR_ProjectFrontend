@@ -12,10 +12,9 @@
             placeholder="Seçiniz"
             [(ngModel)]="employeeComputerInformation.employeeId"
           >
-            <ng-option
-              *ngFor="let employee of employees"
-              [value]="employee.id"
-              >{{ employee.firstName }}</ng-option
+            <ng-option *ngFor="let employee of employees" [value]="employee.id"
+              >{{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}</ng-option
             >
           </ng-select>
         </div>

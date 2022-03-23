@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="align-items-center">
+    <form>
+      <div class="col">
+        <div class="form-group">
+          <label for="employeeId">Çalışan</label>
+          <ng-select
+            id="employeeId"
+            name="employeeId"
+            placeholder="Seçiniz"
+            notFoundText="Kaynak bulunamadı"
+            [(ngModel)]="employeeEmergencyInformation.employeeId"
+          >
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
+              {{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}
+            </ng-option>
+          </ng-select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="degree">Yakınlık derecesi</label>
+          <ng-select
+            id="degree"
+            name="degree"
+            placeholder="Seçiniz"
+            notFoundText="Kaynak bulunamadı"
+            [(ngModel)]="employeeEmergencyInformation.degree"
+          >
+            <ng-option
+              *ngFor="let familyMember of familyMembers"
+              [value]="familyMember.member"
+              >{{ familyMember.member }}
+            </ng-option>
+          </ng-select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="firstName">Adı</label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            class="form-control"
+            autocomplete="off"
+            [(ngModel)]="employeeEmergencyInformation.firstName"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="lastName">Soyadı</label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            class="form-control"
+            autocomplete="off"
+            [(ngModel)]="employeeEmergencyInformation.lastName"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="phoneNumber">Telefon Numarası</label>
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            class="form-control"
+            [(ngModel)]="employeeEmergencyInformation.phoneNumber"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="priorityValue">Öncelik Değeri</label>
+          <ng-select
+            name="priorityValue"
+            id="priorityValue"
+            notFoundText="Kaynak bulunamadı"
+            placeholder="Seçiniz"
+            [(ngModel)]="employeeEmergencyInformation.priorityValue"
+          >
+            <ng-option [value]="1">1</ng-option>
+            <ng-option [value]="2">2</ng-option>
+            <ng-option [value]="3">3</ng-option>
+            <ng-option [value]="4">4</ng-option>
+            <ng-option [value]="5">5</ng-option>
+          </ng-select>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-success" (click)="save()">
+          Kaydet
+        </button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Adı</th>
+          <th scope="col">Soyadı</th>
+          <th scope="col">Telefon Numarası</th>
+          <th scope="col">Öncelik Değeri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let employeeEmergencyInformation of employeeEmergencyInformations
+          "
+        >
+          <td>{{ employeeEmergencyInformation.id }}</td>
+          <td>{{ employeeEmergencyInformation.employeeId }}</td>
+          <td>
+            {{ employeeEmergencyInformation.degree }}
+          </td>
+          <td>{{ employeeEmergencyInformation.firstName }}</td>
+          <td>{{ employeeEmergencyInformation.lastName }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="delete(employeeEmergencyInformation)"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="
+                  getEmployeeEmergencyInformation(
+                    employeeEmergencyInformation.id
+                  )
+                "
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
