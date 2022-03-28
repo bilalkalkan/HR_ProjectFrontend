@@ -27,6 +27,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { EmployeeComputerInformationComponent } from './components/employee-computer-information/employee-computer-information.component';
 import { EmployeeEmergencyInformationComponent } from './components/employee-emergency-information/employee-emergency-information.component';
 import { EmployeeContactInformationComponent } from './components/employee-contact-information/employee-contact-information.component';
+import { EmployeePastWorkExperienceComponent } from './components/employee-past-work-experience/employee-past-work-experience.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EmployeeContactInformationComponent } from './components/employee-conta
     EmployeeComputerInformationComponent,
     EmployeeEmergencyInformationComponent,
     EmployeeContactInformationComponent,
+    EmployeePastWorkExperienceComponent,
   ],
   imports: [
     BrowserModule,

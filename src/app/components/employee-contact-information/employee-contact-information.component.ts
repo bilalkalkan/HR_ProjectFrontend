@@ -1,6 +1,8 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { defineLocale, trLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
@@ -25,8 +27,12 @@ export class EmployeeContactInformationComponent implements OnInit {
   constructor(
     private employeeContactInformationService: EmployeeContactInformationService,
     private employeeService: EmployeeService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private localeService: BsLocaleService
+  ) {
+    defineLocale('tr', trLocale);
+    this.localeService.use('tr');
+  }
 
   ngOnInit(): void {
     this.getCities();

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { defineLocale, trLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeEmergencyInformation } from 'src/app/models/employeeEmergencyInformation';
@@ -24,9 +26,12 @@ export class EmployeeEmergencyInformationComponent implements OnInit {
     private employeeEmergencyInformationService: EmployeeEmergencyInformationService,
     private employeeService: EmployeeService,
     private employeeFamilyService: EmployeeFamilyService,
-
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private localeService: BsLocaleService
+  ) {
+    defineLocale('tr', trLocale);
+    this.localeService.use('tr');
+  }
 
   ngOnInit(): void {
     this.getEmployeeEmergencyInformations();

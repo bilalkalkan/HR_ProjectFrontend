@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { defineLocale, trLocale } from 'ngx-bootstrap/chronos';
 import { DATE } from 'ngx-bootstrap/chronos/units/constants';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeComputerInformation } from 'src/app/models/employeeComputerInformation';
@@ -19,8 +21,12 @@ export class EmployeeComputerInformationComponent implements OnInit {
   constructor(
     private employeeComputerInformationService: EmployeecomputerInformationService,
     private employeeService: EmployeeService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private localeService: BsLocaleService
+  ) {
+    defineLocale('tr', trLocale);
+    this.localeService.use('tr');
+  }
 
   ngOnInit(): void {
     this.getEmployees();

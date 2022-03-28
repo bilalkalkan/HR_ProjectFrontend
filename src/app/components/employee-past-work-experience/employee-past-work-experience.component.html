@@ -1,0 +1,209 @@
+<div class="container">
+  <div class="align-items-center">
+    <form>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="employeeId">Çalışan</label>
+          <ng-select
+            id="employeeId"
+            placeholder="Seçiniz"
+            notFoundText="Kaynak bulunamadı"
+            name="employeeId"
+            [(ngModel)]="employeePastWorkExperience.employeeId"
+          >
+            <ng-option *ngFor="let employee of employees" [value]="employee.id"
+              >{{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}</ng-option
+            >
+          </ng-select>
+        </div>
+      </div>
+      <br />
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="companyInstitutionActive">Şirket Kurum Aktif</label>
+          <input
+            type="checkbox"
+            style="width: 30px"
+            name="companyInstitutionActive"
+            id="companyInstitutionActive"
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.companyInstitutionActive"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="companyName">Şirket/Kurum Adı</label>
+          <input
+            type="text"
+            name="companyName"
+            id="companyName"
+            class="form-control"
+            name="companyName"
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.companyName"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="department">Departman</label>
+          <input
+            type="text"
+            name="department"
+            id="department"
+            class="form-control"
+            name="department"
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.department"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="duty">Görevi</label>
+          <input
+            type="text"
+            name="duty"
+            id="duty"
+            class="form-control"
+            name="duty"
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.duty"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="entryDate">Giriş Tarihi</label>
+          <input
+            type="text"
+            name="entryDate"
+            id="entryDate"
+            class="form-control"
+            name="entryDate"
+            bsDatepicker
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.entryDate"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="releaseDate">Çıkış Tarihi</label>
+          <input
+            type="text"
+            name="releaseDate"
+            id="releaseDate"
+            class="form-control"
+            name="releaseDate"
+            bsDatepicker
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.releaseDate"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="reasonForLeaving">Ayrılma Nedeni</label>
+          <input
+            type="text"
+            name="reasonForLeaving"
+            id="reasonForLeaving"
+            class="form-control"
+            name="reasonForLeaving"
+            autocomplete="off"
+            [(ngModel)]="employeePastWorkExperience.reasonForLeaving"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="align-items-center">
+          <label for="includeInSeniorityAccount">Kıdem Hesabına Dahil Et</label>
+          <input
+            type="checkbox"
+            style="width: 30px"
+            name="includeInSeniorityAccount"
+            id="includeInSeniorityAccount"
+            [(ngModel)]="employeePastWorkExperience.includeInSeniorityAccount"
+          />
+        </div>
+      </div>
+      <br />
+      <button
+        class="btn btn-success"
+        type="button"
+        [disabled]="validateCheck()"
+        (click)="save()"
+      >
+        Kaydet
+      </button>
+      <button class="btn btn-warning" type="button" (click)="clear()">
+        Temizle
+      </button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Çalışan Id</th>
+          <th scope="col">Şirket Kurum Aktif</th>
+          <th scope="col">Şirket/Kurum Adı</th>
+          <th scope="col">Departman</th>
+          <th scope="col">Görevi</th>
+          <th scope="col">Giriş Tarihi</th>
+          <th scope="col">Çıkış Tarihi</th>
+          <th scope="col">Ayrılma Nedeni</th>
+          <th scope="col">Kıdem Hesabına Dahil edilsin mi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let employeePastWorkExperience of employeePastWorkExperiences"
+        >
+          <td>{{ employeePastWorkExperience.id }}</td>
+          <td>{{ employeePastWorkExperience.employeeId }}</td>
+          <td>
+            {{ employeePastWorkExperience.companyInstitutionActive }}
+          </td>
+          <td>{{ employeePastWorkExperience.companyName }}</td>
+          <td>{{ employeePastWorkExperience.department }}</td>
+          <td>{{ employeePastWorkExperience.duty }}</td>
+          <td>
+            {{ employeePastWorkExperience.entryDate | date: "dd-MM-yyyy" }}
+          </td>
+          <td>
+            {{ employeePastWorkExperience.releaseDate | date: "dd-MM-yyyy" }}
+          </td>
+          <td>{{ employeePastWorkExperience.reasonForLeaving }}</td>
+          <td>{{ employeePastWorkExperience.includeInSeniorityAccount }}</td>
+
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="
+                  deleteEmployeePastWorkExperiences(employeePastWorkExperience)
+                "
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="
+                  getEmployeePastWorkExperience(employeePastWorkExperience.id)
+                "
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

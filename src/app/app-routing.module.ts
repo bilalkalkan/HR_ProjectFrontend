@@ -17,6 +17,7 @@ import { EmployeeComputerInformationComponent } from './components/employee-comp
 import { EmployeeEmergencyInformationComponent } from './components/employee-emergency-information/employee-emergency-information.component';
 import { EmployeeContactInformation } from './models/employeeContactInformation';
 import { EmployeeContactInformationComponent } from './components/employee-contact-information/employee-contact-information.component';
+import { EmployeePastWorkExperienceComponent } from './components/employee-past-work-experience/employee-past-work-experience.component';
 const routes: Routes = [
   {
     path: 'employee',
@@ -78,6 +79,12 @@ const routes: Routes = [
   {
     path: 'employeeContactInformation',
     component: EmployeeContactInformationComponent,
+    canActivate: [LoginGuard],
+  },
+
+  {
+    path: 'employeePastWorkExperience',
+    component: EmployeePastWorkExperienceComponent,
     canActivate: [LoginGuard],
   },
 ];
