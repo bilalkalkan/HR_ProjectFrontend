@@ -1,31 +1,31 @@
 <div class="container">
   <div class="align-items-center">
     <form>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="employeeId">Çalışan</label>
           <ng-select
             id="employeeId"
+            notFoundText="Kaynak bulunamadı"
             name="employeeId"
             placeholder="Seçiniz"
-            notFoundText="Kaynak bulunamadı"
             [(ngModel)]="employeeEmergencyInformation.employeeId"
           >
-            <ng-option *ngFor="let employee of employees" [value]="employee.id">
-              {{ employee.firstName | titlecase }}
-              {{ employee.lastName | titlecase }}
-            </ng-option>
+            <ng-option *ngFor="let employee of employees" [value]="employee.id"
+              >{{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}</ng-option
+            >
           </ng-select>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
-          <label for="degree">Yakınlık derecesi</label>
+          <label for="degree">Yakınlık Derecesi</label>
           <ng-select
             id="degree"
+            notFoundText="Kaynak bulunamadı"
             name="degree"
             placeholder="Seçiniz"
-            notFoundText="Kaynak bulunamadı"
             [(ngModel)]="employeeEmergencyInformation.degree"
           >
             <ng-option
@@ -36,7 +36,7 @@
           </ng-select>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="firstName">Adı</label>
           <input
@@ -49,7 +49,7 @@
           />
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="lastName">Soyadı</label>
           <input
@@ -62,24 +62,28 @@
           />
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
-          <label for="phoneNumber">Telefon Numarası</label>
+          <label for="phoneNumber"
+            ><i class="bi bi-telephone-fill"></i>Telefon Numarası</label
+          >
           <input
             type="text"
             name="phoneNumber"
             id="phoneNumber"
             class="form-control"
+            autocomplete="off"
             [(ngModel)]="employeeEmergencyInformation.phoneNumber"
           />
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
-          <label for="priorityValue">Öncelik Değeri</label>
+          <label for="priorityValue">Öncelik Derecesi</label>
           <ng-select
-            name="priorityValue"
+            type="number"
             id="priorityValue"
+            name="priorityValue"
             notFoundText="Kaynak bulunamadı"
             placeholder="Seçiniz"
             [(ngModel)]="employeeEmergencyInformation.priorityValue"
@@ -92,9 +96,18 @@
           </ng-select>
         </div>
       </div>
+      <br />
       <div>
-        <button type="button" class="btn btn-success" (click)="save()">
+        <button
+          type="button"
+          class="btn btn-success"
+          [disabled]="checkValidate()"
+          (click)="save()"
+        >
           Kaydet
+        </button>
+        <button type="button" class="btn btn-warning" (click)="clear()">
+          Temizle
         </button>
       </div>
     </form>
@@ -103,10 +116,12 @@
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Çalışan Id</th>
+          <th scope="col">Yakınlık Derecesi</th>
           <th scope="col">Adı</th>
           <th scope="col">Soyadı</th>
           <th scope="col">Telefon Numarası</th>
           <th scope="col">Öncelik Değeri</th>
+          <th scope="col">İşlemler</th>
         </tr>
       </thead>
       <tbody>
@@ -118,10 +133,12 @@
           <td>{{ employeeEmergencyInformation.id }}</td>
           <td>{{ employeeEmergencyInformation.employeeId }}</td>
           <td>
-            {{ employeeEmergencyInformation.degree }}
+            {{ employeeEmergencyInformation.degree | titlecase }}
           </td>
-          <td>{{ employeeEmergencyInformation.firstName }}</td>
-          <td>{{ employeeEmergencyInformation.lastName }}</td>
+          <td>{{ employeeEmergencyInformation.firstName | titlecase }}</td>
+          <td>{{ employeeEmergencyInformation.lastName | titlecase }}</td>
+          <td>{{ employeeEmergencyInformation.phoneNumber }}</td>
+          <td>{{ employeeEmergencyInformation.priorityValue }}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
               <button

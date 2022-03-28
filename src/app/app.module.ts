@@ -26,6 +26,7 @@ import { OperationClaimComponent } from './components/operation-claim/operation-
 import { NaviComponent } from './components/navi/navi.component';
 import { EmployeeComputerInformationComponent } from './components/employee-computer-information/employee-computer-information.component';
 import { EmployeeEmergencyInformationComponent } from './components/employee-emergency-information/employee-emergency-information.component';
+import { EmployeeContactInformationComponent } from './components/employee-contact-information/employee-contact-information.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EmployeeEmergencyInformationComponent } from './components/employee-eme
     NaviComponent,
     EmployeeComputerInformationComponent,
     EmployeeEmergencyInformationComponent,
+    EmployeeContactInformationComponent,
   ],
   imports: [
     BrowserModule,

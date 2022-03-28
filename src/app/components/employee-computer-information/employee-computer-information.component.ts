@@ -53,6 +53,7 @@ export class EmployeeComputerInformationComponent implements OnInit {
   }
 
   save() {
+    debugger;
     let message = this.validateCheck();
     if (message != '') {
       this.toastrService.error(message);
@@ -85,7 +86,7 @@ export class EmployeeComputerInformationComponent implements OnInit {
               this.toastrService.success(response.message);
           },
           error: (errorResponse) => {
-            this.getEmployeeComputerInformations(), console.log(errorResponse);
+            console.log(errorResponse);
             this.toastrService.error(
               errorResponse.error.Message || errorResponse.error.message
             );

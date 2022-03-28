@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { HtmlParser } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { EmployeeComputerInformation } from '../models/employeeComputerInformation';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';

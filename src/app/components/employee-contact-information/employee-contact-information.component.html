@@ -1,0 +1,345 @@
+<div class="container">
+  <div class="align-items-center">
+    <div class="row">
+      <form>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="employeeId">Çalışan</label>
+            <ng-select
+              id="employeeId"
+              notFoundText="Kaynak bulunamadı"
+              placeholder="Seçiniz"
+              name="employeeId"
+              [(ngModel)]="employeeContactInformation.employeeId"
+            >
+              <ng-option
+                *ngFor="let employee of employees"
+                [value]="employee.id"
+              >
+                {{ employee.firstName | titlecase }}
+                {{ employee.lastName | titlecase }}
+              </ng-option>
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="validityStartSate">Geçerlilik Başlangıç Tarihi</label>
+            <input
+              type="text"
+              name="validityStartSate"
+              id="validityStartSate"
+              class="form-control"
+              autocomplete="off"
+              bsDatepicker
+              [(ngModel)]="employeeContactInformation.validityStartSate"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="adress">Adres</label>
+            <input
+              type="text"
+              name="adress"
+              id="adress"
+              class="form-control"
+              name="adress"
+              autocomplete="off"
+              [(ngModel)]="employeeContactInformation.adress"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="cityId">İl</label>
+            <ng-select
+              id="cityId"
+              notFoundText="Kaynak Bulunamadı"
+              placeholder="Seçiniz"
+              [(ngModel)]="employeeContactInformation.cityId"
+              name="cityId"
+              (change)="getCountiesByCityId()"
+            >
+              <ng-option *ngFor="let city of cities" [value]="city.id">
+                {{ city.cityName }}
+              </ng-option>
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="countyId">İlçe</label>
+            <ng-select
+              id="countId"
+              name="countId"
+              placeholder="Seçiniz"
+              notFoundText="Kaynak bulunamadı"
+              [(ngModel)]="employeeContactInformation.countyId"
+            >
+              <ng-option *ngFor="let county of counties" [value]="county.id">
+                {{ county.countyName }}
+              </ng-option>
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="companyPhoneNumber">Şirket Cep Telefonu</label>
+            <input
+              type="text"
+              name="companyPhoneNumber"
+              id="companyPhoneNumber"
+              name="companyPhoneNumber"
+              class="form-control"
+              autocomplete="off"
+              [(ngModel)]="employeeContactInformation.companyPhoneNumber"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="companyPhoneNumberShortCode"
+              >Şirket Cep Telefonu Kısa Kodu</label
+            >
+            <input
+              type="text"
+              name="companyPhoneNumberShortCode"
+              id="companyPhoneNumberShortCode"
+              name="companyPhoneNumberShortCode"
+              class="form-control"
+              autocomplete="off"
+              [(ngModel)]="
+                employeeContactInformation.companyPhoneNumberShortCode
+              "
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="companyPhoneNumberShortCode">Ofis Telefonu</label>
+            <input
+              type="text"
+              name="officePhone"
+              id="officePhone"
+              name="officePhone"
+              class="form-control"
+              autocomplete="off"
+              [(ngModel)]="employeeContactInformation.officePhone"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="companyPhoneNumberShortCode">Dahili No</label>
+            <input
+              type="text"
+              name="extensionNumber"
+              id="extensionNumber"
+              name="extensionNumber"
+              class="form-control"
+              autocomplete="off"
+              [(ngModel)]="employeeContactInformation.extensionNumber"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="companyEmail">Şirket E-Post Adresi</label>
+            <input
+              type="text"
+              name="companyEmail"
+              id="companyEmail"
+              name="companyEmail"
+              class="form-control"
+              autocomplete="off"
+              [(ngModel)]="employeeContactInformation.companyEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="addToMailGroup">Mail Grubuna Eklensin mi?</label>
+            <input
+              type="checkbox"
+              name="addToMailGroup"
+              id="addToMailGroup"
+              style="width: 20px"
+              [(ngModel)]="employeeContactInformation.addToMailGroup"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="lodgingCode">Lojman kodu</label>
+            <input
+              type="text"
+              name="lodgingCode"
+              id="lodgingCode"
+              name="lodgingCode"
+              class="form-control"
+              [(ngModel)]="employeeContactInformation.lodgingCode"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="personalPhoneNumber">Kişisel Cep Telefonu</label>
+            <input
+              type="text"
+              name="personalPhoneNumber"
+              id="personalPhoneNumber"
+              name="personalPhoneNumber"
+              class="form-control"
+              [(ngModel)]="employeeContactInformation.personalPhoneNumber"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="homePhone">Ev Telefonu</label>
+            <input
+              type="text"
+              name="homePhone"
+              id="homePhone"
+              name="homePhone"
+              class="form-control"
+              [(ngModel)]="employeeContactInformation.homePhone"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="personalEmail">Kişisel E-Post Adresi</label>
+            <input
+              type="text"
+              name="personalEmail"
+              id="personalEmail"
+              name="personalEmail"
+              class="form-control"
+              [(ngModel)]="employeeContactInformation.personalEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="adress">Sistem Kullanıcı Adı</label>
+            <input
+              type="text"
+              name="systemUserName"
+              id="systemUserName"
+              class="form-control"
+              name="systemUserName"
+              [(ngModel)]="employeeContactInformation.systemUserName"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="align-items-center">
+            <label for="postCode">Posta Kodu</label>
+            <input
+              type="text"
+              name="postCode"
+              id="postCode"
+              class="form-control"
+              name="postCode"
+              [(ngModel)]="employeeContactInformation.postCode"
+            />
+          </div>
+        </div>
+        <br />
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="save()"
+          [disabled]="checkValidate()"
+        >
+          Kaydet
+        </button>
+        <button type="button" class="btn btn-warning" (click)="clear()">
+          Temizle
+        </button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Çalışan Id</th>
+            <th scope="col">Geçerlilik Başlangıç Tarihi</th>
+            <th scope="col">Adres</th>
+            <th scope="col">İl</th>
+            <th scope="col">İlçe</th>
+            <th scope="col">Şirket Cep Telefonu</th>
+            <th scope="col">Şirket Cep Telefonu Kısa Kodu</th>
+            <th scope="col">Ofis Telefonu</th>
+            <th scope="col">Dahili No</th>
+            <th scope="col">Şirket E-Post Adresi</th>
+            <th scope="col">Mail Grubuna Eklensin mi?</th>
+            <th scope="col">Lojman kodu</th>
+            <th scope="col">Kişisel Cep Telefonu</th>
+            <th scope="col">Ev Telefonu</th>
+            <th scope="col">Kişisel E-Post Adresi</th>
+            <th scope="col">Sistem Kullanıcı Adı</th>
+            <th scope="col">Posta Kodu</th>
+            <th scope="col">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let employeeContactInformation of employeeContactInformations
+            "
+          >
+            <td>{{ employeeContactInformation.id }}</td>
+            <td>{{ employeeContactInformation.employeeId }}</td>
+            <td>
+              {{
+                employeeContactInformation.validityStartSate
+                  | date: "dd-MM-yyyy"
+              }}
+            </td>
+            <td>{{ employeeContactInformation.adress }}</td>
+            <td>{{ employeeContactInformation.cityId }}</td>
+            <td>{{ employeeContactInformation.countyId }}</td>
+            <td>{{ employeeContactInformation.companyPhoneNumber }}</td>
+            <td>
+              {{ employeeContactInformation.companyPhoneNumberShortCode }}
+            </td>
+            <td>{{ employeeContactInformation.officePhone }}</td>
+            <td>{{ employeeContactInformation.extensionNumber }}</td>
+            <td>{{ employeeContactInformation.companyEmail }}</td>
+            <td>{{ employeeContactInformation.addToMailGroup }}</td>
+            <td>{{ employeeContactInformation.lodgingCode }}</td>
+            <td>{{ employeeContactInformation.personalPhoneNumber }}</td>
+            <td>{{ employeeContactInformation.homePhone }}</td>
+            <td>{{ employeeContactInformation.personalEmail }}</td>
+            <td>{{ employeeContactInformation.systemUserName }}</td>
+            <td>{{ employeeContactInformation.postCode }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="
+                    deleteEmployeContactInformation(employeeContactInformation)
+                  "
+                >
+                  <i class="bi bi-trash3"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  (click)="
+                    getEmployeeContactInformation(employeeContactInformation.id)
+                  "
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

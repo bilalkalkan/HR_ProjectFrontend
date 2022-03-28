@@ -1,7 +1,7 @@
 <div class="container">
   <div class="align-items-center">
     <form>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="employeeId">Çalışan Seçiniz</label>
           <ng-select
@@ -19,7 +19,7 @@
           </ng-select>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="validityStartSate">Geçerlilik Başlangıç Tarihi</label>
           <input
@@ -33,7 +33,7 @@
           />
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="knowledgeName"
             >Bilgisayar Programı / Yazılım /Donanım Adı</label
@@ -48,7 +48,7 @@
           />
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="knowledgeLevel">Bilgi Seviyesi</label>
           <ng-select
@@ -69,7 +69,7 @@
         <button
           type="button"
           class="btn btn-success"
-          *ngIf="!validateCheck()"
+          [disabled]="validateCheck()"
           (click)="save()"
         >
           Kaydet

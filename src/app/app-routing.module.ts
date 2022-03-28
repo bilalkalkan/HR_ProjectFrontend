@@ -15,6 +15,8 @@ import { UserComponent } from './components/user/user.component';
 import { OperationClaimComponent } from './components/operation-claim/operation-claim.component';
 import { EmployeeComputerInformationComponent } from './components/employee-computer-information/employee-computer-information.component';
 import { EmployeeEmergencyInformationComponent } from './components/employee-emergency-information/employee-emergency-information.component';
+import { EmployeeContactInformation } from './models/employeeContactInformation';
+import { EmployeeContactInformationComponent } from './components/employee-contact-information/employee-contact-information.component';
 const routes: Routes = [
   {
     path: 'employee',
@@ -71,6 +73,12 @@ const routes: Routes = [
   {
     path: 'employeeEmergencyInformation',
     component: EmployeeEmergencyInformationComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'employeeContactInformation',
+    component: EmployeeContactInformationComponent,
+    canActivate: [LoginGuard],
   },
 ];
 

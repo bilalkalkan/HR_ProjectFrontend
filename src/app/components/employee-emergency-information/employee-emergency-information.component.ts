@@ -64,7 +64,7 @@ export class EmployeeEmergencyInformationComponent implements OnInit {
   save() {
     debugger;
     let message = this.checkValidate();
-    if (message != null) {
+    if (message != '') {
       this.toastrService.error(message);
       return;
     }
@@ -85,17 +85,17 @@ export class EmployeeEmergencyInformationComponent implements OnInit {
           },
         });
     } else {
-      debugger;
       this.employeeEmergencyInformationService
         .add(this.employeeEmergencyInformation)
         .subscribe({
           next: (response) => {
-            this.employeeEmergencyInformation =
-              new EmployeeEmergencyInformation();
-            this.getEmployeeEmergencyInformations();
-            this.toastrService.success(response.message);
+            (this.employeeEmergencyInformation =
+              new EmployeeEmergencyInformation()),
+              this.getEmployeeEmergencyInformations(),
+              this.toastrService.success(response.message);
           },
           error: (errorResponse) => {
+            console.log(errorResponse);
             this.toastrService.error(
               errorResponse.error.Message || errorResponse.error.message
             );
