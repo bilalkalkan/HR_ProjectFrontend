@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="align-items-center">
+    <form>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="employeeId">Çalışan</label>
+          <ng-select
+            id="employeeId"
+            placeholder="Seçiniz"
+            notFoundText="Kaynak bulunamadı"
+            name="employeeId"
+            [(ngModel)]="employeeAwardInformation.employeeId"
+          >
+            <ng-option *ngFor="let employee of employees" [value]="employee.id"
+              >{{ employee.firstName | titlecase }}
+              {{ employee.lastName }}</ng-option
+            >
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="awardDate">Ödül Tarihi</label>
+          <input
+            type="text"
+            name="awardDate"
+            id="awardDate"
+            autocomplete="off"
+            bsDatepicker
+            class="form-control"
+            [(ngModel)]="employeeAwardInformation.awardDate"
+          />
+        </div>
+      </div>
+      <button class="btn btn-success" type="button" (click)="save()">
+        Kaydet
+      </button>
+    </form>
+  </div>
+</div>

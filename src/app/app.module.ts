@@ -28,6 +28,7 @@ import { EmployeeComputerInformationComponent } from './components/employee-comp
 import { EmployeeEmergencyInformationComponent } from './components/employee-emergency-information/employee-emergency-information.component';
 import { EmployeeContactInformationComponent } from './components/employee-contact-information/employee-contact-information.component';
 import { EmployeePastWorkExperienceComponent } from './components/employee-past-work-experience/employee-past-work-experience.component';
+import { EmployeeAwardInformationComponent } from './components/employee-award-information/employee-award-information.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EmployeePastWorkExperienceComponent } from './components/employee-past-
     EmployeeEmergencyInformationComponent,
     EmployeeContactInformationComponent,
     EmployeePastWorkExperienceComponent,
+    EmployeeAwardInformationComponent,
   ],
   imports: [
     BrowserModule,
