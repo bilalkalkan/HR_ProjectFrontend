@@ -86,6 +86,34 @@ export class EmployeeAwardInformationComponent implements OnInit {
     }
   }
 
+  checkValidate(): string {
+    let message = '';
+    if (
+      this.employeeAwardInformation.employeeId == null ||
+      this.employeeAwardInformation.employeeId == undefined
+    ) {
+      message = 'Çalışan alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeAwardInformation.awardDate == null ||
+      this.employeeAwardInformation.awardDate == undefined
+    ) {
+      message = 'Ödül tarihi alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeAwardInformation.awardType == null ||
+      this.employeeAwardInformation.awardType == undefined ||
+      this.employeeAwardInformation.awardType == ''
+    ) {
+      message = '';
+    }
+    return message;
+  }
+
   deleteEmployeeAwardInformation(
     employeeAwardInformation: EmployeeAwardInformation
   ) {
