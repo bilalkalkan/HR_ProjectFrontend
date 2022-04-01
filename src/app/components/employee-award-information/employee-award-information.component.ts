@@ -23,6 +23,7 @@ export class EmployeeAwardInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployees();
+    this.getEmployeeAwardInformations();
   }
 
   getEmployeeAwardInformations() {
@@ -53,6 +54,11 @@ export class EmployeeAwardInformationComponent implements OnInit {
   }
 
   save() {
+    let message = this.checkValidate();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    }
     if (this.employeeAwardInformation.id > 0) {
       this.employeeAwardInformationService
         .update(this.employeeAwardInformation)
@@ -73,11 +79,12 @@ export class EmployeeAwardInformationComponent implements OnInit {
         .add(this.employeeAwardInformation)
         .subscribe({
           next: (response) => {
-            this.employeeAwardInformation = new EmployeeAwardInformation();
             this.getEmployeeAwardInformations();
+            this.employeeAwardInformation = new EmployeeAwardInformation();
             this.toastrService.success(response.message);
           },
           error: (errorResponse) => {
+            console.log(errorResponse.error);
             this.toastrService.error(
               errorResponse.error.Message || errorResponse.error.message
             );
@@ -109,7 +116,34 @@ export class EmployeeAwardInformationComponent implements OnInit {
       this.employeeAwardInformation.awardType == undefined ||
       this.employeeAwardInformation.awardType == ''
     ) {
-      message = '';
+      message = 'Ödül Türü alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeAwardInformation.reasonForAward == null ||
+      this.employeeAwardInformation.reasonForAward == undefined ||
+      this.employeeAwardInformation.reasonForAward == ''
+    ) {
+      message = 'Ödül Alma Nedeni alanı boş bırakılamaz';
+      return message;
+    }
+
+    if (
+      this.employeeAwardInformation.costOfThePrize == null ||
+      this.employeeAwardInformation.costOfThePrize == undefined ||
+      this.employeeAwardInformation.costOfThePrize == ''
+    ) {
+      message = 'Ödül Maliyeti alanı boş bırakılamaz';
+      return message;
+    }
+    if (
+      this.employeeAwardInformation.awardDescription == null ||
+      this.employeeAwardInformation.awardDescription == undefined ||
+      this.employeeAwardInformation.awardDescription == ''
+    ) {
+      message = 'Ödül Açıklaması alanı boş bırakılamaz';
+      return message;
     }
     return message;
   }

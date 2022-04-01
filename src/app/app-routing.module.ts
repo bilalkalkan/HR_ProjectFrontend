@@ -92,6 +92,7 @@ const routes: Routes = [
   {
     path: 'employeeAwardInformation',
     component: EmployeeAwardInformationComponent,
+    canActivate: [LoginGuard],
   },
 ];
 

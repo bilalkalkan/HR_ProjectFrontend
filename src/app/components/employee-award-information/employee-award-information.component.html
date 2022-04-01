@@ -42,7 +42,10 @@
             name="awardType"
             [(ngModel)]="employeeAwardInformation.awardType"
           >
-            <ng-option></ng-option>
+            <ng-option value="1">1. Ödül Türü</ng-option>
+            <ng-option value="2">2. Ödül Türü</ng-option>
+            <ng-option value="3">3. Ödül Türü</ng-option>
+            <ng-option value="4">4. Ödül Türü</ng-option>
           </ng-select>
         </div>
       </div>
@@ -86,19 +89,24 @@
         </div>
       </div>
       <br />
-      <button class="btn btn-success" type="button" (click)="save()">
+      <button
+        class="btn btn-success"
+        type="button"
+        [disabled]="checkValidate()"
+        (click)="save()"
+      >
         Kaydet
       </button>
       <button class="btn btn-warning" (click)="clear()">Temizle</button>
     </form>
 
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Çalışan Id</th>
           <th scope="col">Ödül Tarihi</th>
-          <th scope="col">Ödül Tarihi</th>
+          <th scope="col">Ödül Türü</th>
           <th scope="col">Ödül Alma Nedeni</th>
           <th scope="col">Ödülün Maliyeti</th>
           <th scope="col">Ödül Açıklaması</th>
@@ -109,11 +117,33 @@
         <tr *ngFor="let employeeAwardInformation of employeeAwardInformations">
           <td>{{ employeeAwardInformation.id }}</td>
           <td>{{ employeeAwardInformation.employeeId }}</td>
-          <td>{{ employeeAwardInformation.awardDate }}</td>
+          <td>{{ employeeAwardInformation.awardDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeAwardInformation.awardType }}</td>
           <td>{{ employeeAwardInformation.reasonForAward }}</td>
           <td>{{ employeeAwardInformation.costOfThePrize }}</td>
           <td>{{ employeeAwardInformation.awardDescription }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="
+                  deleteEmployeeAwardInformation(employeeAwardInformation)
+                "
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="
+                  getEmployeeAwardInformation(employeeAwardInformation.id)
+                "
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
