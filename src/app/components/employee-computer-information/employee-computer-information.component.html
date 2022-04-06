@@ -58,9 +58,9 @@
             placeholder="Seçiniz"
             [(ngModel)]="employeeComputerInformation.knowledgeLevel"
           >
-            <ng-option value="Başlangıç">Başlangıç</ng-option>
-            <ng-option value="Orta">Orta</ng-option>
-            <ng-option value="İleri">İleri</ng-option>
+            <ng-option value="1">Başlangıç</ng-option>
+            <ng-option value="2">Orta</ng-option>
+            <ng-option value="3">İleri</ng-option>
           </ng-select>
         </div>
       </div>
@@ -83,7 +83,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Geçerlilik Başlangıç Tarihi</th>
           <th scope="col">Bilgisayar Programı/Yazılım/Donanım Adı</th>
           <th scope="col">Bilgi Seviyesi</th>
@@ -97,7 +97,10 @@
           "
         >
           <td>{{ employeeComputerInformation.id }}</td>
-          <td>{{ employeeComputerInformation.employeeId }}</td>
+          <td>
+            {{ employeeComputerInformation.employeeFirstName }}
+            {{ employeeComputerInformation.employeeLastName }}
+          </td>
           <td>
             {{
               employeeComputerInformation.validityStartSate | date: "dd-MM-yyyy"

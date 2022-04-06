@@ -147,7 +147,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Yakınlık Derecesi</th>
           <th scope="col">Yakının Adı</th>
           <th scope="col">Yakının Soyadı</th>
@@ -159,8 +159,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let employeeFamily of employeeFamilies">
-          <th scope="row">{{ employeeFamily.id }}</th>
-          <th>{{ employeeFamily.employeeId }}</th>
+          <th>{{ employeeFamily.id }}</th>
+          <th>
+            {{ employeeFamily.employeeFirstName }}
+            {{ employeeFamily.employeeLastName }}
+          </th>
           <td>{{ employeeFamily.degree }}</td>
           <td>{{ employeeFamily.firstName | titlecase }}</td>
           <td>{{ employeeFamily.lastName | titlecase }}</td>

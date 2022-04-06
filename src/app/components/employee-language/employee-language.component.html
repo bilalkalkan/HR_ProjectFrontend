@@ -112,7 +112,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Yabancı Dil</th>
           <th scope="col">Okuma</th>
           <th scope="col">Yazma</th>
@@ -121,8 +121,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let employeeLanguage of employeeLanguages">
-          <th scope="row">{{ employeeLanguage.id }}</th>
-          <th>{{ employeeLanguage.employeeId }}</th>
+          <td>{{ employeeLanguage.id }}</td>
+          <td>
+            {{ employeeLanguage.employeeFirstName }}
+            {{ employeeLanguage.employeeLastName }}
+          </td>
           <td>{{ employeeLanguage.foreignLanguage }}</td>
           <td>{{ employeeLanguage.reading }}</td>
           <td>{{ employeeLanguage.writing }}</td>

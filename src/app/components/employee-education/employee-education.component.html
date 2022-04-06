@@ -121,8 +121,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let employeeEducation of employeeEducations">
-          <th scope="row">{{ employeeEducation.id }}</th>
-          <th>{{ employeeEducation.employeeId }}</th>
+          <th>{{ employeeEducation.id }}</th>
+          <th>
+            {{ employeeEducation.employeeFirstName }}
+            {{ employeeEducation.employeeLastName }}
+          </th>
           <td>{{ employeeEducation.educationalLevel }}</td>
           <td>{{ employeeEducation.schoolYearOfStart }}</td>
           <td>{{ employeeEducation.schoolYearOfFinished }}</td>

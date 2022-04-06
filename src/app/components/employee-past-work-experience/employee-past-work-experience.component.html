@@ -165,8 +165,15 @@
         >
           <td>{{ employeePastWorkExperience.id }}</td>
           <td>{{ employeePastWorkExperience.employeeId }}</td>
-          <td>
-            {{ employeePastWorkExperience.companyInstitutionActive }}
+          <td
+            *ngIf="employeePastWorkExperience.companyInstitutionActive == true"
+          >
+            {{ yes }}
+          </td>
+          <td
+            *ngIf="employeePastWorkExperience.companyInstitutionActive == false"
+          >
+            {{ no }}
           </td>
           <td>{{ employeePastWorkExperience.companyName }}</td>
           <td>{{ employeePastWorkExperience.department }}</td>
@@ -178,7 +185,18 @@
             {{ employeePastWorkExperience.releaseDate | date: "dd-MM-yyyy" }}
           </td>
           <td>{{ employeePastWorkExperience.reasonForLeaving }}</td>
-          <td>{{ employeePastWorkExperience.includeInSeniorityAccount }}</td>
+          <td
+            *ngIf="employeePastWorkExperience.includeInSeniorityAccount == true"
+          >
+            {{ yes }}
+          </td>
+          <td
+            *ngIf="
+              employeePastWorkExperience.includeInSeniorityAccount == false
+            "
+          >
+            {{ no }}
+          </td>
 
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">

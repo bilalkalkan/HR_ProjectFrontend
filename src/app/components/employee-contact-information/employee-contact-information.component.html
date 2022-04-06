@@ -291,7 +291,10 @@
             "
           >
             <td>{{ employeeContactInformation.id }}</td>
-            <td>{{ employeeContactInformation.employeeId }}</td>
+            <td>
+              {{ employeeContactInformation.employeeFirstName }}
+              {{ employeeContactInformation.employeeLastName }}
+            </td>
             <td>
               {{
                 employeeContactInformation.validityStartSate
@@ -299,8 +302,8 @@
               }}
             </td>
             <td>{{ employeeContactInformation.adress }}</td>
-            <td>{{ employeeContactInformation.cityId }}</td>
-            <td>{{ employeeContactInformation.countyId }}</td>
+            <td>{{ employeeContactInformation.cityName }}</td>
+            <td>{{ employeeContactInformation.countyName }}</td>
             <td>{{ employeeContactInformation.companyPhoneNumber }}</td>
             <td>
               {{ employeeContactInformation.companyPhoneNumberShortCode }}
@@ -308,7 +311,13 @@
             <td>{{ employeeContactInformation.officePhone }}</td>
             <td>{{ employeeContactInformation.extensionNumber }}</td>
             <td>{{ employeeContactInformation.companyEmail }}</td>
-            <td>{{ employeeContactInformation.addToMailGroup }}</td>
+            <td *ngIf="employeeContactInformation.addToMailGroup == true">
+              {{ yes }}
+            </td>
+            <td *ngIf="employeeContactInformation.addToMailGroup == false">
+              {{ no }}
+            </td>
+
             <td>{{ employeeContactInformation.lodgingCode }}</td>
             <td>{{ employeeContactInformation.personalPhoneNumber }}</td>
             <td>{{ employeeContactInformation.homePhone }}</td>

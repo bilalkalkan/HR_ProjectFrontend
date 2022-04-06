@@ -16,6 +16,8 @@ export class EmployeePastWorkExperienceComponent implements OnInit {
   employeePastWorkExperiences!: EmployeePastWorkExperience[];
   employeePastWorkExperience: EmployeePastWorkExperience =
     new EmployeePastWorkExperience();
+  yes: any = 'Evet';
+  no: any = 'Hayır';
   employees!: Employee[];
   constructor(
     private employeePastWorkExperienceService: EmployeePastWorkExperienceService,

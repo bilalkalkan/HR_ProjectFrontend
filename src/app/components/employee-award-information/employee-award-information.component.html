@@ -104,7 +104,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Ödül Tarihi</th>
           <th scope="col">Ödül Türü</th>
           <th scope="col">Ödül Alma Nedeni</th>
@@ -116,7 +116,10 @@
       <tbody>
         <tr *ngFor="let employeeAwardInformation of employeeAwardInformations">
           <td>{{ employeeAwardInformation.id }}</td>
-          <td>{{ employeeAwardInformation.employeeId }}</td>
+          <td>
+            {{ employeeAwardInformation.employeeFirstName }}
+            {{ employeeAwardInformation.employeeLastName }}
+          </td>
           <td>{{ employeeAwardInformation.awardDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeAwardInformation.awardType }}</td>
           <td>{{ employeeAwardInformation.reasonForAward }}</td>
