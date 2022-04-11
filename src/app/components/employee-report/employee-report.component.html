@@ -1,0 +1,51 @@
+<div class="container">
+  <form>
+    <div class="col-sm-6">
+      <label for="identificationNumber" class="form-label"
+        >TC kimlik numarası</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="identificationNumber"
+        name="IdentificationNumber"
+        autocomplete="off"
+        required
+        [(ngModel)]="employee.identificationNumber"
+      />
+    </div>
+    <div class="col-sm-6">
+      <label for="gender" class="form-label">Cinsiyet</label>
+      <ng-select
+        bindLabel="name"
+        name="gender"
+        appendTo="body"
+        placeholder="Seçiniz"
+        [(ngModel)]="employee.gender"
+      >
+        <ng-option value="E"> Erkek </ng-option>
+        <ng-option value="K">Kadın</ng-option>
+      </ng-select>
+    </div>
+    <div class="col-sm-6">
+      <label for="nationality" class="form-label">Uyruk</label>
+      <ng-select
+        notFoundText="Kayıt Bulunamadı"
+        bindLabel="nationality"
+        id="nationality"
+        bindValue="nationality"
+        name="nationality"
+        placeholder="Seçiniz"
+        [(ngModel)]="employee.nationality"
+      >
+        <ng-option
+          [value]="nationality.nationalityName"
+          *ngFor="let nationality of nationalities"
+        >
+          {{ nationality.nationalityName }}
+        </ng-option>
+      </ng-select>
+    </div>
+    <button (click)="getEmployeeByFilter()">listele</button>
+  </form>
+</div>

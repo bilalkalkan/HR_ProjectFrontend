@@ -33,6 +33,7 @@ export class EmployeeComponent implements OnInit {
   onFormSubmit() {
     this.save();
   }
+
   getEmployees() {
     this.employeeService.getAll().subscribe((response) => {
       this.employees = response.data;

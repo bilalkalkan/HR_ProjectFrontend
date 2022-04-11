@@ -34,18 +34,19 @@
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="awardType">Ödül Alma Türü</label>
+          <label for="awardType">Ödül Türü</label>
           <ng-select
             id="awardType"
             placeholder="Seçiniz"
             notFoundText="Kaynak bulunamadı"
             name="awardType"
-            [(ngModel)]="employeeAwardInformation.awardType"
+            [(ngModel)]="employeeAwardInformation.awardTypeId"
           >
-            <ng-option value="1">1. Ödül Türü</ng-option>
-            <ng-option value="2">2. Ödül Türü</ng-option>
-            <ng-option value="3">3. Ödül Türü</ng-option>
-            <ng-option value="4">4. Ödül Türü</ng-option>
+            <ng-option
+              *ngFor="let typeOfAward of typeOfAwards"
+              [value]="typeOfAward.id"
+              >{{ typeOfAward.awardName }}</ng-option
+            >
           </ng-select>
         </div>
       </div>
@@ -121,7 +122,7 @@
             {{ employeeAwardInformation.employeeLastName }}
           </td>
           <td>{{ employeeAwardInformation.awardDate | date: "dd-MM-yyyy" }}</td>
-          <td>{{ employeeAwardInformation.awardType }}</td>
+          <td>{{ employeeAwardInformation.awardTypeName }}</td>
           <td>{{ employeeAwardInformation.reasonForAward }}</td>
           <td>{{ employeeAwardInformation.costOfThePrize }}</td>
           <td>{{ employeeAwardInformation.awardDescription }}</td>

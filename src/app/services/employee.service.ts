@@ -18,7 +18,22 @@ export class EmployeeService {
     let newPath = this.apiUrl + 'getall';
     return this.httpClient.get<ListResponseModel<Employee>>(newPath);
   }
+  getEmployeeFilter(
+    gender: string,
+    nationality: string,
+    identificationNumber: string
+  ): Observable<ListResponseModel<Employee>> {
+    let newPath =
+      this.apiUrl +
+      'getallbyfilter?gender=' +
+      gender +
+      '&nationality=' +
+      nationality +
+      '&identificationNumber=' +
+      identificationNumber;
 
+    return this.httpClient.get<ListResponseModel<Employee>>(newPath);
+  }
   getById(id: number): Observable<SingleResponseModel<Employee>> {
     let newPath = this.apiUrl + 'getbyid?id=' + id;
     return this.httpClient.get<SingleResponseModel<Employee>>(newPath);

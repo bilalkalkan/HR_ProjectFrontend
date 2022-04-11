@@ -24,8 +24,8 @@ export class EmployeeContactInformationComponent implements OnInit {
     new EmployeeContactInformation();
   cities!: City[];
   counties!: County[];
-  yes: any = 'Evet';
-  no: any = 'Hayır';
+  yes: string = 'Evet';
+  no: string = 'Hayır';
   constructor(
     private employeeContactInformationService: EmployeeContactInformationService,
     private employeeService: EmployeeService,

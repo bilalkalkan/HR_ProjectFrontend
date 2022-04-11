@@ -140,7 +140,10 @@
       <tbody>
         <tr *ngFor="let employeeVacation of employeeVacations">
           <th scope="row">{{ employeeVacation.id }}</th>
-          <td>{{ employeeVacation.employeeId }}</td>
+          <td>
+            {{ employeeVacation.employeeFirstName }}
+            {{ employeeVacation.employeeLastName }}
+          </td>
           <td>{{ employeeVacation.allowanceType }}</td>
           <td>
             {{ employeeVacation.allowanceStartingDate | date: "dd-MM-yyyy" }}

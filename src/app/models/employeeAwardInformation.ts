@@ -4,7 +4,8 @@ export class EmployeeAwardInformation {
   employeeFirstName!: string;
   employeeLastName!: string;
   awardDate!: Date;
-  awardType!: string;
+  awardTypeId!: number;
+  awardTypeName!: string;
   reasonForAward!: string;
   costOfThePrize!: string;
   awardDescription!: string;

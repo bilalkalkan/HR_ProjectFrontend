@@ -111,7 +111,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Zimmet Türü</th>
           <th scope="col">Zimmet Teslim Tarihi</th>
           <th scope="col">Zimmet İade Durumu</th>
@@ -123,7 +123,10 @@
       <tbody>
         <tr *ngFor="let employeeDebit of employeeDebits">
           <td>{{ employeeDebit.id }}</td>
-          <td>{{ employeeDebit.employeeId }}</td>
+          <td>
+            {{ employeeDebit.employeeFirstName }}
+            {{ employeeDebit.employeeLastName }}
+          </td>
           <td>{{ employeeDebit.debitType }}</td>
           <td>{{ employeeDebit.debitDeliveryDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeDebit.debitReturnStatus }}</td>

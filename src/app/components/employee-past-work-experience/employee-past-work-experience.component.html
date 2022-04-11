@@ -148,7 +148,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Şirket Kurum Aktif</th>
           <th scope="col">Şirket/Kurum Adı</th>
           <th scope="col">Departman</th>
@@ -164,7 +164,10 @@
           *ngFor="let employeePastWorkExperience of employeePastWorkExperiences"
         >
           <td>{{ employeePastWorkExperience.id }}</td>
-          <td>{{ employeePastWorkExperience.employeeId }}</td>
+          <td>
+            {{ employeePastWorkExperience.employeeFirstName }}
+            {{ employeePastWorkExperience.employeeLastName }}
+          </td>
           <td
             *ngIf="employeePastWorkExperience.companyInstitutionActive == true"
           >

@@ -3,10 +3,13 @@ import { ToastrService } from 'ngx-toastr';
 import { AllowanceType } from 'src/app/models/allowanceType';
 import { DebitType } from 'src/app/models/debitType';
 import { EducationLevel } from 'src/app/models/educationLevel';
+import { EmployeeAwardInformation } from 'src/app/models/employeeAwardInformation';
 import { EmployeeLanguage } from 'src/app/models/employeeLanguage';
 import { FamilyMember } from 'src/app/models/familyMember';
 import { Language } from 'src/app/models/language';
 import { Nationality } from 'src/app/models/nationality';
+import { TypeOfAward } from 'src/app/models/typeOfAward';
+import { EmployeeAwardInformationService } from 'src/app/services/employee-award-information.service';
 import { EmployeeDebitService } from 'src/app/services/employee-debit.service';
 import { EmployeeEducationService } from 'src/app/services/employee-education.service';
 import { EmployeeFamilyService } from 'src/app/services/employee-family.service';
@@ -32,6 +35,8 @@ export class AllowanceTypeComponent implements OnInit {
   familyMember: FamilyMember = new FamilyMember();
   nationalities!: Nationality[];
   nationality: Nationality = new Nationality();
+  typeOfAwards!: TypeOfAward[];
+  typeOfAward: TypeOfAward = new TypeOfAward();
   constructor(
     private employeeVacationService: EmployeeVacationService,
     private employeeDebitService: EmployeeDebitService,
@@ -39,6 +44,7 @@ export class AllowanceTypeComponent implements OnInit {
     private employeeLanguageService: EmployeeLanguageService,
     private employeeFamilyService: EmployeeFamilyService,
     private employeeService: EmployeeService,
+    private employeeAwardInformationService: EmployeeAwardInformationService,
     private toastrService: ToastrService
   ) {}
 
@@ -49,6 +55,7 @@ export class AllowanceTypeComponent implements OnInit {
     this.getEducationLevels();
     this.getFamilyMembers();
     this.getNationalities();
+    this.getTypeOfAwards();
   }
 
   getAllowanceTypes() {
@@ -116,6 +123,22 @@ export class AllowanceTypeComponent implements OnInit {
       this.nationality = response.data;
     });
   }
+  getTypeOfAwards() {
+    this.employeeAwardInformationService.getTypeOfAwards().subscribe({
+      next: (response) => {
+        this.typeOfAwards = response.data;
+      },
+    });
+  }
+
+  getTypeOfAward(id: number) {
+    this.employeeAwardInformationService.getTypeOfAward(id).subscribe({
+      next: (response) => {
+        this.typeOfAward = response.data;
+      },
+    });
+  }
+
   saveAllowanceType() {
     let message = this.validateAllowanceType();
     if (message != '') {
@@ -328,6 +351,59 @@ export class AllowanceTypeComponent implements OnInit {
     }
   }
 
+  saveTypeOfAward() {
+    let message = this.validateTypeOfAward();
+    if (message != '') {
+      this.toastrService.error(message);
+      return;
+    } else {
+      if (this.typeOfAward.id > 0) {
+        this.employeeAwardInformationService
+          .updatetypeOfAward(this.typeOfAward)
+          .subscribe({
+            next: (response) => {
+              this.getTypeOfAwards();
+              this.typeOfAward = new TypeOfAward();
+              this.toastrService.success(response.message);
+            },
+            error: (errorResponse) => {
+              this.toastrService.error(
+                errorResponse.error.Message || errorResponse.error.message
+              );
+            },
+          });
+      } else {
+        this.employeeAwardInformationService
+          .addtypeOfAward(this.typeOfAward)
+          .subscribe({
+            next: (response) => {
+              this.getTypeOfAwards();
+              this.typeOfAward = new TypeOfAward();
+              this.toastrService.success(response.message);
+            },
+            error: (errorResponse) => {
+              this.toastrService.error(
+                errorResponse.error.Message || errorResponse.error.message
+              );
+            },
+          });
+      }
+    }
+  }
+
+  validateTypeOfAward(): string {
+    let message = '';
+    if (
+      this.typeOfAward.awardName == null ||
+      this.typeOfAward.awardName == undefined ||
+      this.typeOfAward.awardName == ''
+    ) {
+      message = 'ödül Türü alanı boş bırakılamaz';
+      return message;
+    }
+    return message;
+  }
+
   validateFamilyMember(): string {
     let message = '';
     if (
@@ -456,5 +532,20 @@ export class AllowanceTypeComponent implements OnInit {
         this.toastrService.error(errorResponse.error.Message);
       }
     );
+  }
+  deleteTypeOfAward(typeOfAward: TypeOfAward) {
+    this.employeeAwardInformationService
+      .deletetypeOfAward(typeOfAward)
+      .subscribe({
+        next: (response) => {
+          this.getTypeOfAwards();
+          this.toastrService.success(response.message);
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(
+            errorResponse.error.Message || errorResponse.error.message
+          );
+        },
+      });
   }
 }

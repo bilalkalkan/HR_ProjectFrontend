@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeAwardInformation } from 'src/app/models/employeeAwardInformation';
+import { TypeOfAward } from 'src/app/models/typeOfAward';
 import { EmployeeAwardInformationService } from 'src/app/services/employee-award-information.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -12,6 +13,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class EmployeeAwardInformationComponent implements OnInit {
   employeeAwardInformations!: EmployeeAwardInformation[];
+  typeOfAwards!: TypeOfAward[];
   employeeAwardInformation: EmployeeAwardInformation =
     new EmployeeAwardInformation();
   employees!: Employee[];
@@ -24,6 +26,7 @@ export class EmployeeAwardInformationComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployees();
     this.getEmployeeAwardInformations();
+    this.getTypeOfAwards();
   }
 
   getEmployeeAwardInformations() {
@@ -33,7 +36,13 @@ export class EmployeeAwardInformationComponent implements OnInit {
       },
     });
   }
-
+  getTypeOfAwards() {
+    this.employeeAwardInformationService.getTypeOfAwards().subscribe({
+      next: (response) => {
+        this.typeOfAwards = response.data;
+      },
+    });
+  }
   getEmployees() {
     this.employeeService.getAll().subscribe({
       next: (response) => {
@@ -112,9 +121,8 @@ export class EmployeeAwardInformationComponent implements OnInit {
     }
 
     if (
-      this.employeeAwardInformation.awardType == null ||
-      this.employeeAwardInformation.awardType == undefined ||
-      this.employeeAwardInformation.awardType == ''
+      this.employeeAwardInformation.awardTypeId == null ||
+      this.employeeAwardInformation.awardTypeId == undefined
     ) {
       message = 'Ödül Türü alanı boş bırakılamaz';
       return message;

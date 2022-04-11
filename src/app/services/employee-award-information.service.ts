@@ -5,6 +5,7 @@ import { EmployeeAwardInformation } from '../models/employeeAwardInformation';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
+import { TypeOfAward } from '../models/typeOfAward';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,10 @@ export class EmployeeAwardInformationService {
       newPath
     );
   }
-
+  getTypeOfAwards(): Observable<ListResponseModel<TypeOfAward>> {
+    let newPath = this.apiUrl + 'gettypeofawards';
+    return this.httpClient.get<ListResponseModel<TypeOfAward>>(newPath);
+  }
   getById(
     id: number
   ): Observable<SingleResponseModel<EmployeeAwardInformation>> {
@@ -28,6 +32,11 @@ export class EmployeeAwardInformationService {
     return this.httpClient.get<SingleResponseModel<EmployeeAwardInformation>>(
       newPath
     );
+  }
+
+  getTypeOfAward(id: number): Observable<SingleResponseModel<TypeOfAward>> {
+    let newPath = this.apiUrl + 'gettypeofaward?id=' + id;
+    return this.httpClient.get<SingleResponseModel<TypeOfAward>>(newPath);
   }
 
   add(
@@ -39,6 +48,11 @@ export class EmployeeAwardInformationService {
       employeeAwardInformation
     );
   }
+  addtypeOfAward(typeOfAward: TypeOfAward): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'addtypeofaward';
+    return this.httpClient.post<ResponseModel>(newPath, typeOfAward);
+  }
+
   delete(
     employeeAwardInformation: EmployeeAwardInformation
   ): Observable<ResponseModel> {
@@ -47,6 +61,10 @@ export class EmployeeAwardInformationService {
       newPath,
       employeeAwardInformation
     );
+  }
+  deletetypeOfAward(typeOfAward: TypeOfAward): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'deletetypeofaward';
+    return this.httpClient.post<ResponseModel>(newPath, typeOfAward);
   }
 
   update(
@@ -57,5 +75,10 @@ export class EmployeeAwardInformationService {
       newPath,
       employeeAwardInformation
     );
+  }
+
+  updatetypeOfAward(typeOfAward: TypeOfAward): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'updatetypeofaward';
+    return this.httpClient.post<ResponseModel>(newPath, typeOfAward);
   }
 }

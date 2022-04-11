@@ -115,7 +115,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Çalışan Id</th>
+          <th scope="col">Çalışan Ad Soyad</th>
           <th scope="col">Yakınlık Derecesi</th>
           <th scope="col">Adı</th>
           <th scope="col">Soyadı</th>
@@ -131,7 +131,10 @@
           "
         >
           <td>{{ employeeEmergencyInformation.id }}</td>
-          <td>{{ employeeEmergencyInformation.employeeId }}</td>
+          <td>
+            {{ employeeEmergencyInformation.employeeFirstName }}
+            {{ employeeEmergencyInformation.employeeLastName }}
+          </td>
           <td>
             {{ employeeEmergencyInformation.degree | titlecase }}
           </td>
