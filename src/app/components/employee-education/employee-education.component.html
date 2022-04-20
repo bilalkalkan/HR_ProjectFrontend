@@ -12,7 +12,8 @@
             [(ngModel)]="employeeEducation.employeeId"
           >
             <ng-option *ngFor="let employee of employees" [value]="employee.id">
-              {{ employee.firstName }} {{ employee.lastName }}
+              {{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}
             </ng-option>
           </ng-select>
         </div>
@@ -26,11 +27,11 @@
             id="educationLevel"
             placeholder="Seçiniz"
             required
-            [(ngModel)]="employeeEducation.educationalLevel"
+            [(ngModel)]="employeeEducation.educationalLevelId"
           >
             <ng-option
               *ngFor="let educationLevel of educationLevels"
-              [value]="educationLevel.educationaLevelName"
+              [value]="educationLevel.id"
               >{{ educationLevel.educationaLevelName }}</ng-option
             >
           </ng-select>
@@ -121,12 +122,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let employeeEducation of employeeEducations">
-          <th>{{ employeeEducation.id }}</th>
-          <th>
-            {{ employeeEducation.employeeFirstName }}
-            {{ employeeEducation.employeeLastName }}
-          </th>
-          <td>{{ employeeEducation.educationalLevel }}</td>
+          <td>{{ employeeEducation.id }}</td>
+          <td>
+            {{ employeeEducation.employeeFirstName | titlecase }}
+            {{ employeeEducation.employeeLastName | titlecase }}
+          </td>
+          <td>{{ employeeEducation.educationalLevelName }}</td>
           <td>{{ employeeEducation.schoolYearOfStart }}</td>
           <td>{{ employeeEducation.schoolYearOfFinished }}</td>
           <td>{{ employeeEducation.diplomaGrade }}</td>

@@ -26,11 +26,11 @@
             name="allowanceType"
             id="allowanceType"
             placeholder="Seçiniz"
-            [(ngModel)]="employeeVacation.allowanceType"
+            [(ngModel)]="employeeVacation.allowanceTypeId"
           >
             <ng-option
               *ngFor="let allowanceType of allowanceTypes"
-              [value]="allowanceType.allowanceTypeName"
+              [value]="allowanceType.id"
               >{{ allowanceType.allowanceTypeName }}</ng-option
             >
           </ng-select>
@@ -141,10 +141,10 @@
         <tr *ngFor="let employeeVacation of employeeVacations">
           <th scope="row">{{ employeeVacation.id }}</th>
           <td>
-            {{ employeeVacation.employeeFirstName }}
-            {{ employeeVacation.employeeLastName }}
+            {{ employeeVacation.employeeFirstName | titlecase }}
+            {{ employeeVacation.employeeLastName | titlecase }}
           </td>
-          <td>{{ employeeVacation.allowanceType }}</td>
+          <td>{{ employeeVacation.allowanceTypeName }}</td>
           <td>
             {{ employeeVacation.allowanceStartingDate | date: "dd-MM-yyyy" }}
           </td>

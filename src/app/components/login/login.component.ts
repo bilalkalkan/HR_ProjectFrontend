@@ -36,6 +36,11 @@ export class LoginComponent implements OnInit {
       (response) => {
         this.router.navigate(['/home']);
         this.localStorage.setLocalStorage('token', response.data.token);
+        this.localStorage.setLocalStorage(
+          'expiration',
+          response.data.expiration
+        );
+
         this.toastrService.info('Giriş Yapıldı');
         this.reloadCurrentPage();
       },

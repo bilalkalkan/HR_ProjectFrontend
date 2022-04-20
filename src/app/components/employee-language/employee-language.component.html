@@ -13,7 +13,8 @@
             [(ngModel)]="employeeLanguage.employeeId"
           >
             <ng-option *ngFor="let employee of employees" [value]="employee.id">
-              {{ employee.firstName }} {{ employee.lastName }}
+              {{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}
             </ng-option>
           </ng-select>
         </div>
@@ -26,11 +27,11 @@
             id="foreignLanguage"
             placeholder="Seçiniz"
             required
-            [(ngModel)]="employeeLanguage.foreignLanguage"
+            [(ngModel)]="employeeLanguage.foreignLanguageId"
           >
             <ng-option
               *ngFor="let language of languages"
-              [value]="language.nameOfLanguage"
+              [value]="language.id"
               >{{ language.nameOfLanguage }}</ng-option
             >
           </ng-select>
@@ -101,7 +102,7 @@
           (click)="save()"
           [disabled]="validateCheck()"
         >
-          Kayıt
+          Kaydet
         </button>
         <button class="btn btn-warning" type="button" (click)="clear()">
           Temizle
@@ -123,10 +124,10 @@
         <tr *ngFor="let employeeLanguage of employeeLanguages">
           <td>{{ employeeLanguage.id }}</td>
           <td>
-            {{ employeeLanguage.employeeFirstName }}
-            {{ employeeLanguage.employeeLastName }}
+            {{ employeeLanguage.employeeFirstName | titlecase }}
+            {{ employeeLanguage.employeeLastName | titlecase }}
           </td>
-          <td>{{ employeeLanguage.foreignLanguage }}</td>
+          <td>{{ employeeLanguage.foreignLanguageName }}</td>
           <td>{{ employeeLanguage.reading }}</td>
           <td>{{ employeeLanguage.writing }}</td>
           <td>{{ employeeLanguage.talking }}</td>

@@ -3,7 +3,8 @@ export class EmployeeEducation {
   employeeId!: number;
   employeeFirstName!: string;
   employeeLastName!: string;
-  educationalLevel!: string;
+  educationalLevelId!: number;
+  educationalLevelName!: string;
   schoolYearOfStart!: number;
   schoolYearOfFinished!: number;
   diplomaGrade!: number;

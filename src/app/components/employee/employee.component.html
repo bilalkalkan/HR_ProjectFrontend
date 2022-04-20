@@ -74,10 +74,10 @@
                         bindValue="nationality"
                         name="nationality"
                         placeholder="Seçiniz"
-                        [(ngModel)]="employee.nationality"
+                        [(ngModel)]="employee.nationalityId"
                       >
                         <ng-option
-                          [value]="nationality.nationalityName"
+                          [value]="nationality.id"
                           *ngFor="let nationality of nationalities"
                         >
                           {{ nationality.nationalityName }}
@@ -311,7 +311,7 @@
                         [(ngModel)]="employee.typeOfWage"
                       >
                         <ng-option value="Aylık">Aylık</ng-option>
-                        <ng-option value="Sattlik">Saatlik</ng-option>
+                        <ng-option value="Saatlik">Saatlik</ng-option>
                       </ng-select>
                     </div>
 
@@ -409,7 +409,7 @@
                 <td>{{ employee.lastName | titlecase }}</td>
                 <td>{{ employee.identificationNumber }}</td>
                 <td>{{ employee.gender | titlecase }}</td>
-                <td>{{ employee.nationality }}</td>
+                <td>{{ employee.nationalityName }}</td>
                 <td>{{ employee.placeOfBirth | titlecase }}</td>
                 <td>{{ employee.dateOfBirth | date: "dd-MM-yyyy" }}</td>
                 <td>{{ employee.maritalStatus }}</td>

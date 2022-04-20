@@ -2,9 +2,10 @@ export class Employee {
   id!: number;
   firstName!: string;
   lastName!: string;
-  identificationNumber!: string;
-  gender!: string;
-  nationality!: string;
+  identificationNumber: string = '';
+  gender: string = '';
+  nationalityId!: number;
+  nationalityName: string = '';
   placeOfBirth!: string;
   dateOfBirth!: Date;
   maritalStatus!: string;

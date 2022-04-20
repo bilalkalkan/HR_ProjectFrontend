@@ -3,7 +3,8 @@ export class EmployeeVacation {
   employeeId!: number;
   employeeFirstName!: string;
   employeeLastName!: string;
-  allowanceType!: string;
+  allowanceTypeId!: number;
+  allowanceTypeName!: string;
   allowanceStartingDate!: Date;
   allowanceExpirationDate!: Date;
   allowanceNumberOfDays!: number;

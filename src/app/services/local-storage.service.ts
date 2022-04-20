@@ -7,7 +7,7 @@ import jwtDecode from 'jwt-decode';
 export class LocalStorageService {
   constructor() {}
 
-  getLocalStorage(key: string) {
+  getLocalStorage(key: any) {
     return localStorage.getItem(key);
   }
 

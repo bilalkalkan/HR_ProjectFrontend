@@ -3,7 +3,8 @@ export class EmployeeFamily {
   employeeId!: number;
   employeeFirstName!: string;
   employeeLastName!: string;
-  degree!: string;
+  degreeId!: number;
+  degreeName!: string;
   firstName!: string;
   lastName!: string;
   gender!: string;

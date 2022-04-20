@@ -3,7 +3,8 @@ export class EmployeeLanguage {
   employeeId!: string;
   employeeFirstName!: string;
   employeeLastName!: string;
-  foreignLanguage!: string;
+  foreignLanguageId!: number;
+  foreignLanguageName!: string;
   reading!: string;
   writing!: string;
   talking!: string;

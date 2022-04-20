@@ -13,7 +13,8 @@
             [(ngModel)]="employeeFamily.employeeId"
           >
             <ng-option *ngFor="let employee of employees" [value]="employee.id">
-              {{ employee.firstName }} {{ employee.lastName }}
+              {{ employee.firstName | titlecase }}
+              {{ employee.lastName | titlecase }}
             </ng-option>
           </ng-select>
         </div>
@@ -28,11 +29,11 @@
             bindLabel="name"
             placeholder="Seçiniz"
             name="degree"
-            [(ngModel)]="employeeFamily.degree"
+            [(ngModel)]="employeeFamily.degreeId"
           >
             <ng-option
               *ngFor="let familyMember of familyMembers"
-              [value]="familyMember.member"
+              [value]="familyMember.id"
             >
               {{ familyMember.member }}
             </ng-option>
@@ -159,12 +160,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let employeeFamily of employeeFamilies">
-          <th>{{ employeeFamily.id }}</th>
-          <th>
-            {{ employeeFamily.employeeFirstName }}
-            {{ employeeFamily.employeeLastName }}
-          </th>
-          <td>{{ employeeFamily.degree }}</td>
+          <td>{{ employeeFamily.id }}</td>
+          <td>
+            {{ employeeFamily.employeeFirstName | titlecase }}
+            {{ employeeFamily.employeeLastName | titlecase }}
+          </td>
+          <td>{{ employeeFamily.degreeName }}</td>
           <td>{{ employeeFamily.firstName | titlecase }}</td>
           <td>{{ employeeFamily.lastName | titlecase }}</td>
           <td>{{ employeeFamily.gender }}</td>

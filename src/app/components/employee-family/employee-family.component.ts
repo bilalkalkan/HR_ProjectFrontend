@@ -102,9 +102,8 @@ export class EmployeeFamilyComponent implements OnInit {
       return message;
     }
     if (
-      this.employeeFamily.degree == null ||
-      this.employeeFamily.degree == undefined ||
-      this.employeeFamily.degree == ''
+      this.employeeFamily.degreeId == null ||
+      this.employeeFamily.degreeId == undefined
     ) {
       message = 'Yakınlık derecesi alanı boş bırakılamaz';
       return message;

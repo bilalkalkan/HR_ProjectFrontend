@@ -119,9 +119,8 @@ export class EmployeeEmergencyInformationComponent implements OnInit {
       return message;
     }
     if (
-      this.employeeEmergencyInformation.degree == null ||
-      this.employeeEmergencyInformation.degree == undefined ||
-      this.employeeEmergencyInformation.degree == ''
+      this.employeeEmergencyInformation.degreeId == null ||
+      this.employeeEmergencyInformation.degreeId == undefined
     ) {
       message = 'Yakınlık derecesi alanı boş bırakılamaz';
       return message;

@@ -123,9 +123,8 @@ export class EmployeeDebitComponent implements OnInit {
     }
 
     if (
-      this.employeeDebit.debitType == null ||
-      this.employeeDebit.debitType == undefined ||
-      this.employeeDebit.debitType == ''
+      this.employeeDebit.debitTypeId == null ||
+      this.employeeDebit.debitTypeId == undefined
     ) {
       message = 'Zimmet türü alanı boş bırakılamaz';
       return message;

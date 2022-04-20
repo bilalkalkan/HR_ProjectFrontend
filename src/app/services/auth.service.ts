@@ -28,11 +28,20 @@ export class AuthService {
 
   isAuthenticated() {
     let token = this.localStorage.getLocalStorage('token');
-    if (token != null) {
-      return true;
-    } else {
-      return false;
+    let expiration = this.localStorage.getLocalStorage('expiration');
+
+    if (token != null && expiration != null) {
+      let date = new Date(expiration);
+      let nowDate = new Date();
+      debugger;
+      if (date < nowDate) {
+        return false;
+      } else {
+        return true;
+      }
     }
+
+    return false;
   }
 
   logOuth() {

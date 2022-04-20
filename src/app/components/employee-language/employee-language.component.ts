@@ -112,9 +112,8 @@ export class EmployeeLanguageComponent implements OnInit {
     }
 
     if (
-      this.employeeLanguage.foreignLanguage == null ||
-      this.employeeLanguage.foreignLanguage == undefined ||
-      this.employeeLanguage.foreignLanguage == ''
+      this.employeeLanguage.foreignLanguageId == null ||
+      this.employeeLanguage.foreignLanguageId == undefined
     ) {
       message = 'Yabancı dili alanı boş bırakılamaz';
       return message;

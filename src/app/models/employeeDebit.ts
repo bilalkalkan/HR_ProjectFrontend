@@ -3,7 +3,8 @@ export class EmployeeDebit {
   employeeId!: number;
   employeeFirstName!: string;
   employeeLastName!: string;
-  debitType!: string;
+  debitTypeId!: number;
+  debitTypeName!: string;
   debitDeliveryDate!: Date;
   debitReturnStatus!: string;
   debitReturnDate!: Date;

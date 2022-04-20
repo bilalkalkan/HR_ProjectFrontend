@@ -19,17 +19,17 @@
       </div>
       <div class="form-group">
         <div class="col-md-6">
-          <label for="debitType">Zimmet türü</label>
+          <label for="debitTypeId">Zimmet türü</label>
           <ng-select
             notFoundText="Kaynak bulunamadı"
-            name="debitType"
-            id="debitType"
+            name="debitTypeI"
+            id="debitTypeId"
             placeholder="Seçiniz"
-            [(ngModel)]="employeeDebit.debitType"
+            [(ngModel)]="employeeDebit.debitTypeId"
           >
             <ng-option
               *ngFor="let debitType of debitTypes"
-              [value]="debitType.debitTypeName"
+              [value]="debitType.id"
               >{{ debitType.debitTypeName }}</ng-option
             >
           </ng-select>
@@ -127,7 +127,7 @@
             {{ employeeDebit.employeeFirstName }}
             {{ employeeDebit.employeeLastName }}
           </td>
-          <td>{{ employeeDebit.debitType }}</td>
+          <td>{{ employeeDebit.debitTypeName }}</td>
           <td>{{ employeeDebit.debitDeliveryDate | date: "dd-MM-yyyy" }}</td>
           <td>{{ employeeDebit.debitReturnStatus }}</td>
           <td>{{ employeeDebit.debitReturnDate | date: "dd-MM-yyyy" }}</td>

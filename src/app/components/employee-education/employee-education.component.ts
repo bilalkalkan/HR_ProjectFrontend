@@ -114,9 +114,8 @@ export class EmployeeEducationComponent implements OnInit {
       return message;
     }
     if (
-      this.employeeEducation.educationalLevel == null ||
-      this.employeeEducation.educationalLevel == undefined ||
-      this.employeeEducation.educationalLevel == ''
+      this.employeeEducation.educationalLevelId == null ||
+      this.employeeEducation.educationalLevelId == undefined
     ) {
       message = 'Eğitim seviysesi alanı boş bırakılamaz';
       return message;

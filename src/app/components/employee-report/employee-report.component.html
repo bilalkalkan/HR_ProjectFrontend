@@ -36,7 +36,7 @@
         bindValue="nationality"
         name="nationality"
         placeholder="Seçiniz"
-        [(ngModel)]="employee.nationality"
+        [(ngModel)]="employee.nationalityName"
       >
         <ng-option
           [value]="nationality.nationalityName"
@@ -46,6 +46,69 @@
         </ng-option>
       </ng-select>
     </div>
-    <button (click)="getEmployeeByFilter()">listele</button>
+    <br />
+    <button class="btn btn-success" (click)="getEmployeeByFilter()">
+      listele
+    </button>
+    <button class="btn btn-warning" (click)="clear()">Temizle</button>
   </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ad</th>
+        <th scope="col">Soyad</th>
+        <th scope="col">TC kimlik numarası</th>
+        <th scope="col">Cinsiyet</th>
+        <th scope="col">Uyruk</th>
+        <th scope="col">Doğum Yeri</th>
+        <th scope="col">Doğum Tarihi</th>
+        <th scope="col">Medeni Hal</th>
+        <th scope="col">Sicil Numarası</th>
+        <th scope="col">Şirkete Giriş T.</th>
+        <th scope="col">SGK Giriş T.</th>
+        <th scope="col">Yıllık izin hakediş başlangıç T.</th>
+        <th scope="col">Yıllık izin Grubu</th>
+        <th scope="col">Kıdem Tazminatı Başlangıç T.</th>
+        <th scope="col">OYAK İşe Giriş T.</th>
+        <th scope="col">Gruba İlk Giriş T.</th>
+        <th scope="col">Ücret</th>
+        <th scope="col">Ücret Türü</th>
+        <th scope="col">Ödeme Şekli</th>
+        <th scope="col">Ödeme yapılan para birimi</th>
+        <th scope="col">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <th scope="row">{{ employee.id }}</th>
+        <td>{{ employee.firstName | titlecase }}</td>
+        <td>{{ employee.lastName | titlecase }}</td>
+        <td>{{ employee.identificationNumber }}</td>
+        <td>{{ employee.gender | titlecase }}</td>
+        <td>{{ employee.nationalityName }}</td>
+        <td>{{ employee.placeOfBirth | titlecase }}</td>
+        <td>{{ employee.dateOfBirth | date: "dd-MM-yyyy" }}</td>
+        <td>{{ employee.maritalStatus }}</td>
+        <td>{{ employee.registrationNumber }}</td>
+        <td>{{ employee.companyEntryDate | date: "dd-MM-yyyy" }}</td>
+        <td>{{ employee.sgkEntryDate | date: "dd-MM-yyyy" }}</td>
+        <td>
+          {{ employee.annualLeaveEntitlementStartDate | date: "dd-MM-yyyy" }}
+        </td>
+        <td>{{ employee.annualLeaveGroup }}</td>
+        <td>
+          {{ employee.severancePayStartDate | date: "dd-MM-yyyy" }}
+        </td>
+        <td>{{ employee.oyakStartDateOfWork | date: "dd-MM-yyyy" }}</td>
+        <td>
+          {{ employee.firstDateOfJoiningTheGroup | date: "dd-MM-yyyy" }}
+        </td>
+        <td>{{ employee.wage }}</td>
+        <td>{{ employee.typeOfWage }}</td>
+        <td>{{ employee.typeOfPayment }}</td>
+        <td>{{ employee.paymentCurrency }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

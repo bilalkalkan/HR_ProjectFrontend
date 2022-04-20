@@ -26,7 +26,7 @@ export class EmployeeReportComponent implements OnInit {
     this.employeeService
       .getEmployeeFilter(
         this.employee.gender,
-        this.employee.nationality,
+        this.employee.nationalityName,
         this.employee.identificationNumber
       )
       .subscribe({
@@ -45,5 +45,9 @@ export class EmployeeReportComponent implements OnInit {
     this.employeeService.getNationalities().subscribe((response) => {
       this.nationalities = response.data;
     });
+  }
+
+  clear() {
+    this.employee = new Employee();
   }
 }

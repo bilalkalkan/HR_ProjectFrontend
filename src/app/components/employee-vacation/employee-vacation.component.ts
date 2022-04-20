@@ -125,9 +125,8 @@ export class EmployeeVacationComponent implements OnInit {
     }
 
     if (
-      this.employeeVacation.allowanceType == null ||
-      this.employeeVacation.allowanceType == undefined ||
-      this.employeeVacation.allowanceType == ''
+      this.employeeVacation.allowanceTypeId == null ||
+      this.employeeVacation.allowanceTypeId == undefined
     ) {
       message = 'İzin türü alanı boş bırakılmaz';
       return message;

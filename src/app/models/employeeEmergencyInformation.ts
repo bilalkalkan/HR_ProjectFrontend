@@ -3,7 +3,8 @@ export class EmployeeEmergencyInformation {
   employeeId!: number;
   employeeFirstName!: string;
   employeeLastName!: string;
-  degree!: string;
+  degreeId!: number;
+  degreeName!: string;
   firstName!: string;
   lastName!: string;
   phoneNumber!: string;

@@ -26,11 +26,11 @@
             notFoundText="Kaynak bulunamadı"
             name="degree"
             placeholder="Seçiniz"
-            [(ngModel)]="employeeEmergencyInformation.degree"
+            [(ngModel)]="employeeEmergencyInformation.degreeId"
           >
             <ng-option
               *ngFor="let familyMember of familyMembers"
-              [value]="familyMember.member"
+              [value]="familyMember.id"
               >{{ familyMember.member }}
             </ng-option>
           </ng-select>
@@ -132,11 +132,11 @@
         >
           <td>{{ employeeEmergencyInformation.id }}</td>
           <td>
-            {{ employeeEmergencyInformation.employeeFirstName }}
-            {{ employeeEmergencyInformation.employeeLastName }}
+            {{ employeeEmergencyInformation.employeeFirstName | titlecase }}
+            {{ employeeEmergencyInformation.employeeLastName | titlecase }}
           </td>
           <td>
-            {{ employeeEmergencyInformation.degree | titlecase }}
+            {{ employeeEmergencyInformation.degreeName | titlecase }}
           </td>
           <td>{{ employeeEmergencyInformation.firstName | titlecase }}</td>
           <td>{{ employeeEmergencyInformation.lastName | titlecase }}</td>
